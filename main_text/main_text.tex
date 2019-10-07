@@ -278,31 +278,33 @@ of a membrane transporter through its substrate.
 \section*{Introduction}
 Genetic regulatory circuits are fundamental building blocks of functioning
 cells and organisms. One abundant class of these circuits are genetic
-switches. They can be constructed in various ways and have different
-functions. What all of them have in common is that the system is bistable:
-there are two stable steady-states that it can be in. The distribution of
+switches. Although their construction and function may differ,
+their common feature is bistability: their output gene expression
+will flow to and remain at one of two steady-state levels.
+The distribution of
 gene expression in a cell culture can then be bimodal. This is not to be
 confused with mere stochastic bimodality, where the system is not stable,
-but the gene expression in each cell is fluctuating between the two levels.
+and the gene expression in each cell can fluctuate between the two levels.
 
 One classic example of a genetic switch is a system where two repressor
 proteins each regulate the transcription of the
 other~\cite{Jacob1961,Gardner2000} (illustrated schematically in
-Fig~\ref{fig1:switches}). Here, the two stable states are high expression of
-the first protein and low expression of the second one or the opposite. This
+Fig~\ref{fig1:switches}). Here, one stable state is high expression of
+the first protein and low expression of the second,
+and the second stable state is the opposite. This
 switch enables the system to have a memory: if something induces expression
 of either one of the proteins, the system will remain in this state until a
 significant perturbation occurs. Another well known and even simpler example
 is an auto-activating circuit in which a protein activates its own
-transcription~\cite{Wolf1998}. This gives the system an ``on-off''-switch.
-%\todo{make eps}
+transcription~\cite{Wolf1998}. This gives the system an ``on-off'' switch.
 
 \begin{figure}%[h!]
 	\centering
 	\includegraphics{media/Circuits.eps}
 	\caption{{\bf A schematic of different genetic switches.}
-	(A) and (B) show the two most well-known genetic switches that are
-	mentioned in the text. In (C), a very much simplified version of the
+	(A) and (B) show the two most well-known genetic switches:
+	(A) two mutual repressors and (B) a self-activating gene.
+	In (C), a very much simplified version of the
 	circuit that we investigate in this paper can be seen, where the
 	similarity to the switch in (B) becomes obvious. A complete version of
 	the model circuit can be found in Fig~\ref{fig2:model}.}
@@ -337,15 +339,22 @@ often encodes for a whole set of enzymes for this one metabolite, switches
 ``off'' again. Such a mechanism could be involved in various cases of
 short-term adaptation.
 
+\textit{MM: I like the above paragraph, but we should also add something
+about the TF \& frame it as resourse utility: xapR, lacI, and I suspect
+others of these TFs happen to be constitutively expressed at low copy
+number. They act as ``always on'' sensors that trigger a switch to produce
+massive numbers of metabolic enzymes only when their substrate is
+available.}
+
 For our modeling, we focus on the \emph{xapABR} genetic circuit from
 \emph{E. coli} as a case study. It is similar to \emph{lac}, but less
 complex. Instead of lactose, its purpose is to make use of the nucleoside
 xanthosine as an energy source~\cite{Buxton1980,Hammer-Jespersen1980}. The
-circuit is made up of two genes: one that encodes for XapR and another one
+circuit is made up of two operons: one that encodes for XapR and another
 that encodes for XapA and XapB. XapR appears to be a transcription factor
-that is induced by xanthosine and activates the \emph{xapAB} promoter. It
-seems to have two binding sites on the promoter, but the promoter
-architecture and function is not fully understood up to now. The
+that is induced by xanthosine and activates the \emph{xapAB} promoter.
+This promoter seems to have two binding sites for XapR, but the promoter
+architecture and function is not yet fully understood. The
 transcription of \emph{xapR} seems to be constitutive and not
 auto-regulated~\cite{Seeger1995}. Structural homology to other transcription
 factors suggests that XapR appears in dimers where one dimer can bind two
