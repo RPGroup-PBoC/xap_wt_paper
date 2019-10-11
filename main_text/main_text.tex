@@ -318,7 +318,7 @@ the transporter gene by the transporter substrate, leading to positive
 feedback similar to the aforementioned ``on-off'' switch. An example for
 such an architecture is the \emph{lac} operon, where lactose indirectly
 activates the expression of lactose permease. Other examples in \emph{E.
-coli} include the \emph{araFGH} and \emph{xylFGH} genes, which encode for
+coli} include the \emph{araFGH} and \emph{xylFGH} operons, which contain genes for
 arabinose and xylose transporters, respectively. For \emph{lac} and
 \emph{araFGH}, bistability has indeed been observed and attributed to such a
 positive feedback
@@ -334,17 +334,22 @@ cell, it activates the production of membrane transporters. The cell then
 starts accumulating the substrate, thereby ``testing'' the substrate's
 presence in the extracellular environment. If there is enough, the
 expression stabilizes at an ``on'' point and the cell has, in a short-term
-sense, adapted. When there is not enough substrate anymore, the gene, which
+sense, adapted. When there is not enough substrate anymore, the operon, which
 often encodes for a whole set of enzymes for this one metabolite, switches
 ``off'' again. Such a mechanism could be involved in various cases of
 short-term adaptation.
 
-\textit{MM: I like the above paragraph, but we should also add something
-about the TF \& frame it as resourse utility: xapR, lacI, and I suspect
-others of these TFs happen to be constitutively expressed at low copy
-number. They act as ``always on'' sensors that trigger a switch to produce
-massive numbers of metabolic enzymes only when their substrate is
-available.}
+A key element of this mechanism is the presence of a transcription factor
+which is always expressed at a low level (often at copy numbers
+of order $\sim10$) and which binds to the transporter substrate.
+This is resource efficient for the cell, as this low copy number
+transcription factor acts as an ``always on'' sensor to detect
+the substrate, allowing high copy numbers of the membrane transporter
+and its attendant operon to be expressed only when
+their substrate is actually present. The transcription factors
+LacI, AraC, and XylR all appear to fill this
+role~\cite{Novick1957,Narang2008,Choi2008,Ozbudak2004,Fritz2014,Jenkins2017,Siegele1997}.
+\todo{do we have a cite for xylR too?}
 
 For our modeling, we focus on the \emph{xapABR} genetic circuit from
 \emph{E. coli} as a case study. It is similar to \emph{lac}, but less
@@ -352,9 +357,10 @@ complex. Instead of lactose, its purpose is to make use of the nucleoside
 xanthosine as an energy source~\cite{Buxton1980,Hammer-Jespersen1980}. The
 circuit is made up of two operons: one that encodes for XapR and another
 that encodes for XapA and XapB. XapR appears to be a transcription factor
-that is induced by xanthosine and activates the \emph{xapAB} promoter.
-This promoter seems to have two binding sites for XapR, but the promoter
-architecture and function is not yet fully understood. The
+that is induced by xanthosine and activates the \emph{xapAB} promoter,
+in close analogy to LacI, AraC, and XylR.
+The \textit{xapAB} promoter has been suggested to have two binding sites for XapR\cite{Seeger1995},
+but the promoter architecture and function is not yet fully understood. The
 transcription of \emph{xapR} seems to be constitutive and not
 auto-regulated~\cite{Seeger1995}. Structural homology to other transcription
 factors suggests that XapR appears in dimers where one dimer can bind two
