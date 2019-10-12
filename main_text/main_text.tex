@@ -349,7 +349,7 @@ and its attendant operon to be expressed only when
 their substrate is actually present. The transcription factors
 LacI, AraC, and XylR all appear to fill this
 role~\cite{Novick1957,Narang2008,Choi2008,Ozbudak2004,Fritz2014,Jenkins2017,Siegele1997}.
-\todo{do we have a cite for xylR too?}
+\todo{MJM: do we have a cite for xylR too?}
 
 For our modeling, we focus on the \emph{xapABR} genetic circuit from
 \emph{E. coli} as a case study. It is similar to \emph{lac}, but less
@@ -383,20 +383,24 @@ from stochastic simulations.
 \section*{Model}
 \subsection*{Step by step modeling of the system}
 In this section, we present our model of the \emph{xapAB} genetic circuit.
-Fig~\ref{fig2:model} shows an overview of this model. It consists of the
-following steps: 
+Fig~\ref{fig2:model} shows an overview of this model.
+The qualitative picture of the circuit switching its state is as follows:
 \begin{itemize}
-	\item Small amounts of xanthosine are transported into and out of cell in various ways (discussed in more detail later on).
+	\item In the initial absense of XapB, small amounts of xanthosine are
+		nonspecifically transported into and out of the cell (discussed in more detail below).
+	\todo{MJM: ``nonspecific transport'' is a bit misleading:
+	it's actually weakly specific transporters, but the precise mechanism is unimportant
+	\& I think it better to emphasize generality of the model. Does this seem fine?}
 	\item XapR is induced by xanthosine.
 	\item The induced XapR binds to the \emph{xapAB} promoter, leading to transcription.
 	\item From this mRNA transcript, translation produces the two proteins XapA and XapB.
 	\item XapB actively transports much larger amounts of xanthosine into the cell and XapA degrades xanthosine.
-	\item At some point, the proteins decay.
+	\item Production of more XapA \& XapB is balanced by decay or dilution through cell divisions.
 \end{itemize}
-Because xanthosine induces the transcription factor XapR, we have a positive
-and negative feedback loop due to XapB and XapA, respectively. The remainder
+Because xanthosine induces the transcription factor XapR, we have positive
+and negative feedback loops due to XapB and XapA, respectively. The remainder
 of this subsection discusses each of the above steps in detail, leading us
-to a set of two coupled ODE's. More in-depth explanations can be found
+to a set of two coupled ODEs. More in-depth explanations can be found
 in~\nameref{S1_Text}.
 
 \begin{figure}[h!]
@@ -413,8 +417,8 @@ in~\nameref{S1_Text}.
 		xanthosine with Michaelis-Menten parameters $k_{a}$ and $K_a$.
 		Similarly, XapB imports and exports xanthosine with parameters
 		$k_{\n{b,i}}, K_{\n{b,i}}$ and $k_{\n{b,e}}, K_{\n{b,e}}$,
-		respectively. Furthermore, xanthosine enters and leaves the cell in
-		other ways, proportional to rates $k_{\n{nup}}$ and $\xi
+		respectively. Furthermore, xanthosine enters and leaves the cell
+		through non-specific transport, proportional to rates $k_{\n{nup}}$ and $\xi
 		k_{\n{nup}}$, respectively.}
 	\label{fig2:model}
 \end{figure}
@@ -422,10 +426,11 @@ in~\nameref{S1_Text}.
 \paragraph*{Induction of XapR.} 
 We treat dimers as the only form of XapR that appears in the cell. Each
 dimer can bind two xanthosine molecules. The Monod-Wyman-Changeux (MWC)
-model is used to describe the fraction of XapR dimers in the active state: 
+model is used to describe the fraction of XapR dimers in the active state,
+which has the form
 \begin{eqnarray}
 \label{eq:MWC}
-\n{[XapR]_A} = \n{[XapR]_{tot}} \frac{\left(1 + \frac{\n{[x]}}{K_{\n{xA}}}\right)^2}{\left(1 + \frac{\n{[x]}}{K_{\n{xA}}}\right)^2 + e^{\beta \Delta E_{\n{x}}} \left(1+\frac{\n{[x]}}{K_{\n{xA}}} \frac{K_{\n{xA}}}{K_{\n{xI}}}\right)^2}
+\n{[XapR]_A} = \n{[XapR]_{tot}} \frac{\left(1 + \frac{\n{[x]}}{K_{\n{xA}}}\right)^2}{\left(1 + \frac{\n{[x]}}{K_{\n{xA}}}\right)^2 + e^{\beta \Delta E_{\n{x}}} \left(1+\frac{\n{[x]}}{K_{\n{xA}}} \frac{K_{\n{xA}}}{K_{\n{xI}}}\right)^2}.
 \end{eqnarray}
 Here, $\n{[x]}$ is the xanthosine concentration, and $\n{[XapR]_A}$ and
 $\n{[XapR]_{tot}}$ denote the concentration of active and total XapR dimers,
@@ -438,7 +443,7 @@ XapR being mainly inactive in the absence of xanthosine and becoming mostly
 active at high concentrations of xanthosine. A detailed discussion of the
 MWC model can be found in~\cite{Marzen2013}.
 
-\paragraph*{Transcription.} 
+\paragraph*{Transcription.}
 Transcription and translation of the \emph{xapAB} gene, regulated by the
 induced XapR, produce the two proteins XapA and XapB. We start with
 transcription and assume that the binding of XapR and polymerase to the
@@ -449,16 +454,19 @@ of its two sites is assumed to be the same. A discussion of these
 simplifications can be found in~\nameref{S1_Text}.
 
 In Fig~\ref{fig3:states}, all possible states of the promoter in our model
-and their corresponding thermodynamic weights are shown. There, $\n{[P]}$
-denotes the polymerase concentration and $\Delta E_{\n{coop}}$ stands for
+and their corresponding thermodynamic weights are shown. $\n{[P]}$
+denotes the polymerase concentration, and $\Delta E_{\n{coop}}$ stands for
 the interaction energy of the two XapR dimers. If cooperativity in
 transcription factor binding is neglected, this is set to zero. Furthermore,
 $K_{\n{XapR}}$ and $K_{\n{P}}$ denote the dissociation constant of XapR and
 polymerase to the promoter, respectively. In statistical mechanics language
-this is equivalent to $\frac{N_{\mathrm{NS}}}{V} e^{\beta \Delta E_{i}}$
+these dissociation constants are equivalent to
+$\frac{N_{\n{NS}}}{V} e^{\beta \Delta E_{\n{XapR}}}$
+and $\frac{N_{\n{NS}}}{V} e^{\beta \Delta E_{\n{P}}}$, respectively,
 with $N_{\mathrm{NS}}$ being the number of non-specific binding sites on the
-DNA, $V$ the volume of the cell, and $\Delta E_{i}$ the interaction energy
-of $i=$XapR or $i=$polymerase with the promoter.
+DNA, $V$ the volume of the cell, and $\Delta E_{\n{XapR}}$ and
+$\Delta E_{\n{XapR}}$, respectively, the interaction energies
+of XapR or polymerase with the promoter.
 
 \begin{figure}%[h!]
 	\centering
@@ -475,7 +483,7 @@ of $i=$XapR or $i=$polymerase with the promoter.
 
 We consider only the state where both XapR binding sites are occupied as
 active and all other states as inactive, meaning they have transcription
-rate $0$. Experiments show that the expression becomes very weak when one of
+rate equal zero. Experiments show that the expression becomes very weak when one of
 the XapR binding sites is removed from the promoter, suggesting that this
 simplification is reasonable~\cite{Chure2019}. Furthermore, we find that in
 the bistable parameter range, considering the single occupancy states as
@@ -509,7 +517,8 @@ just $\n{s^{-1}}$. This rate equation gives the mean mRNA concentration
 $\langle\n{[mRNA]}\rangle = \frac{r_{\n{m}}}{\gamma_{\n{m}}}
 p_{\n{active}}$, which we will need in the next paragraph.
 In~\nameref{S1_Text}, the full chemical master equation is shown, which
-leads to a Poisson distribution of the mRNA concentration with the same
+leads to a \todo{MJM: I worry referees will give us grief: ``Real dists aren't Poisson,'' even though it's irrelevant}
+Poisson distribution of the mRNA concentration with the same
 mean.
 
 \paragraph*{Translation.} 
