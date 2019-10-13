@@ -536,10 +536,15 @@ decay rate, and $\langle \n{[mRNA]} \rangle$ the mean mRNA concentration:
 \end{eqnarray}
 
 \paragraph*{Xanthosine dynamics.}
-We have now discussed how xanthosine activates the synthesis of XapA and
-XapB through XapR. In this part of the section, we close the feedback loop
-by setting up a xanthosine rate equation. 
+Having described how xanthosine activates the synthesis of XapA and
+XapB through XapR, we now close the feedback loop
+by setting up a xanthosine rate equation.
 
+\todo{MJM: Is this para \& next excessively detailed for main text?
+maybe replace w/ 1-2 sentences about low affinity Mich-Ment transporters
+that supplement XapB, \& shift all this to supplement?
+If we want to emphasize the general class of model rather than the particular
+biology details of Xap}
 Transport of xanthosine across the cell membrane happens in two steps which
 we will discuss now. All statements in this paragraph are based on data
 from~\cite{Norholm2001}. In a first transport step, xanthosine passes the
@@ -590,8 +595,8 @@ the above then leads to the xanthosine rate equation
 \begin{eqnarray}
 \dd{\n{[x]}}{t} = \biggl(\underbrace{k_{\n{b,i}} \frac{c}{K_{\n{b,i}} + c} - k_{\n{b,e}} \frac{\n{[x]}}{K_{\n{b,e}} + \n{[x]}}}_{\n{XapB}} - \underbrace{k_{\n{a}} \frac{\n{[x]}}{K_{\n{a}} + \n{[x]}}}_{\n{XapA}}\biggr) \n{[p]} + \underbrace{k_{\n{nup}} \left(c- \xi \n{[x]}\right)}_{\n{NupC\ \& \ NupG}}.
 \end{eqnarray}
-We recall that $\n{[x]}$ is the intracellular xanthosine concentration, and
-$c$ denotes the extracellular one. Because $k_{\n{b,i}} > k_{\n{b,e}}$ and
+We recall that $\n{[x]}$ is the intracellular xanthosine concentration, while
+$c$ denotes the extracellular. Because $k_{\n{b,i}} > k_{\n{b,e}}$ and
 $K_{\n{b,i}} < K_{\n{b,e}}$, influx dominates at low intracellular
 xanthosine concentrations. At much higher intra- than extracellular
 xanthosine concentrations, the efflux term takes over. More details on the
@@ -632,7 +637,7 @@ equations are obtained
 \text{with} & && \raggedleft [\n{XapR}]_{\mathrm{R,\n{A}}} = [\n{XapR}]_{\mathrm{R}} \frac{\left(1 + \frac{\mathrm{[x]_{\n{a}}}}{K_{\n{\chi A}}}\right)^2}{\left(1 + \frac{\mathrm{[x]_{\n{a}}}}{K_{\n{\chi A}}}\right)^2 + e^{\Delta \epsilon_{\n{x}}} \left(1+\frac{\mathrm{[x]_{\n{a}}}}{K_{\n{\chi A}}} \frac{1}{K_{\n{IA}}}\right)^2} \nonumber
 \end{alignat}
 
-Very little is known about the \emph{xap} system, and thus, there are no
+Very little is known about the \emph{xap} system, and thus, there are almost no
 measured values for the free parameters. Nevertheless, we were able to
 estimate a reasonable range by using values from similar, well studied
 systems and by finding physical constraints or relations between parameters.
@@ -694,13 +699,13 @@ probably not be helpful due to their large complexity. Finding such
 solutions requires solving a fifth order algebraic equation.
 
 \subsection*{Deterministic phase portraits}
-A standard way to analyze dynamical systems like ours deterministically is
+A standard way to analyze dynamical systems deterministically is
 to plot phase portraits. In the following, we present such plots where the
 state variables are the mRNA, the protein, and the xanthosine concentration.
 
 \paragraph*{From a 3D to a 2D system.} 
 Fig~\subref{fig4:bistability}{A} shows the 3D phase portrait for a
-representative set of parameters (that from Table~\ref{table1:nondim}),
+representative set of parameters (shown in Table~\ref{table1:nondim}),
 whose choice is explained below. The plot looks rather complicated at first
 but can be understood intuitively. The three planes are the nullclines and
 the gray lines point in the direction in which the dynamical system moves at
@@ -730,7 +735,7 @@ planes.
 \end{figure}
 %\todo{edge,size}
 
-It is important to point out that for a different set of parameters, the
+It is important to point out that, for a different set of parameters, the
 dynamics can be quite different. There are, for example, scenarios where the
 xanthosine kinetics are roughly as fast as the mRNA kinetics and the
 dynamics unfolds in two steps: first to the intersection of the mRNA and the
@@ -738,14 +743,14 @@ xanthosine nullcline, then along that line to the protein nullcline and
 thereby to a fixed point.
 
 A usual simplification with genetic circuits like this is to assume the mRNA
-concentration to be at steady-state, i.e. to write $\dd{\n{[m]_a}}{\tau}=0$
+concentration to be at steady-state, i.e., to write $\dd{\n{[m]_a}}{\tau}=0$
 and solve this for $\n{[m]_a}(\n{[p]_a},\n{[x]_a})$ to simplify the 3D to a
 2D system. This restricts the dynamics to the green plane in our plot, which
 is reasonable here because as explained above, the system first flows
 towards that plane before either the protein or the xanthosine concentration
 changes significantly. However, as already pointed out, this is different
-for other parameter values, and thus, this assumption generally is not a
-good one. If the xanthosine dynamics are faster than the mRNA dynamics, the
+for other parameter values, and thus, this assumption does not hold in general.
+If the xanthosine dynamics are faster than the mRNA dynamics, the
 system first flows towards the xanthosine nullcline. In that case, forcing
 it onto the mRNA nullcline leads to significant changes in the dynamics.
 
@@ -771,12 +776,14 @@ middle one (labeled 2) is unstable and serves as a sort of ``switch-point''
 between the other two. This means that there are two stable states the cell
 can be in, one at high (point 3) and one at low (point 1) expression. As a
 result, there is bistability and the distribution of expression among cells
-is bimodal.
+can be bimodal, depending on initial conditions.
 
-This corresponds to the experimental observations, so the model passes this
+\todo{MJM: Do any of the older papers have data for this too,
+or were they all just colony growth screens on plates?}
+This corresponds to the experimental observations\cite{Chure2019}, so the model passes this
 sanity check. Furthermore, the xanthosine and protein concentrations at the
 upper fixed point have the expected order of magnitude: the xanthosine
-concentration is roughly $10-100 \unit{nM}$, and there are roughly $500$
+concentration is roughly $10-100 \unit{mM}$, and there are roughly $500$
 proteins, which is just a bit lower than what was measured for the number of
 Nup transporters~\cite{Li2014} which fulfill a similar purpose. We do not
 have well founded expectations for the other fixed points, so no comparison
@@ -804,9 +811,10 @@ As a remark we point out that we have not observed any oscillations in the
 system. Intuitively, they might be expected when the XapA rate is
 significantly larger than the XapB rate, but it turns out that oscillations
 cannot be obtained. This can be understood when looking at the regions that
-are bounded by all three nullclines: within these regions, the streamlines
-on the nullclines point into the regions, so deterministically, the system
-is trapped in there and can only flow towards the fixed points.
+are bounded by all three nullclines: on these boundaries, the streamlines
+point into the regions, so deterministically, they serve as
+trapping regions from which the system cannot escape. Once inside, the only
+possible trajectory is non-oscillatory flow towards the stable fixed point.
 
 For a different set of parameters, the orders of magnitude in the plots and
 even the qualitative behavior can change. In the following, we will discuss
@@ -816,7 +824,7 @@ phase portraits.
 \paragraph*{The extracellular xanthosine concentration.}
 The parameter that is the experimentally most easily tunable and
 biologically the most relevant is the extracellular xanthosine
-concentration. When it is increased in the experiment, the cells go from all
+concentration. When it is increased in experiments, the cells go from all
 being in the low expression state to being in either the low or the high
 expression state (all-or-none phenomenon) to all being in the high
 expression state~\cite{Chure2019}. If our model is correct, it should
@@ -847,8 +855,8 @@ levels.
 \end{figure}
 %\todo{size of plot}
 
-Furthermore, by setting $\n{[c]_a}=0$ (not shown here) we found that in the
-absence of xanthosine, there are roughly 2-3 proteins, which agrees very
+Furthermore, we found that in the absence of xanthosine, i.e., setting
+$\n{[c]_a}=0$ (not shown here), there are roughly 2-3 proteins, which agrees very
 well with measurements, where around 2 proteins per cell were
 found~\cite{Li2014}. In addition, the parameter $K_{\n{\chi A}}$
 (dissociation constant of xanthosine from active XapR) can be tuned such
@@ -860,7 +868,7 @@ recalling that for \emph{lac}, cells also limit themselves to glucose as
 long as possible. Interestingly, because there is no parameter other than
 $K_{\n{\chi A}}$ that tunes the critical value of $\n{[c]_a}$, this tells us
 that $K_{\n{\chi A}}$ is large as argued in the estimation of $K_{\n{\chi
-A}}$ in~\nameref{S1_Text}. Thus, the interaction between xanthosine and XapR
+A}}$ in~\nameref{S1_Text}. Thus, we predict that the interaction between xanthosine and XapR
 should be weak.
 
 \paragraph*{The roles of XapA and XapB.}
@@ -870,15 +878,21 @@ are necessary. It turns out that the bistability is due to XapB only. XapA
 is neither sufficient nor necessary and, within the estimated parameter
 regime, does not even have a significant influence on the system. This can
 be seen from the plots in figure~\ref{fig6:xapAB}. XapA lowers the upper
-solution by a little and could, in principle, thereby make the
+solution by a small amount and could, in principle, thereby make the
 high-expression solution vanish. For our choice of all other parameters,
 this requires $k_{\n{\alpha}} > 10^4$ which is far from what has been
-measured. However, a higher rate could, in principle, be achieved by
+measured. However, a higher effective rate could, in principle, be achieved by
 different translation rates of XapA and XapB (see simplifications of the
 model in~\nameref{S1_Text}). Hence, we cannot exclude the possibility that
-XapA gets so strong that it makes bistability impossible, but this is an
+XapA becomes so strong that it makes bistability impossible, but this is an
 extreme case. XapB, on the other hand, is essential; without it the system
-only has the one fixed point at low expression.
+only has the one fixed point at low expression.\footnote{
+Seeger et.\ al.\cite{Seeger1995} observed that $\Delta xapB$ mutants could
+survive, but grew extremely slowly, with xanthosine as the only carbon
+source, which makes sense in light of Fig~\ref{fig6:xapAB}.
+With \textit{xapB} removed, the switch never activates and the cells are
+forced to survive with an extremely meager quantity of XapA to metabolize
+the abundant xanthosine.}
 
 \begin{figure}%[h!]
 	\includegraphics[width=1\textwidth]{media/XapAB.eps}
@@ -897,11 +911,12 @@ only has the one fixed point at low expression.
 For a cell, the above is a useful feature: by coupling XapA and XapB on an
 operon, XapA is switched on and off together with XapB but it does not
 significantly disturb this adaptation mechanism, while its kinetic
-parameters can be chosen somewhat freely as necessary for metabolism. By
+parameters and expression levels can be chosen 
+somewhat freely as necessary for metabolism. By
 having a membrane transporter gene on an operon whose expression is
 activated by the transporter substrate, the expression of a whole set of
 enzymes can be turned on and off depending on the presence of the substrate.
-It seems likely that this way of short-term adaptation of a single cell to
+It seems likely that this mechanism of short-term adaptation of a single cell to
 its environment may be used by cells for many metabolic processes.
 
 \paragraph*{The role of cooperativity.} 
@@ -909,13 +924,16 @@ The model has two cooperatively interacting binding sites for XapR on the
 \emph{xapAB} promoter and two cooperative binding sites on XapR for
 xanthosine. An interesting question to pose is whether the cooperativity is
 a necessary feature for bistability. This is motivated by the importance of
-cooperativity in typical ``genetic switches''\cite{Gardner2000,Cherry2000}.
+cooperativity in ``typical'' genetic switches\cite{Gardner2000,Cherry2000}.
 
 If, as a purely theoretical consideration, we remove either the second
 xanthosine binding site on XapR or the second XapR binding site on the
 promoter, we find that the system still has a bistable parameter regime.
-However, this is only a rather narrow parameter range which makes the system
-less stable. When the second binding site is removed in both places, the
+However, this is only a rather narrow parameter range, which makes the system
+\todo{MJM: the (hypothetical) utility of this switch seems to be resource efficiency,
+which $\Rightarrow$ pushing the fixed points to extreme highs \& lows is good
+$\Rightarrow$ stronger coop is good. maybe we should work this in}
+less bistable. When the second binding site is removed in both places, the
 equations are insufficiently non-linear to produce bistability. An example
 of these three scenarios can be seen in Fig~\ref{fig7:coop}. It follows that
 there need to be either two xanthosine binding sites on XapR or two XapR
@@ -959,6 +977,8 @@ This could be investigated more rigorously similar to the analysis of a
 simple genetic switch in~\cite{Cherry2000}. However, we refrain from looking
 for a minimal Hill coefficient in our system, because we do not find this
 very insightful. Hill equations only describe scenarios with multiple,
+\todo{MJM: but that already sounds like an effective interaction,
+I'm not sure I like this phrasing, or the next sentence's.}
 non-interacting binding sites where any other state but the fully occupied
 and active or the fully empty and inactive state is not significantly
 populated. In that sense, the Hill coefficient simply denotes the number of
