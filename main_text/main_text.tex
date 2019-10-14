@@ -540,7 +540,7 @@ Having described how xanthosine activates the synthesis of XapA and
 XapB through XapR, we now close the feedback loop
 by setting up a xanthosine rate equation.
 
-\todo{MJM: Is this para \& next excessively detailed for main text?
+\todo[inline]{MJM: Are the following 2 paragraphs excessively detailed for main text?
 maybe replace w/ 1-2 sentences about low affinity Mich-Ment transporters
 that supplement XapB, \& shift all this to supplement?
 If we want to emphasize the general class of model rather than the particular
@@ -1036,9 +1036,10 @@ experiments: the mean numbers of mRNA, protein, and xanthosine in the
 stochastic results are as predicted from the phase portraits. It does,
 however, become clear that the phase portraits do not tell whether the cells
 will actually populate both the high and the low expression state: as can be
-seen in Fig~\subref{fig8:stochC}{(A)}, the cells did not switch to the high
-expression state for the waiting time in our simulations, even though one
-would naively expect this from the phase portrait.
+seen in Fig~\subref{fig8:stochC}{(A)}, the cells never switched to the high
+expression state during the run time of our simulations.
+\todo{MJM: depends on an effective barrier height, hard to intuit from phase port.
+Bistability rather than bimodality means it may very well practically never switch.}
 
 We found that the two lower fixed points (marked as 1 and 2 in
 Fig~\ref{fig4:bistability}) need to be very close like in
@@ -1057,7 +1058,7 @@ Note that while the deterministic analysis assumes the variables to be
 continuous, the simulations work with discrete numbers of mRNA, protein, and
 xanthosine. This per se is no problem, because the deterministic analysis
 describes the mean values and the simulation fluctuates around this mean.
-If, however, the mRNA number at the third, high fixed point is too low, the
+If, however, the mRNA number at the third (high) fixed point is too low, the
 system will not be able to resolve the two points anymore. This becomes a
 problem when the distance between the first and the third fixed point
 becomes as low as the stochastic fluctuations in the system, which is around
@@ -1072,7 +1073,7 @@ xanthosine count of 0 and was run for a simulated time of $5 \cdot 10^5
 \unit{s}$. In this specific example, switching occurred after $10^5
 \unit{s}$. 
 
-Comparing this to the experimentally expected timescales is difficult,
+Comparing this to the experimentally expected timescales~\cite{Chure2019} is difficult,
 because the switching time strongly depends on the extracellular xanthosine
 concentration. Experiments were always stopped after a few hours, and in
 this time, the cell population might not reach its steady-state expression
@@ -1110,7 +1111,7 @@ occurs.
 %\todo{size of plot}
 
 \paragraph*{Hysteresis.} 
-In the previous two paragraphs, the simulations were started at initial
+In Figs~\ref{fig8:stochC} and~\ref{fig:StochT}, the simulations were started at initial
 intracellular concentrations of 0 to investigate what happens if xanthosine
 is suddenly added to the cell's environment. We can now ask the opposite
 question: what happens when xanthosine is removed from the extracellular
@@ -1119,21 +1120,24 @@ induced cells, i.e. at the mRNA, protein and intracellular xanthosine counts
 of the high fixed point in the corresponding phase portrait. 
 
 The resulting distributions can be found in~\nameref{S1_Text}. They show
-clear hysteresis effects: at concentrations where all cells remained in the
-low expression state when being started there before, all cells now remain
-at high expression. Only when the second and the third fixed point are very
-close does switching to the uninduced state happen. Interestingly, this
+clear hysteresis effects: there exist extracellular xanthosine concentrations where
+initially uninduced cells remained uninduced and initially induced cells remain induced.
+Only when the second and the third fixed point are very close can initially
+induced cells switch to the uninduced state. Interestingly, this
 behavior is symmetric to the ``switching on'' in the previous paragraphs,
 where the lower two fixed points needed to be about as close as the upper
-two need to be now for ``switching off''. The extracellular xanthosine
-concentration (for the other parameters being as in
-Table~\ref{table1:nondim}) needed to be as low as $\n{[c]_a} = 10$ to
-observe bimodality and $\n{[c]_a}=9$ to have all cells in the low expression
-state (recall $\n{[c]_{a}} \defeq \frac{c}{K_{\n{a}}}$, $K_{\n{a}} = 5 \cdot
-10^{-5} \unit{M}$). \todo{Is this understandable without seeing the data? Do
-you have any suggestions to make it clearer?}
+two need to be now for ``switching off''. %The extracellular xanthosine
+% concentration (for the other parameters being as in
+% Table~\ref{table1:nondim}) needed to be as low as $\n{[c]_a} = 10$ to
+% observe bimodality and $\n{[c]_a}=9$ to have all cells in the low expression
+% state (recall $\n{[c]_{a}} \defeq \frac{c}{K_{\n{a}}}$, $K_{\n{a}} = 5 \cdot
+% 10^{-5} \unit{M}$).
+\todo[inline]{Is this understandable without seeing the data? Do
+you have any suggestions to make it clearer?
+MJM: I think the quantitative details can go to the supplement where they
+have more context, the qualitative observation of hysteresis is enough here.}
 
-We have learned that cells only change their metabolism to xanthosine if
+In other words, cells only change their metabolism to xanthosine if
 enough of the latter is around, but after they have switched, this metabolic
 state is stable even if the xanthosine concentration decreases to a certain
 extent. This explains what has been observed by Novick and
@@ -1145,15 +1149,15 @@ concentrations.
 
 \section*{Conclusion}
 \paragraph*{A genetic switch for metabolic adaptation with remarkable features.}
-In this paper, we propose a model for biological pathway systems containing
+In this paper, we propose a model for genetic circuits containing
 a membrane transporter whose gene expression is, directly or indirectly,
 activated by its substrate. We have shown that such a system can be bistable
 and thus work as a genetic switch which reacts to the extracellular
 concentration of the relevant metabolite. This switch has very useful
-biological features: first, coupling of the transporter with, for example, a
-degradation enzyme creates a genetic switch that enables short-term
+biological features. First, coupling of the transporter with, for example, an
+enzyme which metabolizes the transporter substrate creates a genetic switch that enables short-term
 adaptation of the cell's metabolism to its environment. Second, the switch
-is stabilized by hysteresis effects when the extracellular xanthosine
+is stabilized by hysteresis effects when the extracellular substrate
 concentration decreases, which explains previous experimental findings.
 
 \paragraph*{Required properties for this system.}
@@ -1173,12 +1177,15 @@ simulations have shown that deterministic bistability does not mean that
 bimodality occurs, which is why we have refrained from showing such
 diagrams. Furthermore, the timescales in the problem could be investigated
 more thoroughly, for example the dependence of the switching time on
-$\n{[c]_a}$. Having said that, the simulation for such an analysis should
+$\n{[c]_a}$, but such an analysis would probably need to
 account for the burstiness of transcription and translation as well as for
 cell divisions, which is anything but straightforward. Lastly, some rigorous
 work could be done to identify the most and least relevant parameters of the
 system to create a simpler, minimal model that captures the most relevant
 features.
+\todo[inline]{MJM: I think this last sentence sells us short: qualitative changes result
+if we remove any present feature of the model.
+That sounds to me like a distillation of the essential.}
 
 \paragraph*{General lessons learned for the modeling of other systems.}
 We point out again that assuming the mRNA concentration to be at
@@ -1190,24 +1197,28 @@ hysteresis. Lastly, we have exemplified issues with the common picture of
 measuring cooperativity in terms of the Hill coefficient: the Hill
 coefficient simply denotes the number of binding sites and does not reflect
 how cooperative these binding sites are. 
+\todo[inline]{MJM: I'm not sure we've really proven the asserted points re 3D \& Hill.
+I would advocate removing this whole paragraph.}
 
 \paragraph*{A successful model.}
-All model parameters could be estimated fairly well despite the lack of deep
+All model parameters could be reasonably estimated despite the paucity of
 experimental knowledge about the model system. In the results, every
-variable and parameter has its expected order of magnitude, which suggests
+variable and parameter \todo{MJM: I'm confused,
+we estimated all the model parameters, so what expectations are we comparing to?}
+has its expected order of magnitude, which suggests
 that the model captures all relevant features and is able to describe the
 dynamics of the \emph{xap} system. With the framework given in this text, it
 should be straightforward to model other promoters, regulatory pathways or
 enzymes and thereby adapt the model to other genes and metabolites. Examples
 include \emph{lac}, \emph{ara}, and \emph{xyl}, but we suspect that many if
 not most metabolic processes involve the adaptation mechanism that we have
-investigated here, and that a lot can be understood about them through our
+investigated here, and that much can be understood about them through our
 model. This apparent success demonstrates once more that even for broadly
 unknown systems, rigorous physical modeling can potentially offer an
 efficient way to gain a very thorough understanding of the behavior of the
 system. 
 
-\todo{Is the conclusion too long?}
+\todo{Is the conclusion too long? MJM: not necessarily}
 
 
 \section*{Supporting information}
@@ -1220,13 +1231,18 @@ chemical master equation of this circuit.
 \section*{Acknowledgments}
 We thank Griffin Chure, Charlotte Strandkvist, and Kyle Naughton for
 providing their data on the \emph{xap} system and pointing out the
-bistability. We also thank Griffin Chure for answering any biological
+bistability. We also thank Griffin Chure for answering the many biological
 questions that arose, Nathan Belliveau for bringing similar systems to our
-attention, and Jane Kondev and Jin Wang for interesting discussions. Plots
-were done in \emph{Mathematica} using the packages MaTeX and
-CurvesGraphics6. K.S.L. acknowledges financial support from the
+attention, and Jane Kondev and Jin Wang for interesting discussions.
+For assistance with illustrations, we also thank Nigel Orme and Griffin Chure.
+\todo{MJM: this kinda reads like GC should be in the author list...}
+K.S.L. acknowledges financial support from the
 Werner~Siemens-Foundation through the Swiss Study Foundation.
-\todo[inline]{I don't really know what/who is usually listed here... Did I list too many people (I don't know at what ``extent'' of help people are usually named here) or did I forget anyone? Should I list everyone who worked on the xap system last summer and provided the data even though they are already cited, but only as Griffin et al.? Is it enough to list packages like this or should I try to find some website to cite? Should I list Python \& StochPy again it's already mentioned in the text? SHould I thank someone for the providing the elements for the figures and whom? Is there funding that should be listed?}
+This material is based upon work supported by the National Science Foundation
+Graduate Research Fellowship under Grant No.\ DGE-114446.
+\todo{MJM: need to double-check my NSF \#}
+\todo[inline]{MJM: Software/code acknowledgements usually go in a separate section,
+and if we want we could set up a code repo to cite along with that.}
 
 \nolinenumbers
 
@@ -1398,9 +1414,9 @@ Werner~Siemens-Foundation through the Swiss Study Foundation.
 	
 \end{thebibliography}
 
-\todo[inline]{Should I also list the references that are cited in the appendix?}
+\todo[inline]{Should I also list the references that are cited in the appendix? MJM: no, I think the supplement has its own separate list.}
 
-\todo[inline]{The capitalization style is different for the titles of the references. Should I list them as they are on the corresponding paper or should I do it uniformly? Does it matter at all? Otherwise I leave it as it is.}
+\todo[inline]{The capitalization style is different for the titles of the references. Should I list them as they are on the corresponding paper or should I do it uniformly? Does it matter at all? Otherwise I leave it as it is. MJM: I think the copy editors will sort it out.}
 
 \end{document}
 
