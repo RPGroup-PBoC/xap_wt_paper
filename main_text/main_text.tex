@@ -313,7 +313,17 @@
 	
 	Through physical and mathematical modeling, we investigate a more complex
 	switch system where the bistability is due, as we will show, to a
-	membrane transport protein. Such a switch is common for metabolic processes in biology, for reasons discussed below. So far, models we have found are either very extensive descriptions of specific, complicated systems, or they are very basic. To enable an intuitive and fundamental understanding of the behavior, we develop a simple model of a minimal system that only has the essential components and interactions for the questions we pose, while still modeling every component explicitly and discussing the necessary model complexity for a physically correct model.
+	membrane transport protein. Such a switch is common for
+	metabolic processes in biology, for reasons discussed below.
+	Existing models in the literature tend towards one of two extremes:
+	either highly detailed descriptions of specific, complicated systems (e.g.,~\cite{Wong1997}),
+	or Hill function descriptions that coarse-grain all complexity
+	into a few parameters with inscrutable microscopic physical meaning.
+	We aim for a middle ground in this work.
+	We seek an intuitive understanding through a simple model of a minimal system,
+	with only the essential components and interactions for the questions we pose.
+	Yet we still model these components explicitly and
+	discuss the necessary model complexity for a physically correct model.
 	
 	The key feature of the type of system we investigate is the indirect activation of
 	the transporter gene by the transporter substrate, leading to positive
@@ -359,7 +369,12 @@
 	circuit is made up of two operons: one that encodes for XapR and another
 	that encodes for XapA and XapB. XapR appears to be a transcription factor
 	that is induced by xanthosine and activates the \emph{xapAB} promoter,
-	in close analogy to AraC, XylR, and also LacI, although the latter acts via repression.
+	in close analogy to AraC, XylR, and also LacI.
+	\footnote{One might object that LacI represses its target operon, while
+	XapR, AraC, and XylR activate their target operons. However, the analogy
+	we wish to draw is that the qualitative logic of their inducers are all
+	identical, i.e., the presence of their respective inducer causes their
+	target operon to be transcribed.}
 	The \textit{xapAB} promoter has been suggested to have two binding sites for XapR\cite{Seeger1995},
 	but the promoter architecture and function is not yet fully understood. The
 	transcription of \emph{xapR} seems to be constitutive and not
@@ -387,7 +402,7 @@
 	Fig~\ref{fig2:model} shows an overview of this model.
 	The qualitative picture of the circuit switching its state is as follows:
 	\begin{itemize}
-		\item In the initial absense of XapB, small amounts of xanthosine are nonspecifically transported\todo{``permeate'' wouldn't include active transport (NupC \& NupG), would it?} into and out of the cell (discussed in more detail below).
+		\item In the initial absense of XapB, small amounts of xanthosine permeate\todo{``permeate'' wouldn't include active transport (NupC \& NupG), would it? MM: I think it's sufficiently vague to capture all this, details are too subtle to worry about here} into and out of the cell (discussed in more detail below).
 		\item XapR is induced by xanthosine.
 		\item The induced XapR binds to the \emph{xapAB} promoter, leading to transcription.
 		\item From this mRNA transcript, translation produces the two proteins XapA and XapB.
@@ -412,7 +427,7 @@
 			$\gamma_{\n{m}}$, and both proteins are translated at rate
 			$r_{\n{p}}$ and decay at rate $\gamma_{\n{p}}$. XapA degrades
 			xanthosine with Michaelis-Menten parameters $k_{\n{a}}$ and $K_{\n{a}}$.
-			Similarly, XapB imports ($k_{\n{b,i}}, K_{\n{b,i}}$) and exports ($k_{\n{b,e}}, K_{\n{b,e}}$) xanthosine. Furthermore, xanthosine enters and leaves the cell
+			Similarly, XapB is treated as a Michaelis-Menten enzyme which imports ($k_{\n{b,i}}, K_{\n{b,i}}$) and exports ($k_{\n{b,e}}, K_{\n{b,e}}$) xanthosine. Furthermore, xanthosine enters and leaves the cell
 			through non-specific transport, proportional to rates $k_{\n{nup}}$ and $\xi
 			k_{\n{nup}}$, respectively.}
 		\label{fig2:model}
@@ -531,7 +546,29 @@
 	XapB through XapR, we now close the feedback loop
 	by setting up a xanthosine rate equation.
 	
-	There are two significant ways of transport of xanthosine across the cell membrane. In the induced system, the main transporter is XapB, whereas in the uninduced system, there is almost no XapB. Instead, xanthosine can enter the cell through the two nucleoside transporters NupC and NupG, which have a very low affinity for xanthosine~\cite{Norholm2001}. All these transporters, XapB, NupC, and NupG, are powered by the proton gradient across the membrane~\cite{Norholm2001}, which is why we assume their kinetic scheme to be similar to that of the \emph{lac} permease (as it is described in~\cite{Kaback2015}). There can be import and export of xanthosine, and which one dominates depends on the proton and xanthosine concentrations on the two sides of the membrane. In both cases, a proton and a substrate need to bind to the transporter on one side of the membrane and detach from it on the other side before the empty transporter moves back to the other side again. We refer the reader to~\nameref{S1_Text} for a detailed description of the transport and its modeling, and just state the result here. We model influx and efflux separately. For XapB, we use Michaelis-Menten kinetics with parameters $k_{\n{b, i}}$, $K_{\n{b, i}}$ for influx and $k_{\n{b, e}}, K_{\n{b,e}}$ for efflux. For the Nup transporters, we can linearize because of their low affinity for xanthosine and are left with the rate parameters $k_{\n{nup}}$ for influx and $\xi k_{\n{nup}}$ for efflux.
+	\todo{MM: do these paragraphs on xanthosine dynamics have an appropriate level of detail now, or too much, or not enough?}
+	There are two significant mechanisms for transport of xanthosine across
+	the cell membrane. In the induced system, the main transporter is XapB,
+	whereas in the uninduced system, there is almost no XapB. Instead,
+	xanthosine can enter the cell through the two nucleoside transporters
+	NupC and NupG, which have a very low affinity for
+	xanthosine~\cite{Norholm2001}. All these transporters, XapB, NupC, and
+	NupG, are powered by the proton gradient across the
+	membrane~\cite{Norholm2001}, which is why we assume their kinetic scheme
+	to be similar to that of the \emph{lac} permease (as it is described
+	in~\cite{Kaback2015}). There can be import and export of xanthosine, and
+	which one dominates depends on the proton and xanthosine concentrations
+	on the two sides of the membrane. In both cases, a proton and a
+	substrate need to bind to the transporter on one side of the membrane
+	and detach from it on the other side before the empty transporter moves
+	back to the other side again. We refer the reader to~\nameref{S1_Text}
+	for a detailed description of the transport and its modeling, and just
+	state the result here. We model influx and efflux separately. For XapB,
+	we use Michaelis-Menten kinetics with parameters $k_{\n{b, i}}$,
+	$K_{\n{b, i}}$ for influx and $k_{\n{b, e}}, K_{\n{b,e}}$ for efflux.
+	For the Nup transporters, we can linearize because of their low affinity
+	for xanthosine and are left with the rate parameters $k_{\n{nup}}$ for
+	influx and $\xi k_{\n{nup}}$ for efflux.
 		
 	After transport into the cell, XapA degrades xanthosine. We model this using
 	standard Michaelis-Menten kinetics, with parameters $k_{\n{a}}, K_{\n{a}}$
@@ -784,9 +821,10 @@
 			Table~\ref{table1:nondim}. The extracellular xanthosine
 			concentration in these plots is $\n{[c]_a}=10^{1}$ in (A) and
 			$\n{[c]_a}= 5 \cdot 10^{2}$ in (B) (recall that $\n{[c]_{a}} \defeq
-			\frac{c}{K_{\n{a}}}$ with $K_{\n{a}} = 5 \cdot 10^{-5} \unit{M}$ is dimensionless).
+			\frac{c}{K_{\n{a}}}$ with $K_{\n{a}} = 5 \cdot 10^{-5} \unit{M}$,
+			so $\n{[c]_a}$ is dimensionless).
 			Tuning $\n{[c]_a}$ moves the orange line (xanthosine nullcline) up
-			or down, the blue curve (mRNA nullcline) is unchanged (see
+			or down, but the blue curve (mRNA nullcline) is unchanged (see
 			also~\nameref{S1_Text}). It can clearly be seen that in (A) there is
 			only the lower fixed point (fixed point number 1), whereas in (B)
 			there is only the upper one (fixed point number 3). In between lies
@@ -816,10 +854,11 @@
 	are necessary. It turns out that the bistability is due to XapB only. XapA
 	is neither sufficient nor necessary and, within the estimated parameter
 	regime, does not even have a significant influence on the system. This can
-	be seen from the plots in figure~\ref{fig6:xapAB}. The degradatory effect of XapA lowers the xanthosine and protein concentration at the upper
+	be seen from the plots in figure~\ref{fig6:xapAB}.
+	Degradation of xanthosine by XapA lowers the xanthosine and protein concentration at the upper
 	fixed point by a small amount and could, in principle, thereby make the
 	high-expression solution vanish. For our choice of all other parameters,
-	it only vanishes for $k_{\n{\alpha}} > 10^4$ which is far from what has been
+	bistability only vanishes for $k_{\n{\alpha}} > 10^4$ which is far from what has been
 	measured. However, a higher effective rate could, in principle, be achieved by
 	different translation rates of XapA and XapB (see simplifications of the
 	model in~\nameref{S1_Text}). Hence, we cannot exclude the possibility that
@@ -846,7 +885,7 @@
 		\label{fig6:xapAB}
 	\end{figure}
 	
-	For a cell, the insignificance of the effect of XapA is a useful feature: by coupling XapA and XapB on an
+	For a cell, the minimal effect of XapA on bistability is a useful feature: by coupling XapA and XapB on an
 	operon, XapA is switched on and off together with XapB but it does not
 	significantly disturb this adaptation mechanism, while its kinetic
 	parameters and expression levels can be chosen 
@@ -866,9 +905,14 @@
 	
 	If, as a purely theoretical consideration, we remove either the second
 	xanthosine binding site on XapR or the second XapR binding site on the
-	promoter, leaving cooperativity in one place of the system, we find that the system still has a bistable parameter regime.
-	However, this bistable parameter range is only narrow, which makes the system
-	less stable: small stochastic fluctuations in the parameter values can collapse the system to monostability, possibly leaving it in the wrong state and without its ability to adapt. But only when the second binding site is removed in both places, leaving no cooperativity in the system, the
+	promoter, leaving cooperativity in only one component of the system,
+	we find that the system still has a bistable parameter regime.
+	However, this bistable parameter range is smaller than in the original
+	model, which makes the system less stable: small stochastic fluctuations
+	in the parameter values can collapse the system to monostability,
+	possibly leaving it in the wrong state and without its ability to adapt.
+	But only when the second binding site is removed in both places, leaving
+	no cooperativity in the system, are the
 	equations are insufficiently non-linear to produce bistability. An example
 	of the three scenarios (only cooperative XapR, only cooperative promoter, no cooperativity) can be seen in Fig~\ref{fig7:coop}. It follows that
 	there need to be either two xanthosine binding sites on XapR or two XapR
@@ -900,7 +944,7 @@
 	our model, and we find that setting $\Delta E_{\n{coop}} = 0$ has almost no
 	influence on the phase diagrams. For XapR, we cannot test how much interaction is needed: the two binding sites interact
 	indirectly, because the active state is much likelier if two xanthosine
-	molecules are bound, and thus there is no tuning parameter for the cooperative interaction
+	molecules are bound, and thus there is no continuous tuning parameter for the cooperative interaction
 	like $\Delta E_{\n{coop}}$ in the case of the promoter.
 	
 	Note that we are not writing Hill equations and measuring cooperativity in
@@ -963,7 +1007,9 @@
 	experiments: the mean numbers of mRNA, protein, and xanthosine in the
 	stochastic results are as predicted from the phase portraits. It does,
 	however, become clear that the phase portraits do not tell whether the cells
-	will actually populate both the high and the low expression state, because they do not show the barrier height between the two states. In Fig~\subref{fig8:stochC}{(A)}, a deterministically bistable scenario is shown where the cells never switched to the high
+	will actually populate both the high and the low expression state,
+	because they do not show the effective barrier height between the two states.
+	In Fig~\subref{fig8:stochC}{(A)}, a deterministically bistable scenario is shown where the cells never switched to the high
 	expression state during the run time of our simulations. 
 	
 	We found that the two lower fixed points (marked as 1 and 2 in
@@ -1167,7 +1213,14 @@
 		and Gene Regulatory Dynamics.
 		\newblock Journal of Theoretical Biology. 1998;195(2):167 -- 186.
 		\newblock doi:{https://doi.org/10.1006/jtbi.1998.0790}.
-		
+
+		\bibitem{Wong1997}
+		Wong P, Gladney S, Keasling JD.
+		\newblock Mathematical Model of the \textit{lac} Operon: Inducer Exclusion,
+		Catabolite Repression, and Diauxic Growth on Glucose and Lactose.
+		\newblock Biotechnology Progress. 1997;13(2):132 -- 143.
+		\newblock doi:{https://doi.org/10.1021/bp970003o}.
+
 		\bibitem{Novick1957}
 		Novick A, Weiner M.
 		\newblock Enzyme induction as an all-or-none phenomenon.
