@@ -105,8 +105,6 @@
 \hyphenation{xapAB}
 \hyphenation{xapABR}
 
-\usepackage[obeyFinal]{todonotes} % todo notes and missing figures
-
 %% END MACROS SECTION
 
 \begin{document}
@@ -117,13 +115,13 @@
 	}
 	\newline
 	% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
-	\\
-	Kathrin Laxhauber\textsuperscript{1},
+		\\
+	Kathrin S. Laxhuber\textsuperscript{1},
 	Muir J. Morrison\textsuperscript{2},
 	Rob Phillips\textsuperscript{2,3$\ast$}
 	\\
 	\bigskip
-	\textbf{1} Dept???, ETHZ, Zurich, State???, Switzerland\todo{MJM: Add dept \& complete affiliation}
+	\textbf{1} Department of Chemistry and Applied Biosciences, ETH Zurich, 8093 Zurich, Switzerland
 	\\
 	\textbf{2} Department of Physics, California Institute of Technology, Pasadena, CA, USA
 	\\
@@ -136,16 +134,22 @@
 	% Remove or comment out the author notes below if they aren't used.
 	%
 	% Primary Equal Contribution Note
-	% Yinyang These authors contributed equally to this work.
+	%\Yinyang These authors contributed equally to this work.
 	
 	% Additional Equal Contribution Note
 	% Also use this double-dagger symbol for special authorship notes, such as senior authorship.
-	% \ddag These authors also contributed equally to this work.
+	%\ddag These authors also contributed equally to this work.
 	
 	% Current address notes
-	% \textcurrency Current Address: Dept/Program/Center, Institution Name, City, State, Country % change symbol to "\textcurrency a" if more than one current address note
+	%\textcurrency Current Address: Dept/Program/Center, Institution Name, City, State, Country % change symbol to "\textcurrency a" if more than one current address note
 	% \textcurrency b Insert second current address 
 	% \textcurrency c Insert third current address
+	
+	% Deceased author note
+	%\dag Deceased
+	
+	% Group/Consortium Author Note
+	%\textpilcrow Membership list can be found in the Acknowledgments section.
 	
 	% Use the asterisk to denote corresponding authorship and provide email address in note below.
 	$\ast$ phillips@pboc.caltech.edu
@@ -156,89 +160,25 @@
 \linenumbers
 
 \section{Model choices, simplifications and assumptions}
-This part of supporting information text offers a more detailed discussion
-of the assumptions that were made in the model and explains the choices that
-were made.
+This part of supporting information text offers a more detailed discussion of the assumptions that were made in the model and explains the choices that were made.
 
-\paragraph*{Simplistic modeling of transcription.}
-The precise mechanism at the promoter level is not the key feature of this
-system, and we expect the same qualitative results for slightly different
-transcription models. This work aims to gain an intuition from the results,
-and the more unknown parameters there are, the harder this becomes.
-Furthermore, the mechanistic details of transcription are not entirely known
-and would make the model too complex: for example, transcription probably is
-not a Poisson process, but comes in bursts. Additionally, very little is
-known about the function of the \emph{xapAB} promoter. For these reasons, we
-do not model every detail, but focus on the most relevant features of the
-system, while still trying to be physically correct.
+\paragraph*{Simplistic modeling of transcription.} The precise mechanism at the promoter level is not the key feature of this system, and we expect the same qualitative results for slightly different transcription models. This work aims to gain an intuition from the results, and the more unknown parameters there are, the harder this becomes. Furthermore, the mechanistic details of transcription are not entirely known and would make the model too complex: for example, transcription probably is not a Poisson process, but comes in bursts. Additionally, very little is known about the function of the \emph{xapAB} promoter. For these reasons, we do not model every detail, but focus on the most relevant features of the system, while still trying to be physically correct.
 
-Firstly, the equilibrium assumption is not completely accurate, but has
-proven successful in previous work. An example for this is the very detailed
-analysis of a gene with one repressor in~\cite{Phillips2018}. Secondly,
-different binding energies of XapR to its two binding sites would change the
-equations as follows: the factor $\left(\frac{1}{K_{\n{XapR}}}\right)^2$
-would become $\frac{1}{K_{\n{XapR,1}} K_{\n{XapR,2}}}$ and the factor
-$\frac{2}{K_{\n{XapR}}}$ would be replaced by $\frac{K_{\n{XapR,1}} +
-K_{\n{XapR,2}}}{K_{\n{XapR,1}} K_{\n{XapR,2}}}$. For most choices of
-$K_{\n{XapR}}$, this does not give the exact same results quantitatively,
-but we do observe the same qualitative outcome (see also next paragraph).
-Thirdly, we consider all but one state as inactive, which is not strictly
-correct. Still, as mentioned in the main text, experiments suggest that this
-is reasonable. The fourth main simplification, which is the independence of
-polymerase and XapR binding, will be discussed in a separate subsection
-below.
+Firstly, the equilibrium assumption is not completely accurate, but has proven successful in previous work. An example for this is the very detailed analysis of a gene with one repressor in~\cite{Phillips2018}. Secondly, different binding energies of XapR to its two binding sites would change the equations as follows: the factor $\left(\frac{1}{K_{\n{XapR}}}\right)^2$ would become $\frac{1}{K_{\n{XapR,1}} K_{\n{XapR,2}}}$ and the factor $\frac{2}{K_{\n{XapR}}}$ would be replaced by $\frac{K_{\n{XapR,1}} + K_{\n{XapR,2}}}{K_{\n{XapR,1}} K_{\n{XapR,2}}}$. For most choices of $K_{\n{XapR}}$, this does not give the exact same results quantitatively, but we do observe the same qualitative outcome (see also next paragraph). Thirdly, we consider all but one state as inactive, which is not strictly correct. Still, as mentioned in the main text, experiments suggest that this is reasonable. The fourth main simplification, which is the independence of polymerase and XapR binding, will be discussed in a separate subsection below.
 
-In Fig~\ref{figS1:transcription}, we have plotted phase portraits where some
-of the above assumptions have not been made. For that, we have chosen some
-extreme values for the new parameters to demonstrate that these
-simplifications do not have a significant influence. The two additional
-transcription rates are large compared to experimental observations.
-Moreover, the chosen values of $\n{[XapR]}_{\n{R},i}$ correspond to a
-difference of two orders of magnitude between $K_{\n{XapR,1}}$ and
-$K_{\n{XapR,2}}$. The difference between Oid and O3 in \emph{lac} are two to
-three orders of magnitude~\cite{RazoMejia2018}. The values were chosen such
-that $K_{\n{XapR,1}} K_{\n{XapR,2}} = K_{\n{XapR}}^2$. Unsurprisingly, this
-is necessary to not observe large deviations from the original equations.
-The results lead to the conclusion that, for the purposes of this paper, the
-aforementioned simplifications are appropriate.
+In Fig~\ref{figS1:transcription}, we have plotted phase portraits where some of the above assumptions have not been made. For that, we have chosen some extreme values for the new parameters to demonstrate that these simplifications do not have a significant influence. The two additional transcription rates are large compared to experimental observations. Moreover, the chosen values of $\n{[XapR]}_{\n{R},i}$ correspond to a difference of two orders of magnitude between $K_{\n{XapR,1}}$ and $K_{\n{XapR,2}}$. The difference between Oid and O3 in \emph{lac} are two to three orders of magnitude~\cite{RazoMejia2018}. The values were chosen such that $K_{\n{XapR,1}} K_{\n{XapR,2}} = K_{\n{XapR}}^2$. Unsurprisingly, this is necessary to not observe large deviations from the original equations. The results lead to the conclusion that, for the purposes of this paper, the aforementioned simplifications are appropriate.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{FigSI1.pdf}
 	\caption{{\bf Results for different models of transcription.}
-		The parameters are the same as the ones that were used for all other
-		phase portraits in this report and that are listed in a table in the
-		main part. In (A), the phase portrait after addition of non-zero
-		transcription rates to all other polymerase-bound states is shown
-		(third assumption lifted). The new parameter values are $r_{\n{I}} =
-		10^{-2} r_{\n{p}}$ for the transcription rate when only one XapR is
-		bound and $r_{\n{0}} = 10^{-3} r_{\n{p}}$ for the basal rate. In
-		(B), the phase portrait after introducing different XapR
-		dissociation constants can be seen (second assumption lifted). The
-		new parameter values are $\n{[XapR]_{R,1}} = 10$ and
-		$\n{[XapR]_{R,2}} = 0.1$.}
+		The parameters are the same as the ones that were used for all other phase portraits in this report and that are listed in a table in the main part. In (A), the phase portrait after addition of non-zero transcription rates to all other polymerase-bound states is shown (third assumption lifted). The new parameter values are $r_{\n{I}} = 10^{-2} r_{\n{p}}$ for the transcription rate when only one XapR is bound and $r_{\n{0}} = 10^{-3} r_{\n{p}}$ for the basal rate. In (B), the phase portrait after introducing different XapR dissociation constants can be seen (second assumption lifted). The new parameter values are $\n{[XapR]_{R,1}} = 10$ and $\n{[XapR]_{R,2}} = 0.1$.}
 	\label{figS1:transcription}
 \end{figure}
 
-\paragraph*{Activator and polymerase interaction.}
-A mechanistically more precise model of activation would include an
-interaction energy between polymerase and XapR. In that case,
-$p_{\n{active}}$ cannot be factored into separate terms for the polymerase
-and the XapR binding probability. However, the precise activation mechanism
-is unknown.
+\paragraph*{Activator and polymerase interaction.} A mechanistically more precise model of activation would include an interaction energy between polymerase and XapR. In that case, $p_{\n{active}}$ cannot be factored into separate terms for the polymerase and the XapR binding probability. However, the precise activation mechanism is unknown.
 
-Moreover, introducing an interaction energy between polymerase and XapR
-would make the equations overly complex. This would not only make
-factorization impossible, it would also be just as consequential to have
-different dissociation constants and additional rates as in the previous
-paragraph. This leads to a huge number of terms and parameters because of
-different interaction energies for every state, which can be foreseen from
-the states and weights shown in the main text. The precise transcription
-mechanism is not one of the central parts of the circuit we are
-investigating (see also discussion in the previous paragraph). Thus, making
-it the by far most complex and precise part of the equations would be
-unreasonable and hinder the understanding of the more relevant components of
-the system.
+Moreover, introducing an interaction energy between polymerase and XapR would make the equations overly complex. This would not only make factorization impossible, it would also be just as consequential to have different dissociation constants and additional rates as in the previous paragraph. This leads to a huge number of terms and parameters because of different interaction energies for every state, which can be foreseen from the states and weights shown in the main text. The precise transcription mechanism is not one of the central parts of the circuit we are investigating (see also discussion in the previous paragraph). Thus, making it the by far most complex and precise part of the equations would be unreasonable and hinder the understanding of the more relevant components of the system.
 
 \begin{table}
 	\centering
@@ -259,224 +199,106 @@ the system.
 		\thickhline
 	\end{tabular}
 	\begin{flushleft} 
-		The first column shows which XapR sites are occupied in this state,
-		the second one whether polymerase is bound to the promoter, and the
-		third the transcription rate. In the weights, the notation is as
-		follows: $w_{\n{X1}}$ is the weight for XapR binding to the first
-		binding site on the promoter, $w_{\n{X2}}$ is that to the second
-		site, $w_{\n{p}}$ is the weight of polymerase binding to the
-		promoter, $e^{\Delta \epsilon_{\n{X1}}}$ is the interaction energy
-		between one XapR on the first binding site and the polymerase that
-		is bound, $e^{\Delta \epsilon_{\n{X2}}}$ is the same for the second
-		binding site, and finally, $e^{\Delta \epsilon_{\n{coop}}}$ is the
-		interaction energy of the two XapR at both binding sites as in the
-		main part.
+		The first column shows which XapR sites are occupied in this state, the second one whether polymerase is bound to the promoter, and the third the transcription rate. In the weights, the notation is as follows: $w_{\n{X1}}$ is the weight for XapR binding to the first binding site on the promoter, $w_{\n{X2}}$ is that to the second site, $w_{\n{p}}$ is the weight of polymerase binding to the promoter, $e^{\Delta \epsilon_{\n{X1}}}$ is the interaction energy between one XapR on the first binding site and the polymerase that is bound, $e^{\Delta \epsilon_{\n{X2}}}$ is the same for the second binding site, and finally, $e^{\Delta \epsilon_{\n{coop}}}$ is the interaction energy of the two XapR at both binding sites as in the main part.
 	\end{flushleft}
 	\label{tableSI1:statesPromoter}
 \end{table}
 
-Furthermore, we do not expect our approximation to have a large influence:
-the interaction energy will make the doubly bound state dominate, and the
-polymerase-XapR interaction should be weak in the singly bound state,
-because very weak activation is observed in the experiment when one of the
-XapR binding sites is removed~\cite{Chure2019}. If $e^{\Delta
-\epsilon_{\n{X1}}}$ and $e^{\Delta \epsilon_{\n{X2}}}$ are small, we have
-$w_{\n{p}} w_{\n{X1}} e^{\Delta \epsilon_{\n{X1}}} \approx w_{\n{p}}
-w_{\n{X2}} e^{\Delta \epsilon_{\n{X2}}} \approx w_{\n{p}} w_{\n{X}}$. If, in
-addition, the transcription rates for the singly bound states are much
-smaller than those for the doubly bound state, we can neglect the singly
-bound states in the nominator of $p_{\n{active}}$ (which, as argued in the
-previous paragraph ``Simplistic modeling of transcription'', is a good
-assumption). Thereby, we can obtain the same form of $p_{\n{active}}$ that
-we are working with in the main part by including the interaction between
-polymerase and XapR into $\epsilon_{\n{coop}}$.
+Furthermore, we do not expect our approximation to have a large influence: the interaction energy will make the doubly bound state dominate, and the polymerase-XapR interaction should be weak in the singly bound state, because very weak activation is observed in the experiment when one of the XapR binding sites is removed~\cite{Chure2019}. If $e^{\Delta \epsilon_{\n{X1}}}$ and $e^{\Delta \epsilon_{\n{X2}}}$ are small, we have $w_{\n{p}} w_{\n{X1}} e^{\Delta \epsilon_{\n{X1}}} \approx w_{\n{p}} w_{\n{X2}} e^{\Delta \epsilon_{\n{X2}}} \approx w_{\n{p}} w_{\n{X}}$. If, in addition, the transcription rates for the singly bound states are much smaller than those for the doubly bound state, we can neglect the singly bound states in the nominator of $p_{\n{active}}$ (which, as argued in the previous paragraph ``Simplistic modeling of transcription'', is a good assumption). Thereby, we can obtain the same form of $p_{\n{active}}$ that we are working with in the main part by including the interaction between polymerase and XapR into $\epsilon_{\n{coop}}$.
 
 \paragraph*{Working with only one protein species.}
-The proteins are transcribed together, and thus, their rate of transcription
-and mRNA decay should be the same. The protein decay is assumed to be
-dominated by cell division, making the decay rates roughly equal as well.
-What could differ is the translation rate. Changes in this rate rescale the
-protein synthesis rate by the same factor and thus, in steady-state, change
-the total number of proteins. The only other place where the proteins appear
-in the ODE's is in their respective Michaelis-Menten term, and the latter is
-proportional to $k_{\n{cat}} \n{[E]_0}$. Hence, different numbers of XapA
-and XapB can be accounted for by changing their respective values of
-$k_{\n{cat}}$.
+The proteins are transcribed together, and thus, their rate of transcription and mRNA decay should be the same. The protein decay is assumed to be dominated by cell division, making the decay rates roughly equal as well. What could differ is the translation rate. Changes in this rate rescale the protein synthesis rate by the same factor and thus, in steady-state, change the total number of proteins. The only other place where the proteins appear in the ODE's is in their respective Michaelis-Menten term, and the latter is proportional to $k_{\n{cat}} \n{[E]_0}$. Hence, different numbers of XapA and XapB can be accounted for by changing their respective values of $k_{\n{cat}}$.
 
 \paragraph*{Exponential protein decay.}
-The protein decay should be dominated by dilution through cell division,
-which is a discrete process. However, the cell grows before division,
-resulting in a continuous dilution. Furthermore, replication leads to a
-varying number of gene copies and thereby also a varying transcription rate.
-Trying to capture all these mechanistic details would lead to an
-overcomplicated model. Treating the protein decay as a Poisson process has
-produced correct results in past research, which is why we expect this
-assumption to be reasonable. 
+The protein decay should be dominated by dilution through cell division, which is a discrete process. However, the cell grows before division, resulting in a continuous dilution. Furthermore, replication leads to a varying number of gene copies and thereby also a varying transcription rate. Trying to capture all these mechanistic details would lead to an overcomplicated model. Treating the protein decay as a Poisson process has produced correct results in past research, which is why we expect this assumption to be reasonable. 
 
 \paragraph*{Kinetics of XapB, NupC, and NupG.}
-All transporters in our system are driven by the proton
-gradient~\cite{Norholm2001}, and we assume their kinetic scheme to be like
-that of \emph{lac} permease. This scheme is shown schematically in
-Fig~\ref{figS2:permease}. Even though it includes several steps, the
-essential part is substrate binding, conformational change of the
-transporter, and substrate release on the other side of the membrane. We
-assume the proton gradient across the membrane to be constant and proton
-binding and unbinding to the transporter to be fast. Hence, the latter does
-not need to be included explicitly in the kinetic model (it is implicitly
-part of the turnover rate). 
+Entering the cell consists of two steps. In a first transport step, xanthosine passes the
+outer membrane through porins like Tsx, OmpF and OmpC. This does not seem to
+be a rate-limiting step. Then, XapB actively transports it across the inner
+membrane, powered by the proton motive force. There are two other active
+nucleoside transporters that seem to be transporting xanthosine with a very
+low affinity: NupC and NupG. It was found that \textDelta\emph{nupC}
+\textDelta\emph{nupG} strains cannot grow on xanthosine. Hence, these seem
+to be necessary to ``start'' the system by importing small amounts of
+xanthosine that then activate \emph{xapB}, and there appears to be no other
+significant way in which xanthosine can enter the cell. All statements in this paragraph are based on data
+from~\cite{Norholm2001}. 
+
+As mentioned in the main text, we assume the kinetic scheme of all three transporters to be similar to that
+of \emph{lac} permease (as it is described in~\cite{Kaback2015}), which is discussed in more detail in the next subsection. One transporter of this type can do two things to change the intracellular xanthosine
+concentration $\n{[x]}$: it can actively transport one xanthosine into the
+cell, powered by the proton gradient, or it can transport one out of the
+cell, against the proton gradient. For net transport, a proton and a
+substrate need to bind on one side of the membrane and detach from the
+transporter on the other side of the membrane before the transporter goes
+back to the first side again (see next subsection). Because of the
+proton gradient, influx is overall thermodynamically more likely than export
+at low intracellular xanthosine concentrations, which leads to a net influx.
+For much higher intra- than extracellular xanthosine concentrations, the
+difference in the chemical potential of xanthosine across the membrane can
+dominate that of the protons and there is net efflux. 
+
+We model influx and efflux separately and use Michaelis-Menten kinetics for
+XapB (this is discussed in more detail in the next subsection). For the turnover rate and Michaelis constant for influx we write
+$k_{\n{b, i}}$ and $K_{\n{b, i}}$, respectively, and $k_{\n{b, e}}, K_{\n{b,
+		e}}$ for efflux. These parameters implicitly include the proton gradient.
+
+For NupC and NupG, we approximate the transport reactions as linearly dependent on the substrate. This should be appropriate, since their affinity for xanthosine is so low that it cannot even be measured properly~\cite{Norholm2001}, which makes $K_{\n{M}}$ much larger than $c$ or $\n{[x]}$ will ever be. Thus, the general $k_{\n{cat}} \n{[E]_0}
+\frac{\n{[S]}}{K_{\n{M}} + \n{[S]}}$ can be approximated as
+$\frac{k_{\n{cat}}}{K_{\n{M}}} \n{[E]_0} \n{[S]}$. In our equations,
+$\frac{k_{\n{cat}}}{K_{\n{M}}} \n{[E]_0}$ is denoted by $k_{\n{nup}}$ for
+influx, and the efflux rate is written as $\xi k_{\n{nup}}$. For the XapB
+kinetics, no such approximation can be made, because the xanthosine
+concentration in the dynamic system can range from far below the respective
+$K_{\n{M}}$ value to far above.
+
+\paragraph*{The kinetics of \emph{lac} permease.}
+All transporters in our system are driven by the proton gradient~\cite{Norholm2001}, and we assume their kinetic scheme to be like that of \emph{lac} permease. This scheme is shown schematically in Fig~\ref{figS2:permease}.
+Even though it includes several steps, the essential part is substrate binding, conformational change of the transporter, and substrate release on the other side of the membrane. We assume the proton gradient across the membrane to be constant and proton binding and unbinding to the transporter to be fast. Hence, the latter does not need to be included explicitly in the kinetic model (it is implicitly part of the turnover rate). 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\textwidth]{FigSI2.pdf}
 	\caption{{\bf Kinetic scheme for transport by proton-driven pumps.}
-		The mechanism of lac permease as for example described
-		in~\cite{Kaback2015} is used as a model for xanthosine transport.
-		The enzyme binds a proton and a substrate (steps 1 and 2), undergoes
-		conformational change (steps 3 and 4), and then releases substrate
-		and proton on the other side of the membrane (steps 5 and 6). When
-		the enzyme is empty, it can change its conformation again to repeat
-		the transport (steps 7 and 8). Instead, it could also bind a new
-		proton and substrate and transport them in the opposite direction
-		(steps 6, 5, 4, 3, 2, 1). Alternatively, it could also keep the
-		proton and just cycle back and forth, exchanging substrates from
-		outside and inside the cell (steps 5, 4, 3, 2).}
+		The mechanism of lac permease as for example described in~\cite{Kaback2015} is used as a model for xanthosine transport. The enzyme binds a proton and a substrate (steps 1 and 2), undergoes conformational change (steps 3 and 4), and then releases substrate and proton on the other side of the membrane (steps 5 and 6). When the enzyme is empty, it can change its conformation again to repeat the transport (steps 7 and 8). Instead, it could also bind a new proton and substrate and transport them in the opposite direction (steps 6, 5, 4, 3, 2, 1). Alternatively, it could also keep the proton and just cycle back and forth, exchanging substrates from outside and inside the cell (steps 5, 4, 3, 2).}
 	\label{figS2:permease}
 \end{figure}
 
-Substrate release should be much faster than conformational change, which is
-analogous to ignoring the ``EP'' state in Michaelis-Menten (enzyme with
-product bound, here the conformationally changed transporter with substrate
-still bound). Also, it should be reasonable to neglect the immediate
-backwards reaction (before proton release), and thus, Michaelis-Menten
-kinetics is obtained. Data from~\cite{Kaczorowski1979}
-and~\cite{Viitanen1984} actually show that, at a physiologically reasonable
-proton gradient, both, influx and efflux, can be described by the
-Michaelis-Menten equation very well.
+Substrate release should be much faster than conformational change, which is analogous to ignoring the ``EP'' state in Michaelis-Menten (enzyme with product bound, here the conformationally changed transporter with substrate still bound). Also, it should be reasonable to neglect the immediate backwards reaction (before proton release), and thus, Michaelis-Menten kinetics is obtained. Data from~\cite{Kaczorowski1979} and~\cite{Viitanen1984} actually show that, at a physiologically reasonable proton gradient, both, influx and efflux, can be described by the Michaelis-Menten equation very well.
 
-What is neglected in this modeling is the fact that the transporter needs to
-release the proton and undergo a conformational change again before being
-able to conduct the same reaction again. However, by using experimentally
-determined apparent values to estimate the kinetic constants, this is
-already included in these parameter values. Another simplification we make
-is to treat influx and efflux as two independent reactions instead of
-thinking of it as one reversible kinetic process. This seems reasonable,
-though, because the transporter needs to lose its proton between reactions
-in order to obtain a net transport. If the transporter has for example done
-steps 1-6 in Fig~\ref{figS2:permease}, it can from there on really enter two
-entirely different reactions: it can do its conformational change in its
-empty state (steps 7 and 8) to then transport a substrate again (steps 1-6)
-or it can bind a new proton and a new substrate directly and transport them
-back (steps 6-1). The former would give influx and the latter efflux, so the
-two of them can be modeled as separate reactions.
-
-The NupC and NupG reactions are approximated as linearly dependent on the
-substrate. This should be appropriate, since their affinity for xanthosine
-is so low that it cannot even be measured properly~\cite{Norholm2001}. This
-makes $K_{\n{M}}$ much larger than $c$ or $\n{[x]}$ will ever be. For XapB,
-this is not the case, because it has much higher specificity for xanthosine
-and $c$ and $\n{[x]}$ take values around the $K_{\n{M}}$ values of XapB.
+What is neglected in this modeling is the fact that the transporter needs to release the proton and undergo a conformational change again before being able to conduct the same reaction again. However, by using experimentally determined apparent values to estimate the kinetic constants, this is already included in these parameter values. Another simplification we make is to treat influx and efflux as two independent reactions instead of thinking of it as one reversible kinetic process. This seems reasonable, though, because the transporter needs to lose its proton between reactions in order to obtain a net transport. If the transporter has for example done steps 1-6 in Fig~\ref{figS2:permease}, it can from there on really enter two entirely different reactions: it can do its conformational change in its empty state (steps 7 and 8) to then transport a substrate again (steps 1-6) or it can bind a new proton and a new substrate directly and transport them back (steps 6-1). The former would give influx and the latter efflux, so the two of them can be modeled as separate reactions.
 
 \paragraph*{Passive transport across the membrane.}  
-Most small molecules diffuse passively through the membrane, but at
-physiological pH, xanthosine is mostly negatively charged and charged
-substances do not significantly diffuse across the membrane on their own.
-Nevertheless, from the $\n{pK_a}$ of xanthosine we find that at
-physiological pH, about 1.5\% of it is uncharged and could pass the
-membrane. This could be modeled as follows:
+Most small molecules diffuse passively through the membrane, but at physiological pH, xanthosine is mostly negatively charged and charged substances do not significantly diffuse across the membrane on their own. Nevertheless, from the $\n{pK_a}$ of xanthosine we find that at physiological pH, about 1.5\% of it is uncharged and could pass the membrane. This could be modeled as follows:
 \begin{eqnarray}
 \label{eq:diff}
 \left(\dd{\n{[x]}}{t}\right)_{\n{diff}} = J A = p (c-\n{[x]}) A = \underbrace{p A}_{\n{rate}} (c-\n{[x]})
 \end{eqnarray}
-Here, $J$ is the flux through the membrane, which follows directly from
-Fick's first law (if steady-state diffusion is assumed). The other new
-parameters are the membrane area $A$ and the membrane permeability
-coefficient $p$ of the diffusing substrate.
+Here, $J$ is the flux through the membrane, which follows directly from Fick's first law (if steady-state diffusion is assumed). The other new parameters are the membrane area $A$ and the membrane permeability coefficient $p$ of the diffusing substrate.
 
-The diffusion rate $k_{\n{d}} = p A$ can be estimated with the help of
-Overton's rule. In our model, we find that this passive diffusion alone
-(i.e. without NupC and NupG) is enough to obtain bistability in the
-deterministic analysis as well as bimodality in the stochastic simulations.
-However, experiments show that \textDelta\emph{nupC} \textDelta\emph{nupG}
-strains cannot grow on xanthosine~\cite{Norholm2001}. This suggests that
-passive diffusion alone is not enough to make the cells switch. Experiments
-with cells in minimal media containing some glucose and a xanthosine
-concentration in the bimodal regime show that the switching time can be
-several generations. The same is observed in our simulations. The xanthosine
-concentration that was used for the double knockout experiments, where no
-glucose was present, is just above the switching threshold, which is when
-switching is slow. For this reason, we suspect that without NupC and NupG
-and with only xanthosine as an energy resource, the cells starve before they
-have switched. This probably is the reason why passive diffusion is, in
-reality, not enough to observe switching. NupC and NupG can probably keep
-the cells going at very low intracellular xanthosine concentrations. Because
-of the active transport, they can accumulate a higher intracellular than
-extracellular concentration of xanthosine.
+The diffusion rate $k_{\n{d}} = p A$ can be estimated with the help of Overton's rule. In our model, we find that this passive diffusion alone (i.e. without NupC and NupG) is enough to obtain bistability in the deterministic analysis as well as bimodality in the stochastic simulations. However, experiments show that \textDelta\emph{nupC} \textDelta\emph{nupG} strains cannot grow on xanthosine~\cite{Norholm2001}. This suggests that passive diffusion alone is not enough to make the cells switch. Experiments with cells in minimal media containing some glucose and a xanthosine concentration in the bimodal regime show that the switching time can be several generations. The same is observed in our simulations. The xanthosine concentration that was used for the double knockout experiments, where no glucose was present, is just above the switching threshold, which is when switching is slow. For this reason, we suspect that without NupC and NupG and with only xanthosine as an energy resource, the cells starve before they have switched. This probably is the reason why passive diffusion is, in reality, not enough to observe switching. NupC and NupG can probably keep the cells going at very low intracellular xanthosine concentrations. Because of the active transport, they can accumulate a higher intracellular than extracellular concentration of xanthosine.
 
-Since NupC and NupG transport seems to be much more significant than
-diffusion, we do not include the latter explicitly in our model. However,
-because it takes the form given in Eq~\ref{eq:diff}, it can easily be
-accounted for implicitly by slightly changing the values of $k_{\n{nup}}$
-and $\xi$.
+Since NupC and NupG transport seems to be much more significant than diffusion, we do not include the latter explicitly in our model. However, because it takes the form given in Eq~\ref{eq:diff}, it can easily be accounted for implicitly by slightly changing the values of $k_{\n{nup}}$ and $\xi$.
 
 \paragraph*{Other mechanisms for xanthosine degradation.}
-There probably are some ways in which xanthosine is degraded, other than by
-XapA. Otherwise, initially uninduced cells that are transferred to only
-xanthosine as an energy source might not survive until they have switched.
-As mentioned previously, it was found that they do~\cite{Norholm2001}, so
-they need to be able to metabolize xanthosine somehow. Nevertheless, these
-degradation pathways cannot have a big effect: as argued later on when
-estimating the Nup parameters, the intracellular xanthosine concentration in
-the uninduced state must be a bit larger, but not too much larger, than the
-extracellular one. Thus, degradation of xanthosine has to be small because
-import through Nup is weak. Due to this, it should be appropriate to
-linearize the equations describing these effects. Then, they can simply be
-accounted for in the term for Nup transport by making slight changes in the
-values of $\xi$ and $k_{\n{nup}}$. It could, however, also be that the basal
-level of XapA is enough to obtain the small degradation effect without any
-other pathways.
+There probably are some ways in which xanthosine is degraded, other than by XapA. Otherwise, initially uninduced cells that are transferred to only xanthosine as an energy source might not survive until they have switched. As mentioned previously, it was found that they do~\cite{Norholm2001}, so they need to be able to metabolize xanthosine somehow. Nevertheless, these degradation pathways cannot have a big effect: as argued later on when estimating the Nup parameters, the intracellular xanthosine concentration in the uninduced state must be a bit larger, but not too much larger, than the extracellular one. Thus, degradation of xanthosine has to be small because import through Nup is weak. Due to this, it should be appropriate to linearize the equations describing these effects. Then, they can simply be accounted for in the term for Nup transport by making slight changes in the values of $\xi$ and $k_{\n{nup}}$. It could, however, also be that the basal level of XapA is enough to obtain the small degradation effect without any other pathways.
 
 \section{Parameter estimation}
-In this section we present a detailed estimation of the values of all
-nondimensional parameters. Two dimensionful parameters appear in most
-nondimensional ones, namely $\gamma_{\n{p}}$ and $K_{\n{a}}$. For this
-reason, we start by estimating these.
+In this section we present a detailed estimation of the values of all nondimensional parameters. Two dimensionful parameters appear in most nondimensional ones, namely $\gamma_{\n{p}}$ and $K_{\n{a}}$. For this reason, we start by estimating these.
 
 \paragraph*{The protein decay rate $\bm{\gamma_{\n{p}}}$:}
-Protein decay is generally dominated by dilution through cell growth and
-division. The average doubling time of \emph{E. coli} is 20-30 minutes. We
-take this as an estimate for the protein half life, which leads us to a
-decay rate of $\gamma_{\n{p}} = \frac{\ln 2}{t_{1/2}} \approx 5\substack{+2
-\\ -3} \cdot 10^{-4}~\n{s^{-1}}$. Note that these upper and lower bounds
-correspond to half-lifes between 15 and 60 minutes, which should be
-reasonable. For the following nondimensionalization, we work with a fixed
-value of $\gamma_{\n{p}} = 5 \cdot 10^{-4}~\n{s^{-1}}$.
+Protein decay is generally dominated by dilution through cell growth and division. The average doubling time of \emph{E. coli} is 20-30 minutes. We take this as an estimate for the protein half life, which leads us to a decay rate of $\gamma_{\n{p}} = \frac{\ln 2}{t_{1/2}} \approx 5\substack{+2 \\ -3} \cdot 10^{-4}~\n{s^{-1}}$. Note that these upper and lower bounds correspond to half-lifes between 15 and 60 minutes, which should be reasonable. For the following nondimensionalization, we work with a fixed value of $\gamma_{\n{p}} = 5 \cdot 10^{-4}~\n{s^{-1}}$.
 
 \paragraph*{The Michaelis-Menten parameters for XapA ($K_{\n{a}}$, $k_{\n{\alpha}}$):}
-The Michaelis-Menten parameters of XapA kinetics have been measured in two
-independent publications~\cite{Dandanell2005,Koszalka1988}. Both have found
-similar values and we conclude $K_{\n{a}} \approx 6 \pm 3 \cdot
-10^{-5}~\n{M}$ and $k_{\n{a}} \approx 10^{-1 \pm 0.8}~\n{s^{-1}}$. This
-gives $k_{\n{\alpha}} \approx 10^{2 \pm 0.8}$. We choose to work with
-$K_{\n{a}} = 5 \cdot 10^{-5}~\n{M}$ in the following.
+The Michaelis-Menten parameters of XapA kinetics have been measured in two independent publications~\cite{Dandanell2005,Koszalka1988}. Both have found similar values and we conclude $K_{\n{a}} \approx 6 \pm 3 \cdot 10^{-5}~\n{M}$ and $k_{\n{a}} \approx 10^{-1 \pm 0.8}~\n{s^{-1}}$. This gives $k_{\n{\alpha}} \approx 10^{2 \pm 0.8}$. We choose to work with $K_{\n{a}} = 5 \cdot 10^{-5}~\n{M}$ in the following.
 
-\paragraph*{The extracellular xanthosine concentration $\n{[c]_{a}}$:} In
-the experiment, switching occurred if cells were grown in a solution with a
-concentration of xanthosine of roughly a few mM~\cite{Norholm2001}.
-According to these experimental observations, the interesting range of
-xanthosine should be $\n{[c]_{a}} \in [ 0, 10^3 ]$ (nondimensionalized),
-which corresponds to $\n{c} \in [ 0, 5 \cdot 10^{-2} ]~\n{M}$. However, we
-are careful because there are issues with the solubility of xanthosine.
+\paragraph*{The extracellular xanthosine concentration $\n{[c]_{a}}$:} In the experiment, switching occurred if cells were grown in a solution with a concentration of xanthosine of roughly a few mM~\cite{Norholm2001}. 
+According to these experimental observations, the interesting range of xanthosine should be $\n{[c]_{a}} \in [ 0, 10^3 ]$ (nondimensionalized), which corresponds to $\n{c} \in [ 0, 5 \cdot 10^{-2} ]~\n{M}$. However, we are careful because there are issues with the solubility of xanthosine.
 
 \paragraph*{The MWC parameters $K_{\n{\chi A}}$, $K_{\n{IA}}$, and $\Delta \epsilon_{\n{x}}$:}
-The three MWC parameters are the energy barrier between the active and
-inactive state of XapR and the equilibrium constants of xanthosine binding
-to XapR in the two states. In Fig~\ref{figS2:induction}, the induction curve
-as a function of the nondimensional parameters is shown. We assume that
-evolution has tuned the induction curve such that less than $10 \%$ of XapR
-is active in the absence of xanthosine, and more than $90 \%$ is active for
-$\n{[x]}$ approaching infinity. This is a relatively weak assumption,
-otherwise XapR would not really be fulfilling its job. It helps us by
-putting a constraint on $K_{\n{IA}}$ and $\Delta \epsilon_{\n{x}}$:
+The three MWC parameters are the energy barrier between the active and inactive state of XapR and the equilibrium constants of xanthosine binding to XapR in the two states. 
+In Fig~\ref{figS2:induction}, the induction curve as a function of the nondimensional parameters is shown. We assume that evolution has tuned the induction curve such that less than $10 \%$ of XapR is active in the absence of xanthosine, and more than $90 \%$ is active for $\n{[x]}$ approaching infinity. This is a relatively weak assumption, otherwise XapR would not really be fulfilling its job. It helps us by putting a constraint on $K_{\n{IA}}$ and $\Delta \epsilon_{\n{x}}$:
 \begin{alignat*}{1}
 p_{\n{active}}(\n{[x]_a} = 0) &= \frac{1}{1 + e^{\Delta \epsilon_{\n{x}}}} < 0.1 \\
 1-p_{\n{active}}(\n{[x]_a} \to \infty) &= \frac{e^{\Delta \epsilon_{\n{x}}}}{K_{\n{IA}}^2 + e^{\Delta \epsilon_{\n{x}}}} < 0.1
@@ -486,199 +308,61 @@ Thus,
 	\Delta \epsilon_{\n{x}} > 2.2 \hspace{2 em} \n{and} \hspace{2 em} K_{\n{IA}} > 3 e^{\Delta \epsilon_{\n{x}} / 2}.
 \end{eqnarray*}
 
-A further constraint is found from $K_{\n{IA}}=\frac{K_{\n{x I}}}{K_{\n{x
-A}}} = e^{\beta \Delta E}$, where $\Delta E$ is the energy difference
-between xanthosine binding to the two states. It is unlikely that this
-energy difference is more than $7~k_{\n{B}} T$, which corresponds to roughly
-three strong hydrogen bonds. This gives us an upper bound $K_{\n{IA}} <
-10^3$ and thereby $\Delta \epsilon_{\n{x}} < 10^1$. For $K_{\n{IA}} = 10^2$,
-the upper bound is $\Delta \epsilon_{\n{x}} < 7$. This gives us a range of
-$K_{\n{IA}} \approx 10^1 - 10^3$ and $\Delta \epsilon_{\n{x}} \approx 2 -
-10$ or, more precisely, $\Delta \epsilon_{\n{x}} \approx 2$ to
-$\ln\left(\frac{1}{9} \left(K_{\n{IA}}\right)^2 \right) \approx 2 \left(
-\ln\left(K_{\n{IA}}\right) - 1\right) < 12$. Compared with other systems,
-these values do seem reasonable. 
+A further constraint is found from $K_{\n{IA}}=\frac{K_{\n{x I}}}{K_{\n{x A}}} = e^{\beta \Delta E}$, where $\Delta E$ is the energy difference between xanthosine binding to the two states. It is unlikely that this energy difference is more than $7~k_{\n{B}} T$, which corresponds to roughly three strong hydrogen bonds. This gives us an upper bound $K_{\n{IA}} < 10^3$ and thereby $\Delta \epsilon_{\n{x}} < 10^1$. For $K_{\n{IA}} = 10^2$, the upper bound is $\Delta \epsilon_{\n{x}} < 7$. This gives us a range of $K_{\n{IA}} \approx 10^1 - 10^3$ and $\Delta \epsilon_{\n{x}} \approx 2 - 10$ or, more precisely, $\Delta \epsilon_{\n{x}} \approx 2$ to $\ln\left(\frac{1}{9} \left(K_{\n{IA}}\right)^2 \right) \approx 2 \left( \ln\left(K_{\n{IA}}\right) - 1\right) < 12$. Compared with other systems, these values do seem reasonable. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.85\textwidth]{FigSI3.pdf}
-	\caption{{\bf Induction curves given by MWC model.}
-	The main plot shows the probability of XapR being in the active state as
-	a function of the logarithm of the xanthosine concentration for $\Delta
-	\epsilon_{\n{x}}$ as shown, $K_{\n{\chi A}} = 10^{2}$, and $K_{\n{IA}} =
-	10^{2}$. The shaded areas indicate where the curve lies for changes in
-	$K_{\n{IA}}$ of one order of magnitude. Changing $K_{\n{\chi A}}$ by one
-	order of magnitude, on the other hand, shifts all the curves by one
-	order of magnitude in the corresponding direction to the left or right.
-	The inset shows how the allowed regimes of $\Delta \epsilon_{\n{x}}$ and
-	$K_{\n{IA}}$ depend on each other. This explains why for $\Delta
-	\epsilon_{\n{x}} = 7$ and $K_{\n{IA}}=10$ (lower green line in the main
-	plot), $p_{\n{active}}$ at infinite xanthosine concentrations becomes
-	far too low.}
+	\caption{{\bf Induction curves given by MWC model.} The main plot shows the probability of XapR being in the active state as a function of the logarithm of the xanthosine concentration for $\Delta \epsilon_{\n{x}}$ as shown, $K_{\n{\chi A}} = 10^{2}$, and $K_{\n{IA}} = 10^{2}$. The shaded areas indicate where the curve lies for changes in $K_{\n{IA}}$ of one order of magnitude. Changing $K_{\n{\chi A}}$ by one order of magnitude, on the other hand, shifts all the curves by one order of magnitude in the corresponding direction to the left or right. The inset shows how the allowed regimes of $\Delta \epsilon_{\n{x}}$ and $K_{\n{IA}}$ depend on each other. This explains why for $\Delta \epsilon_{\n{x}} = 7$ and $K_{\n{IA}}=10$ (lower green line in the main plot), $p_{\n{active}}$ at infinite xanthosine concentrations becomes far too low.}
 	\label{figS2:induction}
 \end{figure}
 
-To find $K_{\n{\chi A}}$ we furthermore assume that the steep part of the
-induction curve lies in the biologically relevant xanthosine regime, which
-estimated experimentally, see the paragraph about $\n{[c]_a}$ above. Again,
-this is a rather weak assumption. As can be seen from
-Fig~\ref{figS2:induction}, this assumption sets the value range of
-$K_{\n{\chi A}}$. The line for $\Delta \epsilon_{\n{x}} = 5$ in
-Fig~\ref{figS2:induction} is at the experimentally expected position in the
-xanthosine regime. It becomes clear from the figure that the position of the
-steep range is strongly affected by $\Delta \epsilon_{\n{x}}$, and a change
-of 1 in the latter leads to roughly a change of $10^1$ in the former. Thus,
-we estimate $K_{\n{\chi A}} \approx 10^{2 \pm 1} \cdot 10^{\Delta
-\epsilon_{\n{x}}-5}$ and thereby finish our estimation of the MWC
-parameters.
+To find $K_{\n{\chi A}}$ we furthermore assume that the steep part of the induction curve lies in the biologically relevant xanthosine regime, which estimated experimentally, see the paragraph about $\n{[c]_a}$ above. Again, this is a rather weak assumption. As can be seen from Fig~\ref{figS2:induction}, this assumption sets the value range of $K_{\n{\chi A}}$. The line for $\Delta \epsilon_{\n{x}} = 5$ in Fig~\ref{figS2:induction} is at the experimentally expected position in the xanthosine regime. It becomes clear from the figure that the position of the steep range is strongly affected by $\Delta \epsilon_{\n{x}}$, and a change of 1 in the latter leads to roughly a change of $10^1$ in the former. Thus, we estimate $K_{\n{\chi A}} \approx 10^{2 \pm 1} \cdot 10^{\Delta \epsilon_{\n{x}}-5}$ and thereby finish our estimation of the MWC parameters.
 
 \paragraph*{The XapR concentration $\n{[XapR]_R}$:} 
-It is experimentally known that the XapR copy number is very low, on the
-order of $10^{-8}~\n{M}$ ($10^1$ molecules per cell)~\cite{Li2014}. We
-estimate the XapR -- DNA dissociation constant from the values for
-\emph{lac} that were found in~\cite{RazoMejia2018} and obtain $10^{-8 \pm
-2}~\n{M}$, where we have added one additional order of magnitude as
-insecurity to the upper and lower bound. This gives
-$\n{[XapR]_R}=\frac{\n{[XapR]_{\n{tot}}}}{K_{\n{XapR}}} \approx 10^{0 \pm
-2}$.
+It is experimentally known that the XapR copy number is very low, on the order of $10^{-8}~\n{M}$ ($10^1$ molecules per cell)~\cite{Li2014}. We estimate the XapR -- DNA dissociation constant from the values for \emph{lac} that were found in~\cite{RazoMejia2018} and obtain $10^{-8 \pm 2}~\n{M}$, where we have added one additional order of magnitude as insecurity to the upper and lower bound. This gives $\n{[XapR]_R}=\frac{\n{[XapR]_{\n{tot}}}}{K_{\n{XapR}}} \approx 10^{0 \pm 2}$.
 
 \paragraph*{The XapR cooperative energy $\Delta \epsilon_{\n{coop}}$:}
-Any cooperative energy should come mainly from an interaction between the
-two XapR molecules. It would be surprising if it was larger than $10 \
-k_{\n{B}} T$, which corresponds to roughly 4 strong hydrogen bonds. Hence,
-we estimate $\Delta \epsilon_{\n{coop}} \approx 0 - 10$.
+Any cooperative energy should come mainly from an interaction between the two XapR molecules. It would be surprising if it was larger than $10 \ k_{\n{B}} T$, which corresponds to roughly 4 strong hydrogen bonds. Hence, we estimate $\Delta \epsilon_{\n{coop}} \approx 0 - 10$.
 
-\paragraph*{The transcription rate parameter $\rho_{\n{m}}$:} The
-transcription rate $r_{\n{m}} \frac{\n{[P]}}{\n{[P]} + K_{\n{P}}}$ in the
-presence of two activator molecules should be on the order of $10^{-2 \pm
-1}~\n{nM\ s^{-1}}$, thus $\rho_{\n{m}} \defeq
-\frac{r_{\n{m}}}{\gamma_{\n{p}} K_{\n{a}}} \frac{\n{[P]}}{K_{\n{P}}+\n{[P]}}
-\approx 10^{-3 \pm 2}$. Note that the units are $\n{nM\ s^{-1}}$ and not
-just $\n{s^{-1}}$ because the corresponding rate equation is of the form
-$\dd{\n{[m]}}{t} = r \cdot p$ where the probability $p$ is dimensionless and
-the left-hand side has dimensions of mRNA concentration per time. 
+\paragraph*{The transcription rate parameter $\rho_{\n{m}}$:} The transcription rate $r_{\n{m}} \frac{\n{[P]}}{\n{[P]} + K_{\n{P}}}$ in the presence of two activator molecules should be on the order of $10^{-2 \pm 1}~\n{nM\ s^{-1}}$, thus $\rho_{\n{m}} \defeq \frac{r_{\n{m}}}{\gamma_{\n{p}} K_{\n{a}}} \frac{\n{[P]}}{K_{\n{P}}+\n{[P]}} \approx 10^{-3 \pm 2}$. Note that the units are $\n{nM\ s^{-1}}$ and not just $\n{s^{-1}}$ because the corresponding rate equation is of the form $\dd{\n{[m]}}{t} = r \cdot p$ where the probability $p$ is dimensionless and the left-hand side has dimensions of mRNA concentration per time. 
 
-This estimate comes from the assumption that this rate should be roughly
-$10^{1} - 10^{2}$ times larger than a normal basal rate (of other genes),
-for which common values are around $10^{-3 \pm 1}~\n{nM\
-s^{-1}}$~\cite{Milo2016}. Because experiments show that compared to the
-activated promoter, the basal transcription rate is almost zero for
-\emph{xapAB} (probably due to the weak polymerase binding site), this
-actually means a $10^{2}$- to $10^{3}$-fold increase in the transcription
-rate due to activation by XapR. 
+This estimate comes from the assumption that this rate should be roughly $10^{1} - 10^{2}$ times larger than a normal basal rate (of other genes), for which common values are around $10^{-3 \pm 1}~\n{nM\ s^{-1}}$~\cite{Milo2016}. Because experiments show that compared to the activated promoter, the basal transcription rate is almost zero for \emph{xapAB} (probably due to the weak polymerase binding site), this actually means a $10^{2}$- to $10^{3}$-fold increase in the transcription rate due to activation by XapR. 
 
-Keep in mind that the rate includes not only the effect of XapR on the pure
-speed of transcription, bt also any effect of XapR on the polymerase
-dissociation constant. Still, we do not expect higher values such as
-$10^{0}~\n{nM\ s^{-1}}$ since this is roughly the rate for transcription of
-rRNA and the latter should be significantly faster. To further validate our
-estimate, we can compare it to measured values for \emph{lac}, which should
-be roughly the same because the gene function is similar. The transcription
-rate for \emph{lac} in the absence of any repression that was found
-in~\cite{RazoMejia2019} corresponds well with our estimate.
+Keep in mind that the rate includes not only the effect of XapR on the pure speed of transcription, bt also any effect of XapR on the polymerase dissociation constant. Still, we do not expect higher values such as $10^{0}~\n{nM\ s^{-1}}$ since this is roughly the rate for transcription of rRNA and the latter should be significantly faster. 
+To further validate our estimate, we can compare it to measured values for \emph{lac}, which should be roughly the same because the gene function is similar. The transcription rate for \emph{lac} in the absence of any repression that was found in~\cite{RazoMejia2019} corresponds well with our estimate.
 
 \paragraph*{The mRNA decay rate parameter $\gamma_{\n{mp}}$.}
-The mRNA life time is usually on the order of 1 to 8 minutes which gives a
-decay rate of $\gamma_{\n{m}} \approx 10^{-3} - 10^{-2}~\n{s^{-1}}$. Thus,
-we have $\gamma_{\n{mp}} \defeq \frac{\gamma_{\n{m}}}{\gamma_{\n{p}}}
-\approx 10^{1 \pm 0.5}$. 
+The mRNA life time is usually on the order of 1 to 8 minutes which gives a decay rate of $\gamma_{\n{m}} \approx 10^{-3} - 10^{-2}~\n{s^{-1}}$. Thus, we have $\gamma_{\n{mp}} \defeq \frac{\gamma_{\n{m}}}{\gamma_{\n{p}}} \approx 10^{1 \pm 0.5}$. 
 
 \paragraph*{The translation rate parameter $\rho_{\n{p}}$.}
-The translation rate should be on the order of $r_{\n{p}} \approx 10^{-2} -
-10^{-1}~\n{s^{-1}}$~\cite{Milo2016}. This gives $\rho_{\n{p}} \defeq
-\frac{r_{\n{p}}}{\gamma_{\n{p}}} \approx 10^{2 \pm 0.5}$.
+The translation rate should be on the order of $r_{\n{p}} \approx 10^{-2} - 10^{-1}~\n{s^{-1}}$~\cite{Milo2016}. This gives $\rho_{\n{p}} \defeq \frac{r_{\n{p}}}{\gamma_{\n{p}}} \approx 10^{2 \pm 0.5}$.
 
 %\com{do growth rate thing}
 
 \paragraph*{The Michaelis-Menten parameters for XapB ($k_{\n{\beta,i}}$, $K_{\n{\beta,i}}$, $k_{\n{\beta,e}}$, $K_{\n{\beta,e}}$):}
-To estimate the parameters for both influx and efflux, we need data from
-experiments where these two processes have been measured independently.
-Lactose permease, which we expect to function in a similar way as XapB, is
-comparatively well studied such that these rates have been measured in
-multiple ways and for different conditions. Some data from several
-publications is collected in~\cite{Viitanen1984} and we will base our
-estimates on this and the corresponding references.
+To estimate the parameters for both influx and efflux, we need data from experiments where these two processes have been measured independently. Lactose permease, which we expect to function in a similar way as XapB, is comparatively well studied such that these rates have been measured in multiple ways and for different conditions. Some data from several publications is collected in~\cite{Viitanen1984} and we will base our estimates on this and the corresponding references.
 
-Comparing the effective rates and Michaelis constants of lactose permease
-and the nucleoside transporters NupC and NupG shows that their orders of
-magnitude are similar: from~\cite{Dornmair1989,Wright1985} we find
-$k_{\n{cat}} \approx 10^1~\n{s^{-1}}$, $K_{\n{M}} \approx 10^1-10^2~\n{\mu
-M}$ for LacY and from~\cite{Norholm2001,Komatsu1973,MunchPetersen1979}
-$k_{\n{cat}} \approx 10^2~\n{s^{-1}}$, $K_{\n{M}} \approx 10^0-10^1~\n{\mu
-M}$ for pyrimidines through NupC and NupG. Note that especially for Nup,
-these are only rough measurements, and it is known that NupC behaves
-different with purines (thus also with xanthosine). Given these values, we
-expect lactose permease to be similar enough to nucleoside transporters so
-that we can use it as a starting point for our estimation of the XapB
-kinetic values.
+Comparing the effective rates and Michaelis constants of lactose permease and the nucleoside transporters NupC and NupG shows that their orders of magnitude are similar: from~\cite{Dornmair1989,Wright1985} we find $k_{\n{cat}} \approx 10^1~\n{s^{-1}}$, $K_{\n{M}} \approx 10^1-10^2~\n{\mu M}$ for LacY and from~\cite{Norholm2001,Komatsu1973,MunchPetersen1979} $k_{\n{cat}} \approx 10^2~\n{s^{-1}}$, $K_{\n{M}} \approx 10^0-10^1~\n{\mu M}$ for pyrimidines through NupC and NupG. Note that especially for Nup, these are only rough measurements, and it is known that NupC behaves different with purines (thus also with xanthosine). Given these values, we expect lactose permease to be similar enough to nucleoside transporters so that we can use it as a starting point for our estimation of the XapB kinetic values.
 
-We use the measured influx values that are summarized in~\cite{Viitanen1984}
-for a membrane potential of $100~\n{mV}$ and obtain $k_{\n{b,i}} \approx
-10^{1 \pm 1}~\n{s^{-1}}$ and $K_{\n{b,i}} \approx 10^{-4 \pm 2}~\n{M}$.
-Here, the uncertainty is estimated from the distribution of values of many
-kinds of enzymes that is presented in~\cite{Milo2016}. The bounds also
-reflect the difference between LacY and Nup that was found above. For the
-dimensionless quantities, this gives $k_{\n{\beta,i}} \approx 10^{4 \pm 1}$
-and $K_{\n{\beta,i}} \approx 10^{1 \pm 2}$. 
+We use the measured influx values that are summarized in~\cite{Viitanen1984} for a membrane potential of $100~\n{mV}$ and obtain $k_{\n{b,i}} \approx 10^{1 \pm 1}~\n{s^{-1}}$ and $K_{\n{b,i}} \approx 10^{-4 \pm 2}~\n{M}$. Here, the uncertainty is estimated from the distribution of values of many kinds of enzymes that is presented in~\cite{Milo2016}. The bounds also reflect the difference between LacY and Nup that was found above. 
+For the dimensionless quantities, this gives $k_{\n{\beta,i}} \approx 10^{4 \pm 1}$ and $K_{\n{\beta,i}} \approx 10^{1 \pm 2}$. 
 
-For the efflux parameters, we proceed similarly and obtain $k_{\n{b,e}}
-\approx 10^{0 \pm 2}~\n{s^{-1}}$ and $K_{\n{b,e}} \approx 10^{-3 \pm
-3}~\n{M}$, therefore $k_{\n{\beta,e}} \approx 10^{3 \pm 2}$ and
-$K_{\n{\beta,e}} \approx 10^{2 \pm 3}$. Because of disagreement in
-literature, difficulty in measuring these parameters, and a lack of
-knowledge about what value range should be expected, we put larger error
-bounds than for the influx. 
+For the efflux parameters, we proceed similarly and obtain $k_{\n{b,e}} \approx 10^{0 \pm 2}~\n{s^{-1}}$ and $K_{\n{b,e}} \approx 10^{-3 \pm 3}~\n{M}$, therefore $k_{\n{\beta,e}} \approx 10^{3 \pm 2}$ and $K_{\n{\beta,e}} \approx 10^{2 \pm 3}$. Because of disagreement in literature, difficulty in measuring these parameters, and a lack of knowledge about what value range should be expected, we put larger error bounds than for the influx. 
 
-\paragraph*{The non-specific transport parameters $k_{\n{\eta}}$, $\xi$:}
-Estimating the rates of the Nup transporters for xanthosine is difficult
-since there are no experimental values that could be used as a reference.
-Because the rate cannot even be measured~\cite{Norholm2001}, it must be much
-lower than that of XapB. The kinetic parameters should, however, be such
-that the steady-state intracellular xanthosine concentration is
-significantly larger than the extracellular one. Otherwise, there would be
-no relevant difference to passive diffusion, which was shown to be
-insufficient for switching~\cite{Norholm2001}. This essentially means $\xi <
-1$, which on the other hand implies that the Nup rate is larger than or at
-least equal to the diffusion rate: If Nup transport were slower than
-diffusion, the latter would rule and $\xi$ would be close to~1 (because this
-is the $\xi$ value of diffusion). 
+\paragraph*{The non-specific transport parameters $k_{\n{\eta}}$, $\xi$:} Estimating the rates of the Nup transporters for xanthosine is difficult since there are no experimental values that could be used as a reference. Because the rate cannot even be measured~\cite{Norholm2001}, it must be much lower than that of XapB. The kinetic parameters should, however, be such that the steady-state intracellular xanthosine concentration is significantly larger than the extracellular one. Otherwise, there would be no relevant difference to passive diffusion, which was shown to be insufficient for switching~\cite{Norholm2001}. This essentially means $\xi < 1$, which on the other hand implies that the Nup rate is larger than or at least equal to the diffusion rate: If Nup transport were slower than diffusion, the latter would rule and $\xi$ would be close to~1 (because this is the $\xi$ value of diffusion). 
 
-In addition, we know from \emph{lac} permease that influx is not much faster
-than efflux, which implies that $\xi$ also cannot be too much smaller
-than~1. We guess $\xi \approx 0.8 \pm 0.1$. The number of Nup transporters
-per cell is roughly $10^2-10^3$~\cite{Li2014}. We expect
-$\frac{k_{\n{cat}}}{K_{\n{M}}}$ to be at least two or three orders of
-magnitude lower for Nup than for saturated XapB, where we have
-$\frac{k_{\n{b}}}{K_{\n{b}}} \approx 10^{5 \pm 3}~\n{M^{-1}\ s^{-1}}$. These
-arguments set an estimated upper bound on the non-specific transport rate:
-$k_{\n{nup}} = \frac{k_{\n{cat}}}{K_{\n{M}}} \n{[E]_0} \lesssim 10^{-3 \pm
-3}~\n{s^{-1}}$. 
+In addition, we know from \emph{lac} permease that influx is not much faster than efflux, which implies that $\xi$ also cannot be too much smaller than~1.
+We guess $\xi \approx 0.8 \pm 0.1$. The number of Nup transporters per cell is roughly $10^2-10^3$~\cite{Li2014}. We expect $\frac{k_{\n{cat}}}{K_{\n{M}}}$ to be at least two or three orders of magnitude lower for Nup than for saturated XapB, where we have $\frac{k_{\n{b}}}{K_{\n{b}}} \approx 10^{5 \pm 3}~\n{M^{-1}\ s^{-1}}$.
+These arguments set an estimated upper bound on the non-specific transport rate: $k_{\n{nup}} = \frac{k_{\n{cat}}}{K_{\n{M}}} \n{[E]_0} \lesssim 10^{-3 \pm 3}~\n{s^{-1}}$. 
 
-To find a lower bound, we estimate the diffusion rate. As described in
-Eq~\ref{eq:diff} in the previous section, the diffusion rate can be written
-as $10^{-2} \cdot p \cdot A$, where $p$ is the permeability coefficient of
-the membrane for xanthosine, $A$ is the total cell surface area, and
-$10^{-2}$ is the fraction of uncharged xanthosine at physiological pH. From
-the permeabilities of various substances that are collected
-in~\cite{Milo2016} and from the measured permeability values for purine
-nucleosides in~\cite{Wei2011}, we estimate a permeability coefficient of
-$\tilde{p}=10^{-8 \pm 3}~\n{m\ s^{{-1}}}$. We write the tilde because this
-value is given in a convention where $\tilde{p} \cdot A = \dd{x}{t}$ with
-$x$ being the number of xanthosine molecules and not the concentration.
-Since we work in concentrations, we divide by an estimated cell volume of
-$10^{-18}~\n{m^3}$ and, with a cell surface area of $10^{-11}~\n{m^2}$, find
-a diffusion rate of roughly $10^{-3 \pm 3}~\n{s^{-1}}$. This sets the lower
-bound of $k_{\n{nup}}$.
-%\com{Check if Overton's rule gives the samediffusion coefficient}
+To find a lower bound, we estimate the diffusion rate. As described in Eq~\ref{eq:diff} in the previous section, the diffusion rate can be written as $10^{-2} \cdot p \cdot A$, where $p$ is the permeability coefficient of the membrane for xanthosine, $A$ is the total cell surface area, and $10^{-2}$ is the fraction of uncharged xanthosine at physiological pH. From the permeabilities of various substances that are collected in~\cite{Milo2016} and from the measured permeability values for purine nucleosides in~\cite{Wei2011}, we estimate a permeability coefficient of $\tilde{p}=10^{-8 \pm 3}~\n{m\ s^{{-1}}}$. We write the tilde because this value is given in a convention where $\tilde{p} \cdot A = \dd{x}{t}$ with $x$ being the number of xanthosine molecules and not the concentration. Since we work in concentrations, we divide by an estimated cell volume of $10^{-18}~\n{m^3}$ and, with a cell surface area of $10^{-11}~\n{m^2}$, find a diffusion rate of roughly $10^{-3 \pm 3}~\n{s^{-1}}$. This sets the lower bound of $k_{\n{nup}}$. %\com{Check if Overton's rule gives the same diffusion coefficient}
 
-Interestingly, the upper and lower bound turn out to be the same. Thus, we
-obtain the range $k_{\n{nup}} \approx 10^{-3 \pm 3}~\n{s^{-1}}$, meaning
-$k_{\n{\eta}} \approx 10^{-1 \pm 3}$.
+Interestingly, the upper and lower bound turn out to be the same. Thus, we obtain the range $k_{\n{nup}} \approx 10^{-3 \pm 3}~\n{s^{-1}}$, meaning $k_{\n{\eta}} \approx 10^{-1 \pm 3}$.
 
 \section{Additional plots and explanations of the results}
 \paragraph*{The 2D set of equations.}
-If the mRNA concentration is set to steady-state as discussed in the main
-text, the dynamical system is reduced to the two equations shown below:
+If the mRNA concentration is set to steady-state as discussed in the main text, the dynamical system is reduced to the two equations shown below:
 \begin{alignat}{2}
 \dd{\mathrm{[p]_a}}{\tau} &= \ &&
 \rho 
@@ -696,68 +380,44 @@ text, the dynamical system is reduced to the two equations shown below:
 \nonumber \\
 \text{with} & && \raggedleft [\n{XapR}]_{\mathrm{R,\n{A}}} = [\n{XapR}]_{\mathrm{R}} \frac{\left(1 + \frac{\mathrm{[x]_{\n{a}}}}{K_{\n{\chi A}}}\right)^2}{\left(1 + \frac{\mathrm{[x]_{\n{a}}}}{K_{\n{\chi A}}}\right)^2 + e^{\Delta \epsilon_{\n{x}}} \left(1+\frac{\mathrm{[x]_{\n{a}}}}{K_{\n{\chi A}}} \frac{1}{K_{\n{IA}}}\right)^2}. \nonumber
 \end{alignat}
-Here, several of the parameters from the 3D system could now be combined
-into one by defining $\rho \defeq \frac{\rho_{\n{m}}
-\rho_{\n{p}}}{\gamma_{\n{mp}}}$.
+Here, several of the parameters from the 3D system could now be combined into one by defining $\rho \defeq \frac{\rho_{\n{m}} \rho_{\n{p}}}{\gamma_{\n{mp}}}$.
 
-\paragraph*{Magnitude of flow in the phase portraits.}
-The plots in the main part do not show the magnitude of the vector fields.
-For additional information, we show a 2D vector plot with the magnitudes in
-Fig~\ref{figS4:vector}.
+\paragraph*{Magnitude of flow in the phase portraits.} The plots in the main part do not show the magnitude of the vector fields. For additional information, we show a 2D vector plot with the magnitudes in Fig~\ref{figS4:vector}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.45\textwidth]{FigSI4.pdf}
 	\caption{{\bf Vector plot of a standard case of bistability.}
-		The 2D phase portraits as a vector plot for for the standard set of
-		parameters that was used in the main text.}
+		The 2D phase portraits as a vector plot for for the standard set of parameters that was used in the main text.}
 	\label{figS4:vector} 
 \end{figure}
 
 \paragraph*{Increasing $\n{[c]_a}$.}
-Fig~\ref{figS5:incC} shows a family of nullclines for increasing
-extracellular xanthosine concentration. It shows the transition from
-monostability, to bistability, and back to monostability again.
+Fig~\ref{figS5:incC} shows a family of nullclines for increasing extracellular xanthosine concentration. It shows the transition from monostability, to bistability, and back to monostability again.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{FigSI5.pdf}
 	\caption{{\bf A family of curves for increasing $\n{[c]_a}$.}
-		The blue curve is the protein nullcline, which does not change with
-		$\n{[c]_a}$. The other lines are the xanthosine nullclines for
-		different values of the extracellular xanthosine concentration.}
+		The blue curve is the protein nullcline, which does not change with $\n{[c]_a}$. The other lines are the xanthosine nullclines for different values of the extracellular xanthosine concentration.}
 	\label{figS5:incC}
 \end{figure}
 
 \paragraph*{Hysteresis effects.}
-In Fig~\ref{figS8:hysteresis}, the results mentioned in the hysteresis part
-of the main text are shown. As mentioned there,  the simulation was started
-with initially fully induced cells. At concentrations where no cells
-switched from the low to the high expression state before, cells here do not
-switch back to low expression.
+In Fig~\ref{figS8:hysteresis}, the results mentioned in the hysteresis part of the main text are shown. As mentioned there,  the simulation was started with initially fully induced cells. At concentrations where no cells switched from the low to the high expression state before, cells here do not switch back to low expression. The extracellular xanthosine concentration (for the other parameters being as in the Table in the main text) needed to be as low as $\n{[c]_a} = 10$ to observe bimodality and $\n{[c]_a}=9$ to have all cells in the low expression state (recall $\n{[c]_{a}} \defeq \frac{c}{K_{\n{a}}}$, $K_{\n{a}} = 5 \cdot
+10^{-5} \unit{M}$).
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{FigSI8.pdf}
 	\caption{{\bf Decreasing $\n{[c]_a}$ in the fully induced system.}
-		Apart from $\n{[c]_a}$, the parameters are the same as in the table
-		in the main text. For the distributions, the simulations were run
-		1000 times for $10^6 \unit{s}$ each and started at the mRNA, protein
-		and intracellular xanthosine counts of the high fixed point in the
-		corresponding phase portraits. The values of $\n{[c]_a}$ are 12 in
-		(A), 10 in (B), and 9 in (C). When comparing to the distributions in
-		the main text where the simulation had initial concentrations of 0,
-		a clear hysteresis effect can be observed.}
+		Apart from $\n{[c]_a}$, the parameters are the same as in the table in the main text. For the distributions, the simulations were run 1000 times for $10^6 \unit{s}$ each and started at the mRNA, protein and intracellular xanthosine counts of the high fixed point in the corresponding phase portraits. The values of $\n{[c]_a}$ are 12 in (A), 10 in (B), and 9 in (C). When comparing to the distributions in the main text where the simulation had initial concentrations of 0, a clear hysteresis effect can be observed.}
 	\label{figS8:hysteresis}
 \end{figure}
 
 
 \section{Chemical master equation}
-Here we provide some further details on our stochastic simulations by
-writing the chemical master equation for our model. The state of our system
-is described by the number of mRNA $m$, protein $p$, and xanthosine
-molecules $x$, and we write $P(m,p,x)$ for the probability of that state.
-The chemical master equation for the system is:
+Here we provide some further details on our stochastic simulations by writing the chemical master equation for our model. The state of our system is described by the number of mRNA $m$, protein $p$, and xanthosine molecules $x$, and we write $P(m,p,x)$ for the probability of that state. The chemical master equation for the system is:
 \begin{alignat}{2}
 \dd{P(m,p,x)}{t} &= \ && - P(m,p,x) [ r_{\n{m}} p_{\n{active}}(x) + \gamma_{\n{m}} m + r_{\n{p}} m + \gamma_{\n{p}} p \nonumber \\ & && + k_{\n{b,i}} \frac{c}{K_{\n{b,i}} + c} \n{p} + k_{\n{b,e}} \frac{x}{K_{\n{b,e}} + x} p + k_{\n{a}} \frac{x}{K_{\n{a}} + x} p \nonumber \\ & && + k_{\n{nup}} c + k_{\n{nup}} \xi x ] \nonumber \\ & && 
 + P(m+1,p,x) \gamma_{\n{m}} (m + 1) \nonumber \\ & &&  + P(m-1,p,x) r_{\n{m}} p_{\n{active}}(x) \nonumber \\ & && 
@@ -765,10 +425,7 @@ The chemical master equation for the system is:
 + P(m,p,x+1) [ k_{\n{b,e}} \frac{x+1}{K_{\n{b,e}} + x+1} p \nonumber \\ & && + k_{\n{a}} \frac{x+1}{K_{\n{a}} + x+1} p + k_{\n{nup}} \xi (x+1) ] \nonumber \\ & &&
 + P(m,p,x-1) [ k_{\n{b,i}} \frac{c}{K_{\n{b,i}} + c} p + k_{\n{nup}} c ]  
 \end{alignat}
-Here, all the parameters of course have to be measured in counts, not in
-concentrations. As can be seen from the equation, none of the propensities
-depends explicitly on time and hence, we can use the hybrid algorithm
-between classical Gillespie and \texttau-leaping that we relied on.
+Here, all the parameters of course have to be measured in counts, not in concentrations. As can be seen from the equation, none of the propensities depends explicitly on time and hence, we can use the hybrid algorithm between classical Gillespie and \texttau-leaping that we relied on.
 
 \FloatBarrier
 
