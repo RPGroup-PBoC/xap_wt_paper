@@ -569,7 +569,12 @@
 	state the result here. We model influx and efflux separately. For XapB,
 	we use Michaelis-Menten kinetics with parameters $k_{\n{b, i}}$,
 	$K_{\n{b, i}}$ for influx and $k_{\n{b, e}}, K_{\n{b,e}}$ for efflux.
-	For the Nup transporters, we also use Michaelis-Menten kinetics but can linearize the Michaelis-Menten term $k_{\n{cat}} \frac{\n{[x]}}{K_{\n{M}} + \n{[x]}} \approx \tilde{k} \n{[x]}$ because of the transporter's low affinity for xanthosine (i.e. $K_{\n{M}} \gg \n{[x]}$). For the rate parameters $\tilde{k}$, we write $k_{\n{nup}}$ for
+	For the Nup transporters, we also use Michaelis-Menten kinetics but,
+	because of the transporter's low affinity for xanthosine,
+	we can linearize the Michaelis-Menten term as
+	$k_{\n{cat}} {\n{[x]}}/(K_{\n{M}} + \n{[x]}) \approx \tilde{k} \n{[x]}$
+	(i.e., $K_{\n{M}}~\gg~\n{[x]}$ across the physiologically relevant range for $\n{[x]}$).
+	For the rate parameters $\tilde{k}$, we write $k_{\n{nup}}$ for
 	influx and $\xi k_{\n{nup}}$ for efflux. 
 		
 	After transport into the cell, XapA degrades xanthosine. We model this using
@@ -965,9 +970,15 @@
 	and xanthosine were run for comparison with the deterministic results.
 	In~\nameref{S1_Text}, we present the underlying chemical master equation of
 	the system. Because of the two different fixed points at low and high
-	expression, the copy numbers in the problem vary from less than five to several thousand.
-	The larger the amounts of mRNA, protein, and xanthosine, the larger the number of reactions, and thus, the larger the computational cost of Gillespie's classical algorithm. This makes Gillespie's \texttau-leap algorithm ideal for the high expression state. On the
-	other hand, \texttau-leaping cannot be used for the small copy numbers in the low expression state. For
+	expression, the protein copy numbers in the problem vary from less than
+	five to several thousand. Even worse, xanthosine copy numbers may range
+	as high as $10^7$ at the high expression fixed point. For such large
+	copy numbers, the number of reaction firings that must be simulated with
+	Gillespie's classical algorithm leads to an impractical computational
+	cost. This would make Gillespie's \texttau-leap algorithm ideal for the high
+	expression state. On the other hand, \texttau-leaping cannot be used for
+	the small protein copy numbers in the low expression state, or the mRNA
+	copy number which remains of order ten or less in both states. For
 	these reasons, we chose to work with the algorithm described
 	in~\cite{Cao2006}, a hybrid form between Gillespie's classical and his
 	\texttau-leap algorithm. We gratefully worked with the Python implementation
@@ -1125,7 +1136,10 @@
 	In addition, simply knowing the experimental switching concentration of
 	xanthosine permits us, for example, to infer the approximate value of the
 	dissociation constant between the transcription factor XapR and the inducer
-	xanthosine. The value we found is roughly one to two orders of magnitude larger than what has been measured for LacI and IPTG~\cite{RazoMejia2018}, meaning the interaction of XapR and xanthosine is rather weak.
+	xanthosine. The value we infer is roughly one to two orders of magnitude
+	larger than what has been measured for LacI and
+	IPTG~\cite{RazoMejia2018}, meaning the interaction of XapR and
+	xanthosine is rather weak.
 	
 	Phase diagrams, showing for which parameters the system is bistable and for
 	which there is only the lower or the upper stable fixed point, could be
@@ -1168,9 +1182,11 @@
 	questions that arose, Nathan Belliveau for bringing similar systems to our
 	attention, and Jane Kondev and Jin Wang for interesting discussions.
 	For assistance with illustrations, we also thank Nigel Orme and Griffin Chure.
-	This work was supported by 1R35 GM118043-01 Maximizing Investigators' Research Award (MIRA) (to R.P.), the National Science Foundation
-	Graduate Research Fellowship under Grant No.\ DGE-114446 (M.J.M.). and the
-	Werner Siemens Foundation through the Swiss Study Foundation (K.S.L.).
+	This work was supported by 1R35 GM118043-01 Maximizing Investigators'
+	Research Award (MIRA) (to R.P.), and the Werner Siemens Foundation
+	through the Swiss Study Foundation (K.S.L.). This material is based upon
+	work supported by the National Science Foundation Graduate Research
+	Fellowship under Grant No.\ DGE-1745301 (M.J.M.).
 	
 	\nolinenumbers
 	
