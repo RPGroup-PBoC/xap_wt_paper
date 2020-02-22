@@ -405,26 +405,26 @@ Fig~\ref{figS5:incC} shows a family of nullclines for increasing extracellular x
 	\centering
 	\includegraphics[width=0.8\textwidth]{FigSI5.pdf}
 	\caption{{\bf A family of curves for increasing $\n{[c]_a}$.}
-		The blue curve is the protein nullcline, which does not change with $\n{[c]_a}$. The other lines are the xanthosine nullclines for different values of the extracellular xanthosine concentration.}
+		The blue, dashed curve is the protein nullcline, which does not change with $\n{[c]_a}$. The other curves are the xanthosine nullclines for different values of the extracellular xanthosine concentration.}
 	\label{figS5:incC}
 \end{figure}
 
-\paragraph*{Including transcriptional bursting.} To test the robustness of our results to larger stochasticity (which is expected in the real biological system), we included some burstiness in transcription in our stochastic simulations. We assumed a geometric distribution for the burst size $s$, i.e. $p(s) = (1/4)\cdot (1-1/4)^{s-1}$ with mean $4$, which is a bit larger than what usually occurs in biology \textcolor{red}{citation missing}. We then cut this distribution at a burst size of 10, meaning we did not consider larger bursts, leading to an actual mean of around $3.2$. The transcription rate was rescaled such that the mean number of mRNA's produced remained the same. 
+\paragraph*{Including transcriptional bursting.} To test the robustness of our results to larger stochasticity (which is expected in the real biological system), we explored how the addition of burstiness in transcription altered our stochastic simulations. We assumed a geometric distribution for the burst size $s$, i.e. $p(s|\theta) = \theta\cdot (1-\theta)^{s-1}$ with mean $\theta^{-1}=4$, which is comparable to or slightly larger than reported values~\cite{Golding2005}. We then truncate this distribution at a burst size of 10, meaning we did not consider larger bursts, leading to an actual mean of around $3.2$. The transcription rate was rescaled such that the mean number of mRNA's produced remained the same. 
 
-We observe the same qualitative behavior but with stronger fluctuations around the mean and also larger variation in the time to the steady-state mean. As an example, Fig~\ref{evolbursts} shows the time evolution of two runs of the simulation with bursting for the same conditions (i.e. parameters and starting values) as the time evolution that was shown in the main text. Fig~\ref{distbursts} shows the distribution obtained for the same and an additional condition (i.e. parameters and starting values) as for the distributions shown in the main text. The variance in the timescales and distributions is larger than without bursting. Furthermore, switching already happens for lower $\mathrm{[c]_a}$: in \subref{distbursts}{C}, most cells are in the high expression state, whereas in the corresponding distribution in the main text, there were many uninduced cells, i.e. the first peak was higher. To obtain a bimodal distribution like in the main text, $\mathrm{[c]_a}$ now needs to be set to $17.5$ instead of $18.5$ as shown in \subref{distbursts}{B}. This was to be expected, since the larger fluctuations make it easier for the system to jump across the middle fixed point.
+We observe the same qualitative behavior but with stronger fluctuations around the mean and larger variation in the time to reach the steady-state mean. As an example, Fig~\subref{evolbursts}{A} shows the time evolution of one run of the simulation with bursting for the same conditions (i.e. parameters and starting values) as the time evolution that was shown in the main text. In addition, the distribution of adaptation times can be seen in Fig~\subref{evolbursts}{B}. Fig~\ref{distbursts} shows the distribution obtained for the same and an additional condition (i.e. parameters and starting values) as for the distributions shown in the main text. The variance in the timescales and distributions is larger than without bursting. Furthermore, switching already happens for lower $\mathrm{[c]_a}$: in \subref{distbursts}{C}, most cells are in the high expression state, whereas in the corresponding distribution in the main text, there were many uninduced cells, i.e. the first peak was higher. To obtain a bimodal distribution like in the main text, $\mathrm{[c]_a}$ now needs to be set to $17.5$ instead of $18.5$ as shown in \subref{distbursts}{B}. This was to be expected, since the larger fluctuations make it easier for the system to jump across the middle fixed point.
 
-Still, there are no big qualitative differences to the results without bursting. Thus, the assumptions we made that lead to less stochasticity than in the real biological system are not expected to have a very significant influence on our results, and the switch-like behavior seems to be stable to stochastic perturbations. \textcolor{red}{Fig 7 C not enough runs yet}
+Still, there are no big qualitative differences to the results without bursting. Thus, the assumptions we made that lead to less stochasticity than in the real biological system are not expected to have a very significant influence on our results, and the switch-like behavior seems to be stable to stochastic perturbations. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\textwidth]{FigSI6_7.pdf}
-	\caption{{\bf Time evolution from the stochastic simulation when transcriptional bursting is included.}
-		(A) and (B) each show the time evolution from one run of the simulation. The simulation was run once for $5 \cdot 10^5 \unit{s}$ and started
+	\caption{{\bf Time evolution and adaptation times from the stochastic simulation when transcriptional bursting is included.}
+		(A) shows the time evolution from one run of the simulation. The simulation was run once for $5 \cdot 10^5 \unit{s}$ and started
 		at an mRNA, protein and intracellular xanthosine count of 0. The parameters that were used are the same as in the
 		table in the main text, the only exception being the
 		extracellular xanthosine concentration, which was chosen to be
 		$\n{[c]_a} = 25$ (recall $\n{[c]_{a}} \defeq \frac{c}{K_{\n{a}}}$,
-		$K_{\n{a}} = 5 \cdot 10^{-5} \unit{M}$).}
+		$K_{\n{a}} = 5 \cdot 10^{-5} \unit{M}$). (B) Blue shows the time until 90\% of the protein concentration at the upper fixed point was reached in 200 runs of the simulation (same conditions as (A)). The distribution from the main text (without bursting) is shown in orange for comparison. \textcolor{red}{will add some more runs, but the simulation takes forever}}
 	\label{evolbursts}
 \end{figure}
 
@@ -432,12 +432,12 @@ Still, there are no big qualitative differences to the results without bursting.
 	\centering
 	\includegraphics[width=1\textwidth]{FigSI6_7_2.pdf}
 	\caption{{\bf Distributions from the stochastic simulation when transcriptional bursting is included.}
-		(A) shows the distribution obtained from the simulation with $\n{[c]_a}=12$, (B), (C), and (D) show the same for $\n{[c]_a}=17.5$, $\mathrm{[c]_a}=18.5$, and $\mathrm{[c]_a}=25$, respectively (recall $\n{[c]_{a}} \defeq \frac{c}{K_{\n{a}}}$,
+		Blue shows the distributions from the simulation with bursts, orange shows those without bursts from the main text for comparison. The following values of $\mathrm{[c]_a}$ were used: (A) $\n{[c]_a}=12$, (B) $\n{[c]_a}=17.5$ (not shown in main text), (C) $\mathrm{[c]_a}=18.5$, and (D) $\mathrm{[c]_a}=25$ (recall $\n{[c]_{a}} \defeq \frac{c}{K_{\n{a}}}$,
 		$K_{\n{a}} = 5 \cdot 10^{-5} \unit{M}$). All other parameters are as in the table in the main text, and the simulation
 		was run 1000 times for $10^6 \unit{s}$ each (simulated time) and
 		started at a mRNA, protein and intracellular xanthosine count of 0.}
 	\label{distbursts}
-\end{figure}
+\end{figure} 
 
 \paragraph*{Hysteresis effects.}
 In Fig~\ref{figS8:hysteresis}, the results mentioned in the hysteresis part of the main text are shown. As mentioned there,  the simulation was started with initially fully induced cells. At concentrations where no cells switched from the low to the high expression state before, cells here do not switch back to low expression. The extracellular xanthosine concentration (for the other parameters being as in the Table in the main text) needed to be as low as $\n{[c]_a} = 10$ to observe bimodality and $\n{[c]_a}=9$ to have all cells in the low expression state (recall $\n{[c]_{a}} \defeq \frac{c}{K_{\n{a}}}$, $K_{\n{a}} = 5 \cdot
@@ -464,6 +464,9 @@ Here we provide some further details on our stochastic simulations by writing th
 + P(m,p,x-1) [ k_{\n{b,i}} \frac{c}{K_{\n{b,i}} + c} p + k_{\n{nup}} c ]  
 \end{alignat}
 Here, all the parameters of course have to be measured in counts, not in concentrations. As can be seen from the equation, none of the propensities depends explicitly on time and hence, we can use the hybrid algorithm between classical Gillespie and \texttau-leaping that we relied on.
+
+
+Note that in the case with bursts that is discussed above, the transcription term $r_{\n{m}} p_{\n{active}}(x) P(m-1,p,x)$ is changed to $r_{\n{m}} p_{\n{active}}(x) \sum_{k=1}^{10} P(m-k,p,x) \frac{\theta\cdot (1-\theta)^{k-1}}{Z}$ with $Z = \sum_{k=1}^{10} k \cdot \theta\cdot (1-\theta)^{k-1}$ and $\theta = 1/4$ in our example.
 
 \FloatBarrier
 \newpage
@@ -580,6 +583,12 @@ Here, all the parameters of course have to be measured in counts, not in concent
 	\newblock Permeation of Nucleosides through Lipid Bilayers.
 	\newblock J Phys Chem B. 2011;115(13):3681--3688.
 	\newblock doi:{10.1021/jp112104r}.
+	
+	\bibitem{Golding2005}
+	Golding I, Paulsson J, Zawilski SM, Cox EC.
+	\newblock Real-Time Kinetics of Gene Activity in Individual Bacteria.
+	\newblock Cell. 2005;123(6):1025--1036.
+	\newblock doi:{10.1016/j.cell.2005.09.031}.
 	
 \end{thebibliography}
 

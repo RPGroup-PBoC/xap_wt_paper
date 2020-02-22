@@ -397,19 +397,19 @@
 	\section*{Experimental motivation} \label{sec:experiment}
 	Our work was motivated by the experimental observation of bimodality in the \emph{xap} circuit, which is shown in Fig~\ref{fig1:data}. We focus on the essential findings here and refer the reader to~\nameref{S1_Text} for more experimental details. Briefly, we placed a fluorescent reporter under the control of the wild type (wt) \emph{xapAB} promoter. This construct was placed in three different backgrounds: \textDelta\emph{xapABR}, \textDelta\emph{xapAB}, and wt. Fig~\subref{fig1:data}{A} shows that for increasing xanthosine concentration, expression in the wt-background increases in a switch-like way: it is nearly zero when there is little xanthosine (``uninduced state''), but increases drastically when there is more (``induced state''). In between, the aforementioned bimodal distribution is obtained, where some bacteria are in the uninduced expression state and others are induced. \textcolor{red}{maybe remove: In addition, we observed that the property of being induced seems to be passed on to daughter cells, suggesting that there is not merely bimodality, but bistability.}
 		
-	\begin{figure}[h!]
+	\begin{figure}%[h!]
 		\centering
 		\includegraphics[width=0.4\textwidth]{media/Fig1_data.pdf}
-		\caption{{\bf Experimental data on the \emph{xap} circuit.} The expression of the \emph{xapAB} promoter was measured for different concentrations of xanthosine in the bacteria's environment. (A) shows the wild type circuit while in (B) the genes \emph{xapABR} and in (C) the genes \emph{xapAB} are removed. The wild type circuit behaves like a switch.}
+		\caption{{\bf Experimental data on the \emph{xap} circuit.} The expression of the \emph{xapAB} promoter was measured for different concentrations of xanthosine in the bacteria's environment. (A) shows the wild type circuit while in (B) the genes \emph{xapABR} and in (C) the genes \emph{xapAB} are removed. The wild type circuit behaves like a switch. \textcolor{red}{placeholder figure up to now}}
 		\label{fig1:data}
 	\end{figure}
 
 	When all genes of the \emph{xapABR} circuit are removed, the xanthosine response of our reporter construct disappears (see Fig~\subref{fig1:data}{B}, where the last line is autofluorescence). This is the result of removing the transcription factor XapR that is induced by xanthosine. When only the genes \emph{xapAB} are removed but \emph{xapR} is kept, a response to the xanthosine concentration is regained but it is no longer switch-like (see Fig~\subref{fig1:data}{C}). Instead, the distribution remains unimodal and simply shifts to higher expression as the xanthosine concentration is increased. As we will see later on, this is because the circuit now lacks the positive feedback loop due to the xanthosine membrane transporter XapB. 
 	
-	Clearly, XapR regulates the \emph{xapAB} promoter. As mentioned in the introduction, there are two binding sites for XapR on the \emph{xapAB} promoter: one directly at the polymerase binding site, and one further upstream. When the upstream binding site is removed, bimodality is lost and the expression of \emph{xapAB} becomes several orders of magnitude weaker, as can be seen in Fig~\ref{}.
+	Clearly, XapR regulates the \emph{xapAB} promoter. As mentioned in the introduction, there are two binding sites for XapR on the \emph{xapAB} promoter: one directly at the polymerase binding site and one further upstream. When the upstream binding site is removed, bimodality is lost and the expression of \emph{xapAB} becomes several orders of magnitude weaker, as can be seen in Fig~\ref{}.
 	\textcolor{red}{data missing}
 	
-	Already, we believe this data, combined with the prior knowledge of the field, clearly suggest a minimal model of the \emph{xapABR} system. The construction and exploration of this model occupies the remainder of this work. We leave it for future work to quantitatively dissect and test the model, in the manner of, for example, \textcolor{red}{citations}.
+	Already, we believe this data, combined with the prior knowledge of the field, clearly suggest a minimal model of the \emph{xapABR} system. The construction and exploration of this model occupies the remainder of this work. We leave it for future work to quantitatively dissect and test the model, in the manner of~\cite{Garcia2011,RazoMejia2018,Chure2019}, for example.
 	
 	\section*{Model}
 	\subsection*{Step by step modeling of the system}
@@ -431,7 +431,7 @@
 	to a set of two coupled ODEs. More in-depth explanations can be found
 	in~\nameref{S1_Text}.
 	
-	\begin{figure}[h!]
+	\begin{figure}%[h!]
 		\centering
 		\includegraphics{media/Fig2_model.eps}
 		\caption{{\bf Model of the \emph{xapAB} circuit.}
@@ -702,7 +702,7 @@
 	\subsection*{Deterministic phase portraits}
 	A standard way to analyze dynamical systems deterministically is
 	to plot phase portraits. In the following, we present such plots where the
-	state variables are the mRNA, the protein, and the xanthosine concentration. Note that for the low copy numbers that can occur in our system, a deterministic analysis is not necessarily meaningful. Nevertheless, in our case we find that stochastic simulations agree well with the deterministic results. Thus, deterministic phase portraits are a good starting point.
+	state variables are the mRNA, the protein, and the xanthosine concentration. Note that for the low copy numbers that can occur in our system, a deterministic analysis is not necessarily meaningful. Nevertheless, in our case we find that stochastic simulations agree well with the deterministic results. Thus, deterministic phase portraits are a surprisingly good starting point.
 	
 	\paragraph*{From a 3D to a 2D system.} 
 	Fig~\subref{fig4:bistability}{A} shows the 3D phase portrait for a
@@ -832,7 +832,7 @@
 	one disappears. Thus, for low $\n{[c]_a}$ the only stable point of the system
 	is at low expression, and for high $\n{[c]_a}$ there is only high
 	expression. In between, there are two deterministically stable expression
-	levels. Later on in this text, we show this result in form of a bifurcation diagram.
+	levels. Another means of visualizing this is with an bifurcation diagram, which we discuss in detail later.
 	
 	\begin{figure}%[h!]
 		\centering
@@ -1030,12 +1030,12 @@
 	
 	The results agree very well with the deterministic fixed points and
 	experiments: the mean numbers of mRNA, protein, and xanthosine in the
-	stochastic results are as predicted from the phase portraits. Also note the similarity to the shape of the experimental distributions that were presented in section ``experimental motivation''. It does,
+	stochastic results are as predicted from the phase portraits. It does,
 	however, become clear that the phase portraits do not tell whether the cells
 	will actually populate both the high and the low expression state,
 	because they do not show the effective barrier height between the two states.
 	In Fig~\subref{fig8:stochC}{(A)}, a deterministically bistable scenario is shown where the cells never switched to the high
-	expression state during the run time of our simulations. This actually is a good finding: the biologically interesting feature is the switch-like behavior, whereas bimodality can be problematic for biology as this means that there is a large insecurity in the input-output behavior of a bacteria's reaction to xanthosine. Thus, the fact that bimodality only occurs in a small regime means that the circuit is a strong switch.
+	expression state during the run time of our simulations. This actually is a good finding: it implies that bistability, characterized by two separate \emph{stable} steady-states, largely persists even in the presence of stochastic fluctuations. Thus, the fact that bimodality only occurs in a small regime means that the circuit is a strong switch and the deterministic picture is sufficient except in a small range of parameter space. Whether or not that is where the system actually is remains a question for future experiments.
 	
 	We found that the two lower fixed points (marked as 1 and 2 in
 	Fig~\ref{fig4:bistability}) need to be very close like in
@@ -1048,39 +1048,33 @@
 	extremely unlikely. There are two aspects that become relevant in this
 	context that we neglect in our analysis but briefly mention here:
 	transcription and translation bursts lead to higher stochasticity and cell
-	division leads to some discontinuity in the process.
+	division leads to some discontinuity in the process. The effect of bursts is addressed in~\nameref{S1_Text}.
 	
 	Note that while the deterministic analysis assumes the variables to be
 	continuous, the simulations work with discrete numbers of mRNA, protein, and
 	xanthosine. This per se is no problem, because the deterministic analysis
 	describes the mean values and the simulation fluctuates around this mean.
 	If, however, the mRNA number at the third (high) fixed point is too low, the
-	system will not be able to resolve the two points anymore. It is too low when the distance between the first and the third fixed point
-	becomes as low as the stochastic fluctuations in the system, which is around
-	3 mRNA molecules. In Fig~\ref{fig8:stochC}, the mRNA number at the low fixed
-	point was fluctuating between 0 and 2 with a mean significantly smaller than
-	1, and at the high fixed point it was varying between 2 and 6.
+	system may not be able to resolve the two points anymore. The tolerance to this is surprisingly large, though: In Fig~\ref{fig8:stochC}, the distance between the first and the third fixed point is around 3 mRNA molecules. While this is around the size of the fluctuations in Fig~\ref{fig8:stochC}, the latter become as large as 10 mRNA molecules when bursts are included in the simulation (see~\nameref{S1_Text}) and yet, the system is able to resolve the fixed points very well.
 	
 	\paragraph*{Time evolution and adaptation times.}
-	Fig~\ref{fig9:StochT} shows the time evolution of the protein concentration for one exemplary run of the simulation.
+	Fig~\subref{fig9:StochT}{A} shows the time evolution of the protein concentration for one typical run of the simulation.
 	Again, the simulation was started with a mRNA, protein and intracellular
 	xanthosine count of 0 and was run for a simulated time of $5 \cdot 10^5
-	\unit{s}$. In this specific example, the fixed point was reached after $10^5
-	\unit{s}$. Of course, the system moves to its mean steady-state much faster when the extracellular xanthosine concentration is further away from the bimodal regime (in analogy to a ``critical point''). For comparison, the trajectory obtained from integrating the deterministic system is also shown in Fig~\ref{fig9:StochT}. It clearly agrees well with the simulation. There are some cases where the big adaptation step happens slightly earlier or later, but still at around $10^5 \unit{s}$.
+	\unit{s}$. In this specific example, the fixed point was reached after roughly $1.5 \cdot 10^5
+	\unit{s}$ (adaptation time). This time varies: Fig~\subref{fig9:StochT}{B} shows the distribution of adaptation times from 1000 runs of the simulation. In both figures, the trajectory obtained from integrating the deterministic system is shown for comparison. It clearly agree well with the simulation on average.
 	
 	\begin{figure}%[h!]
 		\centering
 		\includegraphics{media/Fig9_evolution.eps}
-		\caption{{\bf Stochastic and deterministic time evolution of protein (XapA/XapB).}
-			Blue shows the results from one run of the stochastic simulation, orange shows the trajectory obtained from solving the deterministic ODE's. The simulation was run once for $5 \cdot 10^5 \unit{s}$ and started
-			at an mRNA, protein and intracellular xanthosine count of 0. In this
-			case the system reached the high-expression state after $10^5
-			\unit{s}$. The parameters that were used are the same as in
+		\caption{{\bf Stochastic and deterministic time evolution of protein (XapA/XapB) and adaptation time.}
+			(A) Blue shows the results from one run of the stochastic simulation, orange shows the trajectory obtained from solving the deterministic ODE's. The simulation was run once for $5 \cdot 10^5 \unit{s}$ and started
+			at an mRNA, protein and intracellular xanthosine count of 0. The parameters that were used are the same as in
 			Table~\ref{table1:nondim}, the only exception being the
 			extracellular xanthosine concentration, which was chosen to be
 			$\n{[c]_a} = 25$ (recall $\n{[c]_{a}} \defeq \frac{c}{K_{\n{a}}}$,
 			$K_{\n{a}} = 5 \cdot 10^{-5} \unit{M}$) just as in
-			Fig~\subref{fig8:stochC}{(C)}.}
+			Fig~\subref{fig8:stochC}{(C)}. (B) Blue shows the time until 90\% of the protein concentration at the upper fixed point was reached in 1000 runs of the simulation (same conditions as (A)). The orange line shows the corresponding deterministic time. The green dashed line right next to it indicated the mean of the blue distribution.}
 		\label{fig9:StochT}
 	\end{figure}
 	
@@ -1100,20 +1094,21 @@
 	Nevertheless, we do warn the reader that the timescales in the simulations and even more so in the deterministic system
 	should be taken with reservation. Fluctuations in the parameters are not considered here, and neither are cell divisions or the burstiness of transcription and translation. This means
 	that stochasticity may be larger in the real system which should have an
-	influence on the timescales and may shorten the time until the fixed point is reached. However, including transcriptional bursts in the stochastic simulation changes little in the output: the qualitative behavior remains the same but fluctuations around the mean as well as in the adaptation time become larger and bimodality already occurs at lower $\mathrm{[c]_a}$ (see~\nameref{S1_Text}). Still, the fact that there are no big changes shows that the system is stable to stochastic perturbations and our assumptions should not be too significant.
+	influence on the timescales and may shorten the time until the fixed point is reached. However, including transcriptional bursts in the stochastic simulation changes little in the output: the qualitative behavior remains the same but fluctuations around the mean as well as in the adaptation time become larger and bimodality already occurs at lower $\mathrm{[c]_a}$ (see~\nameref{S1_Text}). Still, the fact that there are no big changes shows that the system is stable to stochastic perturbations and our particular assumptions should not be too significant.
 	
-	Note that in a biologically realistic setting, the extracellular xanthosine concentration would probably be high enough to be in the regime where there only is the upper fixed point and thus no bistability or even bimodality. As mentioned before, the system reaches its mean steady-state faster in that regime, and hence, the bacteria can adapt more quickly.
+	Of course, the system moves to its mean steady-state much faster when the extracellular xanthosine concentration is further away from the bimodal regime (in analogy to a ``critical point''). 
+	Note that it could well be that in reality, the extracellular xanthosine concentration is high enough to be in the regime where there only is the upper fixed point and thus no bistability or even bimodality. As the system reaches its mean steady-state faster in that regime, the bacteria could adapt more quickly.
 	
 	\paragraph*{Bifurcation diagram and hysteresis.} 
 	In Figs~\ref{fig8:stochC} and~\ref{fig9:StochT}, the simulations were started at initial intracellular concentrations of 0 to investigate what happens if xanthosine is suddenly added to the cell's environment. We can now ask the opposite question: what happens when xanthosine is removed from the extracellular environment? To answer this, the simulation was started with initially fully	induced cells, i.e. at the mRNA, protein and intracellular xanthosine counts of the high fixed point in the corresponding phase portrait. 
 	
-	The distributions we obtained can be found in~\nameref{S1_Text}. Here, we instead present the results in form of a bifurcation diagram in Fig~\ref{fig10:Bifurcation}. In blue, the positions of the deterministic fixed points for the corresponding extracellular xanthosine concentration are shown. As explained before, there is only one fixed point for low and high values of $\mathrm{[c]_a}$, but in between, there are three. In yellow and orange, the results from the stochastic simulation are shown, where the mean of the resulting distribution was taken. For the orange points, the simulation was started at $\mathrm{[m]_a}=\mathrm{[p]_a}=\mathrm{[x]_a}=0$, leading to the distributions in Fig~\ref{fig8:stochC}. In contrast, the yellow points show the results from starting the simulation at the $\mathrm{[m]_a}$, $\mathrm{[p]_a}$, and $\mathrm{[x]_a}$ values of the high fixed point. Note that by taking the mean of each distribution, we hide the feature of bimodality. For that reason, we additionally show the position of the two peaks in the bimodal distribution by splitting it into two parts at its minimum and calculating the mean of each of the parts. Also note that it suffices to show the bifurcation diagram in one dimension (here: protein concentration) because the fixed points are uniquely determined by that (recall Fig~\ref{fig4:bistability}, the fixed points are unique points in the 3D system).
+	The distributions we obtained can be found in~\nameref{S1_Text}. Here, we instead present the results in the form of a bifurcation diagram in Fig~\ref{fig10:Bifurcation}. In blue, the positions of the deterministic fixed points for the corresponding extracellular xanthosine concentration are shown. As explained before, there is only one fixed point for low and high values of $\mathrm{[c]_a}$, but in between, there are three. In yellow and orange, the results from the stochastic simulation are shown, where the mean of each distribution was taken. For the orange points, the simulation was started at $\mathrm{[m]_a}=\mathrm{[p]_a}=\mathrm{[x]_a}=0$, leading to the distributions in Fig~\ref{fig8:stochC}. In contrast, the yellow points result from starting the simulation at the $\mathrm{[m]_a}$, $\mathrm{[p]_a}$, and $\mathrm{[x]_a}$ values of the high fixed point. Note that by taking the mean of each distribution, we hide the feature of bimodality. For that reason, we additionally show the approximate position of the two peaks in the bimodal distribution. We do this by estimating the position of the minimum between the two peaks of the distribution, splitting it into two parts there, and calculating the mean of each of the parts. Also note that it suffices to show the bifurcation diagram in one dimension (here protein concentration) because this uniquely determines the fixed points (recall from Fig~\ref{fig4:bistability}, the fixed points are unique points in the 3D system).
 	
 	\begin{figure}%[h!]
 		\centering
 		\includegraphics{media/Fig10_bifurcation.eps}
 		\caption{{\bf Bifurcation diagram showing the hysteresis loop in the stochastic system.}
-			The blue line shows the positions of deterministic fixed points, where the dashed line indicates the instability of the middle one. The orange and yellow points show the mean in the stochastic simulations when started at zero and at the high fixed point, respectively. The positions of the two peaks in the bimodal distributions are indicated by smaller points, connected by dotted lines. The arrows illustrate the hysteresis loop in the stochastic simulations.}
+			The blue line shows the positions of deterministic fixed points, while the dashed line indicates the instability of the middle one. The orange and yellow points show the mean in the stochastic simulations when started at zero and at the high fixed point, respectively. The positions of the two peaks in the bimodal distributions are indicated by smaller points, connected by dotted lines. The arrows illustrate the hysteresis loop in the stochastic simulations.}
 		\label{fig10:Bifurcation}
 	\end{figure}
 		
@@ -1130,7 +1125,7 @@
 	even though uninduced cells could not become induced at these
 	concentrations.
 	
-	In addition to the hysteresis, Fig~\ref{fig10:Bifurcation} also illustrates the astonishingly good agreement of the stochastic simulation and the deterministic results, despite having copy numbers below 10 in some cases. Although one should be cautious about this because of higher stochasticity in the real biological system (addressed in the previous paragraph), the result does show that the switch-like feature in the circuit is strong and stable.
+	In addition to the hysteresis, Fig~\ref{fig10:Bifurcation} also illustrates the astonishingly good agreement of the stochastic simulation and the deterministic results, despite having copy numbers below 10 in some cases. Although one should be cautious about this because of higher stochasticity in the real biological system (addressed above), the result does show that the switch-like feature in the circuit is strong and stable.
 	
 	
 	\section*{Conclusion}
@@ -1160,7 +1155,7 @@
 	Phase diagrams, showing for which parameters the system is bistable and for
 	which there is only the lower or the upper stable fixed point, could be
 	calculated from arguments made in~\cite{Cherry2000}. However, the
-	simulations showed that in the deterministically bistable regime, it is dependent on initial conditions which fixed points the system occupies, which is why we have refrained from showing such phase
+	simulations showed that in the deterministically bistable regime, which fixed point(s) the system occupies is dependent on initial conditions, which is why we have refrained from showing such phase
 	diagrams. Furthermore, the timescales in the problem could be investigated
 	more thoroughly, for example the dependence of the switching time on
 	$\n{[c]_a}$, but such an analysis should probably account for	cell divisions and fluctuations in the parameters, which is not straightforward. Lastly, it could be interesting to investigate the magnitude of the fluctuations around the fixed point away from and near the bifurcations in $\mathrm{[c]_a}$.
@@ -1351,6 +1346,26 @@
 		superfamily.
 		\newblock Journal of bacteriology. 2001;183(11466294):4900--4904.
 		
+		\bibitem{Garcia2011}
+		Garcia HG, Phillips R.
+		\newblock Quantitative dissection of the simple repression input-output
+		function.
+		\newblock Proceedings of the National Academy of Sciences of the United States
+		of America. 2011;108 29:12173--8.
+		
+		\bibitem{RazoMejia2018}
+		Razo-Mejia M, Barnes SL, Belliveau NM, Chure G, Einav T, Lewis M, et~al.
+		\newblock Tuning Transcriptional Regulation through Signaling: A Predictive
+		Theory of Allosteric Induction.
+		\newblock Cell Systems. 2018;6(4):456 -- 469.e10.
+		\newblock doi:{https://doi.org/10.1016/j.cels.2018.02.004}.
+		
+		\bibitem{Chure2019}
+		Chure G, Kaczmarek ZA, Phillips R.
+		\newblock Physiological Adaptability and Parametric Versatility in a Simple
+		Genetic Circuit.
+		\newblock bioRxiv. 2019;doi:{10.1101/2019.12.19.878462}.
+		
 		\bibitem{Marzen2013}
 		Marzen S, Garcia HG, Phillips R.
 		\newblock Statistical Mechanics of Monod--Wyman--Changeux (MWC) Models.
@@ -1390,13 +1405,6 @@
 		Maarleveld TR, Olivier BG, Bruggeman FJ. StochPy, Stochastic Modeling in
 		Python. 2015.
 		\newblock Available from: \url{http://stochpy.sourceforge.net/}.
-		
-		\bibitem{RazoMejia2018}
-		Razo-Mejia M, Barnes SL, Belliveau NM, Chure G, Einav T, Lewis M, et~al.
-		\newblock Tuning Transcriptional Regulation through Signaling: A Predictive
-		Theory of Allosteric Induction.
-		\newblock Cell Systems. 2018;6(4):456 -- 469.e10.
-		\newblock doi:{10.1016/j.cels.2018.02.004}.
 		
 	\end{thebibliography}
 	
