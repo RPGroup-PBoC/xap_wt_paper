@@ -416,30 +416,60 @@
 		\includegraphics[width=1\textwidth]{media/Fig1_data.eps}
 		\caption{{\bf Experimental data on the \emph{xap} circuit.}
 		(A) The expression of the \emph{xapAB} promoter was measured for
-		different concentrations of xanthosine in the bacteria's
-		environment. The right panel shows the wild type circuit while
+		different extracellular concentrations of xanthosine.
+		The right panel shows the wild type circuit while
 		on the left the genes \emph{xapABR} and in the middle the genes
 		\emph{xapAB} are removed. The wild type circuit behaves like a
-		switch. Note that the fluorescence scales of the middle panel
-		and the other two are not comparable.
+		switch. Note that the fluorescence scale of the middle panel
+		is not comparable with the other two,
+		and also that the chosen xanthosine concentrations are different.
 		(B) The fold-change in gene expression upon addition of
-		xanthosine for the wt promoter and for the promoter with only
-		the XapR binding site right at the polymerase binding site.
+		xanthosine for the wt promoter (left panel)
+		and for the promoter with only the XapR binding site adjacent
+		to the polymerase binding site (right panel).
+		Note that the fold-change used here differs from fold-change in,
+		e.g.,~\cite{Garcia2011,RazoMejia2018,Chure2019},
+		in that no subtraction of autofluorescence was carried out,
+		which is adequate for the qualitative comparison
+		of these two promoters.
 		}
 		\label{fig1:data}
 	\end{figure}
 
-	When all genes of the \emph{xapABR} circuit are removed, the xanthosine response of our reporter construct disappears (see Fig~\subref{fig1:data}{B}, where the last line is autofluorescence). This is the result of removing the transcription factor XapR that is induced by xanthosine. When only the genes \emph{xapAB} are removed but \emph{xapR} is kept, a response to the xanthosine concentration is regained but it is no longer switch-like (see Fig~\subref{fig1:data}{C}). Instead, the distribution remains unimodal and simply shifts to higher expression as the xanthosine concentration is increased. As we will see later on, this is because the circuit now lacks the positive feedback loop due to the xanthosine membrane transporter XapB. 
+	When all genes of the \emph{xapABR} circuit are removed, the
+	xanthosine response of our reporter construct disappears (see
+	Fig~\subref{fig1:data}{A}, left panel).
+	This is the result of removing the transcription factor XapR that is
+	induced by xanthosine. When only the genes \emph{xapAB} are removed
+	but \emph{xapR} is kept, a response to the xanthosine concentration
+	is regained but it is no longer switch-like (see
+	Fig~\subref{fig1:data}{A}, middle panel). Instead, the distribution remains
+	unimodal and simply shifts to higher expression as the xanthosine
+	concentration is increased. As we will see later on, this is because
+	the circuit now lacks the positive feedback loop due to the
+	xanthosine membrane transporter XapB. 
 	
-	Clearly, XapR regulates the \emph{xapAB} promoter. As mentioned in
+	Can we gain further insight into how XapR regulates
+	the \emph{xapAB} promoter? As mentioned in
 	the introduction, there are two binding sites for XapR on the
 	\emph{xapAB} promoter: one directly at the polymerase binding site
-	and one further upstream. When the upstream binding site is removed,
-	bimodality is lost and the activation of the \emph{xapAB}-expression
-	by xanthosine (via XapR) becomes negligible, as can be seen in
-	Fig~\subref{fig1:data}{B}.
+	and one further upstream.
+	Working in the \textDelta\emph{xapAB} background,
+	we measured the expression level of our reporter when driven by two
+	constructs: the wild-type \emph{xapAB} promoter
+	(Fig~\subref{fig1:data}{B}, left panel), and the \emph{xapAB}
+	promoter with the upstream binding site removed
+	(Fig~\subref{fig1:data}{B}, right panel).
+	Clearly, removing one XapR binding site dramatically reduced the
+	responsiveness of the promoter to xanthosine (though not apparent
+	from Fig~\subref{fig1:data}{B}, this response remains detectable).
 	
-	Already, we believe this data, combined with the prior knowledge of the field, clearly suggest a minimal model of the \emph{xapABR} system. The construction and exploration of this model occupies the remainder of this work. We leave it for future work to quantitatively dissect and test the model, in the manner of~\cite{Garcia2011,RazoMejia2018,Chure2019}, for example.
+	Already, we believe these data, combined with the prior knowledge of
+	the field, clearly suggest a minimal model of the \emph{xapABR}
+	system. The construction and exploration of this model occupies the
+	remainder of this work. We leave it for future work to
+	quantitatively dissect and test the model, in the manner
+	of~\cite{Garcia2011,RazoMejia2018,Chure2019}, for example.
 	
 	\section*{Model}
 	\subsection*{Step by step modeling of the system}
@@ -541,8 +571,9 @@
 	We consider only the state where both XapR binding sites are occupied as
 	active and all other states as inactive, meaning they have transcription
 	rate equal to zero. Our experiments show that the expression becomes very weak when one of
-	the XapR binding sites is removed from the promoter (see~\nameref{S1_Text}), suggesting that this
-	simplification is reasonable. Furthermore, we find that in
+	the XapR binding sites is removed from the promoter (see
+	Fig~\subref{fig1:data}{B} and~\nameref{S1_Text}), suggesting that
+	this simplification is reasonable. Furthermore, we find that in
 	the bistable parameter range, considering the single occupancy states as
 	active instead has almost no influence on the results (see
 	also~\nameref{S1_Text}).
@@ -1094,11 +1125,10 @@
 	\unit{s}$. In this specific example, the fixed point was reached after roughly $1.5 \cdot 10^5
 	\unit{s}$ (adaptation time).
 	This time varies: Fig~\subref{fig9:StochT}{B} shows the distribution
-	of adaptation times from 1000 runs of the simulation (where we
-	neglected the around 10 runs with adaptation times larger than $6
-	\cdot 10^5 \unit{s}$). In both figures, the trajectory obtained from
+	of adaptation times from 1000 runs of the simulation.
+	In both figures, the trajectory obtained from
 	integrating the deterministic system is shown for comparison. It
-	clearly agree well with the simulation on average.
+	clearly agrees well with the simulation on average.
 	
 	\begin{figure}%[h!]
 		\centering
@@ -1110,7 +1140,19 @@
 			extracellular xanthosine concentration, which was chosen to be
 			$\n{[c]_a} = 25$ (recall $\n{[c]_{a}} \defeq \frac{c}{K_{\n{a}}}$,
 			$K_{\n{a}} = 5 \cdot 10^{-5} \unit{M}$) just as in
-			Fig~\subref{fig8:stochC}{(C)}. (B) Blue shows the time until 90\% of the protein concentration at the upper fixed point was reached in 1000 runs of the simulation (same conditions as (A)). The orange line shows the corresponding deterministic time. The green dashed line right next to it indicated the mean of the blue distribution.}
+			Fig~\subref{fig8:stochC}{(C)}.
+			(B) In blue we plot the waiting time distribution for 1000
+			runs of the simulation (same conditions as (A)) to reach
+			the steady-state mean.
+			We define this time as the elapsed time when the protein
+			copy number first reaches 90\% of its value at the upper
+			fixed point.
+			To better visualize the bulk of the distribution, we
+			excluded from the plot $\sim10$ runs with adaptation times
+			larger than $6 \cdot 10^5 \unit{s}$.
+			The green dashed line indicates the mean of the blue distribution.
+			The orange line shows the corresponding deterministic time.
+			}
 		\label{fig9:StochT}
 	\end{figure}
 	
