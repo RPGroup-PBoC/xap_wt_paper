@@ -395,19 +395,49 @@
 	from stochastic simulations.
 	
 	\section*{Experimental motivation} \label{sec:experiment}
-	Our work was motivated by the experimental observation of bimodality in the \emph{xap} circuit, which is shown in Fig~\ref{fig1:data}. We focus on the essential findings here and refer the reader to~\nameref{S1_Text} for more experimental details. Briefly, we placed a fluorescent reporter under the control of the wild type (wt) \emph{xapAB} promoter. This construct was placed in three different backgrounds: \textDelta\emph{xapABR}, \textDelta\emph{xapAB}, and wt. Fig~\subref{fig1:data}{A} shows that for increasing xanthosine concentration, expression in the wt-background increases in a switch-like way: it is nearly zero when there is little xanthosine (``uninduced state''), but increases drastically when there is more (``induced state''). In between, the aforementioned bimodal distribution is obtained, where some bacteria are in the uninduced expression state and others are induced. \textcolor{red}{maybe remove: In addition, we observed that the property of being induced seems to be passed on to daughter cells, suggesting that there is not merely bimodality, but bistability.}
+	Our work was motivated by the experimental observation of bimodality
+	in the \emph{xap} circuit, which is shown in Fig~\ref{fig1:data}. We
+	focus on the essential findings here and refer the reader
+	to~\nameref{S1_Text} for more experimental details. Briefly, we
+	placed a fluorescent reporter under the control of the wild type
+	(wt) \emph{xapAB} promoter. This construct was placed in three
+	different backgrounds: \textDelta\emph{xapABR},
+	\textDelta\emph{xapAB}, and wt. The right panel of
+	Fig~\subref{fig1:data}{A} shows that for increasing xanthosine
+	concentration, expression in the wt-background increases in a
+	switch-like way: it is nearly zero when there is little xanthosine
+	(``uninduced state''), but increases drastically when there is more
+	(``induced state''). In between, the aforementioned bimodal
+	distribution is obtained, where some bacteria are in the uninduced
+	expression state and others are induced.
 		
 	\begin{figure}%[h!]
 		\centering
-		\includegraphics[width=0.4\textwidth]{media/Fig1_data.pdf}
-		\caption{{\bf Experimental data on the \emph{xap} circuit.} The expression of the \emph{xapAB} promoter was measured for different concentrations of xanthosine in the bacteria's environment. (A) shows the wild type circuit while in (B) the genes \emph{xapABR} and in (C) the genes \emph{xapAB} are removed. The wild type circuit behaves like a switch. \textcolor{red}{placeholder figure up to now}}
+		\includegraphics[width=1\textwidth]{media/Fig1_data.eps}
+		\caption{{\bf Experimental data on the \emph{xap} circuit.}
+		(A) The expression of the \emph{xapAB} promoter was measured for
+		different concentrations of xanthosine in the bacteria's
+		environment. The right panel shows the wild type circuit while
+		on the left the genes \emph{xapABR} and in the middle the genes
+		\emph{xapAB} are removed. The wild type circuit behaves like a
+		switch. Note that the fluorescence scales of the middle panel
+		and the other two are not comparable.
+		(B) The fold-change in gene expression upon addition of
+		xanthosine for the wt promoter and for the promoter with only
+		the XapR binding site right at the polymerase binding site.
+		}
 		\label{fig1:data}
 	\end{figure}
 
 	When all genes of the \emph{xapABR} circuit are removed, the xanthosine response of our reporter construct disappears (see Fig~\subref{fig1:data}{B}, where the last line is autofluorescence). This is the result of removing the transcription factor XapR that is induced by xanthosine. When only the genes \emph{xapAB} are removed but \emph{xapR} is kept, a response to the xanthosine concentration is regained but it is no longer switch-like (see Fig~\subref{fig1:data}{C}). Instead, the distribution remains unimodal and simply shifts to higher expression as the xanthosine concentration is increased. As we will see later on, this is because the circuit now lacks the positive feedback loop due to the xanthosine membrane transporter XapB. 
 	
-	Clearly, XapR regulates the \emph{xapAB} promoter. As mentioned in the introduction, there are two binding sites for XapR on the \emph{xapAB} promoter: one directly at the polymerase binding site and one further upstream. When the upstream binding site is removed, bimodality is lost and the expression of \emph{xapAB} becomes several orders of magnitude weaker, as can be seen in Fig~\ref{}.
-	\textcolor{red}{data missing}
+	Clearly, XapR regulates the \emph{xapAB} promoter. As mentioned in
+	the introduction, there are two binding sites for XapR on the
+	\emph{xapAB} promoter: one directly at the polymerase binding site
+	and one further upstream. When the upstream binding site is removed,
+	bimodality is lost and the activation of the \emph{xapAB}-expression
+	by xanthosine (via XapR) becomes negligible, as can be seen in
+	Fig~\subref{fig1:data}{B}.
 	
 	Already, we believe this data, combined with the prior knowledge of the field, clearly suggest a minimal model of the \emph{xapABR} system. The construction and exploration of this model occupies the remainder of this work. We leave it for future work to quantitatively dissect and test the model, in the manner of~\cite{Garcia2011,RazoMejia2018,Chure2019}, for example.
 	
@@ -1062,7 +1092,13 @@
 	Again, the simulation was started with a mRNA, protein and intracellular
 	xanthosine count of 0 and was run for a simulated time of $5 \cdot 10^5
 	\unit{s}$. In this specific example, the fixed point was reached after roughly $1.5 \cdot 10^5
-	\unit{s}$ (adaptation time). This time varies: Fig~\subref{fig9:StochT}{B} shows the distribution of adaptation times from 1000 runs of the simulation. In both figures, the trajectory obtained from integrating the deterministic system is shown for comparison. It clearly agree well with the simulation on average.
+	\unit{s}$ (adaptation time).
+	This time varies: Fig~\subref{fig9:StochT}{B} shows the distribution
+	of adaptation times from 1000 runs of the simulation (where we
+	neglected the around 10 runs with adaptation times larger than $6
+	\cdot 10^5 \unit{s}$). In both figures, the trajectory obtained from
+	integrating the deterministic system is shown for comparison. It
+	clearly agree well with the simulation on average.
 	
 	\begin{figure}%[h!]
 		\centering
@@ -1108,7 +1144,15 @@
 		\centering
 		\includegraphics{media/Fig10_bifurcation.eps}
 		\caption{{\bf Bifurcation diagram showing the hysteresis loop in the stochastic system.}
-			The blue line shows the positions of deterministic fixed points, while the dashed line indicates the instability of the middle one. The orange and yellow points show the mean in the stochastic simulations when started at zero and at the high fixed point, respectively. The positions of the two peaks in the bimodal distributions are indicated by smaller points, connected by dotted lines. The arrows illustrate the hysteresis loop in the stochastic simulations.}
+			The blue line shows the positions of the deterministic fixed
+			points, while the dashed line indicates the instability of
+			the middle one. The orange and yellow points show the mean
+			of the stochastic simulations when started at zero and at
+			the high fixed point, respectively. The positions of the two
+			peaks in the bimodal distributions are indicated by smaller
+			points, connected by dotted lines. The arrows illustrate the
+			hysteresis loop in the stochastic simulations.
+			}
 		\label{fig10:Bifurcation}
 	\end{figure}
 		
