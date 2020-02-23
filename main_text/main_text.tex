@@ -1096,9 +1096,19 @@
 	will actually populate both the high and the low expression state,
 	because they do not show the effective barrier height between the two states.
 	In Fig~\subref{fig8:stochC}{(A)}, a deterministically bistable scenario is shown where the cells never switched to the high
-	expression state during the run time of our simulations. This actually is a good finding: it implies that bistability, characterized by two separate \emph{stable} steady-states, largely persists even in the presence of stochastic fluctuations. Thus, the fact that bimodality only occurs in a small regime means that the circuit is a strong switch and the deterministic picture is sufficient except in a small range of parameter space. Whether or not that is where the system actually is remains a question for future experiments.
-	
-	We found that the two lower fixed points (marked as 1 and 2 in
+	expression state during the run time of our simulations. This result
+	implies that bistability, characterized by two separate
+	\emph{stable} steady-states, largely persists even in the presence
+	of stochastic fluctuations, suggesting that the deterministic
+	picture is surprisingly and unreasonably effective. In other words,
+	the fact that bimodality only occurs with some fine tuning of
+	parameters means that the circuit is a strong switch and the
+	deterministic picture is sufficient except in a small region of
+	parameter space. Whether or not the system is actually in that
+	region of parameter space remains a question for future experiments.
+
+	To elaborate on the preceeding statements,
+	we found that the two lower fixed points (marked as 1 and 2 in
 	Fig~\ref{fig4:bistability}) need to be very close like in
 	Fig~\subref{fig8:stochC}{(B)} to give bimodality. For lower $\n{[c]_a}$,
 	meaning larger distance between the first and second fixed point,
@@ -1134,7 +1144,7 @@
 		\centering
 		\includegraphics{media/Fig9_evolution.eps}
 		\caption{{\bf Stochastic and deterministic time evolution of protein (XapA/XapB) and adaptation time.}
-			(A) Blue shows the results from one run of the stochastic simulation, orange shows the trajectory obtained from solving the deterministic ODE's. The simulation was run once for $5 \cdot 10^5 \unit{s}$ and started
+			(A) Shown in blue is the result from one run of the stochastic simulation, and in orange the trajectory obtained from solving the deterministic ODE's. The simulation was run once for $5 \cdot 10^5 \unit{s}$ and started
 			at an mRNA, protein and intracellular xanthosine count of 0. The parameters that were used are the same as in
 			Table~\ref{table1:nondim}, the only exception being the
 			extracellular xanthosine concentration, which was chosen to be
