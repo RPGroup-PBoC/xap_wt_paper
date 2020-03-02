@@ -244,15 +244,15 @@
 	\end{flushleft}
 	% Please keep the abstract below 300 words
 	\section*{Abstract}
-	Membrane transporters carry key metabolites through the cell membrane
-	and, from a resource standpoint, are hypothesized to be produced only when necessary. The
+	Membrane transporters carry key metabolites across the cell membrane
+	and, from a resource standpoint, are hypothesized to be produced when necessary. The
 	expression of membrane transporters in metabolic pathways is often
 	upregulated by the transporter substrate. In \emph{E. coli}, such systems
 	include for example the \emph{lacY}, \emph{araFGH}, and \emph{xylFGH} genes,
 	which encode for lactose, arabinose, and xylose transporters, respectively.
 	As a case study of a minimal system, we build a
 	generalizable physical model of the \emph{xapABR} genetic
-	circuit, which features a regulatory feedback loop through membrane
+	circuit, which features a regulatory feedback loop via membrane
 	transport (positive feedback) and enzymatic degradation (negative feedback)
 	of an inducer. Dynamical systems analysis and stochastic simulations show
 	that the membrane transport makes the model system bistable in certain
@@ -335,7 +335,7 @@
 	arabinose and xylose transporters, respectively. For \emph{lac} and
 	\emph{araFGH}, bistability has indeed been observed and attributed to such a
 	positive feedback
-	loop, for example in the well-known study of Novick and Weiner,
+	loop, for example in the well-known study by Novick and Weiner (1957),
 	among other works~\cite{Novick1957,Santillan2008,Ozbudak2004,Narang2008,Choi2008,Fritz2014,Jenkins2017,Siegele1997}.
 	A eukaryotic example is the glucose transporter GLUT-2 in liver and
 	\textbeta-cells~\cite{Bae2010,Tiedge1991}, though this system is much more
@@ -354,8 +354,8 @@
 	short-term adaptation.
 	
 	A key element of this mechanism is the presence of a transcription factor
-	which is always expressed at a low level (often at copy numbers
-	of order $\sim10$) and which binds to the transporter substrate.
+	which binds to the transporter substrate and which is often expressed at a low level (often at copy numbers
+	of order $\sim10$, \cite{Schmidt2015}).
 	This is resource efficient for the cell, as this low copy number
 	transcription factor acts as an ``always on'' sensor to detect
 	the substrate, allowing high copy numbers of the membrane transporter
@@ -369,7 +369,7 @@
 	complex. Instead of lactose, its purpose is to make use of the nucleoside
 	xanthosine as an energy source~\cite{Buxton1980,Hammer-Jespersen1980}. The
 	circuit is made up of two operons: one that encodes for XapR and another
-	that encodes for XapA and XapB. XapR appears to be a transcription factor
+	that encodes for XapA and XapB. XapR is a transcription factor
 	that is induced by xanthosine and activates the \emph{xapAB} promoter,
 	in close analogy to AraC, XylR, and also LacI.\footnote{One might object that LacI represses its target operon, while
 	XapR, AraC, and XylR activate their target operons. However, the analogy
@@ -387,10 +387,10 @@
 	membrane transporter of xanthosine~\cite{Seeger1995,Norholm2001}.
 	
 	Experimentally, we found that the expression level of \emph{xapAB} among
-	cells follows a bimodal distribution and that the system seems to be
+	cells is bimodal and that the system seems to be
 	bistable (see next section). We aim to understand which of the circuit's
 	features are necessary for bistability and investigate its behavior in
-	different parameter regimes. After presenting some experimental background on the \emph{xap} genes, we will discuss the
+	different parameter regimes. After presenting some experimental background on the \emph{xap} genes, we discuss the
 	details of our model. Next, we estimate the free parameters and then present
 	the observations we made through phase diagrams, followed by the results
 	from stochastic simulations.
@@ -403,7 +403,7 @@
 	placed a fluorescent reporter under the control of the wild type
 	(wt) \emph{xapAB} promoter. This construct was placed in three
 	different backgrounds: \textDelta\emph{xapABR},
-	\textDelta\emph{xapAB}, and wt. The right panel of
+	\textDelta\emph{xapAB}, and wt. The left panel of
 	Fig~\subref{fig1:data}{A} shows that for increasing xanthosine
 	concentration, expression in the wt-background increases in a
 	switch-like way: it is nearly zero when there is little xanthosine
@@ -414,17 +414,17 @@
 		
 	\begin{figure}%[h!]
 		\centering
-		\includegraphics[width=1\textwidth]{media/Fig1_data.eps}
+		\includegraphics[width=1\textwidth]{media/Fig1_experiment.eps}
 		\caption{{\bf Experimental data on the \emph{xap} circuit.}
 		(A) The expression of the \emph{xapAB} promoter was measured for
 		different extracellular concentrations of xanthosine.
-		The right panel shows the wild type circuit while
-		on the left the genes \emph{xapABR} and in the middle the genes
+		The left panel shows the wild type circuit while
+	in the middle the genes \emph{xapABR} and on the right the genes
 		\emph{xapAB} are removed. The wild type circuit behaves like a
 		switch. Note that the fluorescence scale of the middle panel
 		is not comparable with the other two,
 		and also that the chosen xanthosine concentrations are different.
-		(B) The fold-change in gene expression upon addition of
+		(B) shows the fold-change in gene expression upon addition of
 		xanthosine for the wt promoter (left panel)
 		and for the promoter with only the XapR binding site adjacent
 		to the polymerase binding site (right panel).
@@ -1203,7 +1203,8 @@
 			of the stochastic simulations when started at zero and at
 			the high fixed point, respectively. The positions of the two
 			peaks in the bimodal distributions are indicated by smaller
-			points, connected by dotted lines. The arrows illustrate the
+			points, connected by dotted lines. To make this clearer, the
+			bimodal distributions themselves are shown in a light color (in a smoothed form). The arrows illustrate the
 			hysteresis loop in the stochastic simulations.
 			}
 		\label{fig10:Bifurcation}
@@ -1282,14 +1283,9 @@
 	chemical master equation of this circuit. Experimental materials and methods.
 	
 	\section*{Acknowledgments}
-	Portions of the experiments reported here were carried out at the
-	Physiology summer course at the Marine Biological Laboratory in Woods
-	Hole, MA, operated by the University of Chicago. We thank Charlotte
-	Strandkvist and Kyle Naughton for their work on the project during the
-	course. We also Nathan Belliveau for strain creation work and for
-	bringing similar systems to our
-	attention, Patrick Lenggenhager for his help with \emph{Mathematica} issues, and Jane Kondev and Jin Wang for interesting discussions.
-	For assistance with illustrations, we also thank Nigel Orme.
+	We thank Patrick Lenggenhager for his help with \emph{Mathematica} issues, Jane Kondev and Jin Wang for interesting discussions, and Nigel Orme for assistance with illustrations. \textcolor{red}{Portions of the experiments reported here were carried out at the
+	Physiology Course at the Marine Biological Laboratory in Woods
+	Hole, MA, operated by the University of Chicago.}
 	This work was supported by 1R35 GM118043-01 Maximizing Investigators'
 	Research Award (MIRA) (to R.P.), and the Werner Siemens Foundation
 	through the Swiss Study Foundation (K.S.L.). This material is based upon
