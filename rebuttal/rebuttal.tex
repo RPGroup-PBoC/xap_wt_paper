@@ -97,6 +97,8 @@ Kathrin S. Laxhuber,$^{1}$ Muir J. Morrison,$^{2}$ Griffin Chure,$^{3}$ Rob Phil
 $^2$ Department of Physics, California Institute of Technology, Pasadena, CA, USA,
 $^3$ Division of Biology and Biological Engineering, California Institute of Technology, Pasadena, CA, USA, $^\dagger$ E-mail: \texttt{phillips@pboc.caltech.edu}}
 
+{\Large\textcolor{red}{ToDo: change author list above and at the end, add correct github link (public repo!).}}
+
 \begin{responseSummary}
 We thank the editor and reviewer for considering our manuscript and
 bringing some important points to our attention. The reviewer's comments
@@ -107,7 +109,7 @@ added experimental data to the manuscript and expanded the author list
 to reflect this. Below, we address the reviewer's concerns one-by-one
 and indicate where changes were made either to the main text or the
 supporting information. Besides these changes, we made a few small
-corrections to the text that had slipped our attention before. We
+improvements and corrections to the text that had slipped our attention before. We
 believe we have resolved the three issues brought up by the reviewer and
 hope our manuscript is now ready for publication in PLOS ONE.
 \end{responseSummary}
@@ -116,7 +118,7 @@ hope our manuscript is now ready for publication in PLOS ONE.
 \begin{review}
 In their manuscript "Theoretical investigation of a genetic switch for
 metabolic adaptation", Laxhuber and colleagues present a very nice
-theoretical analysis of the behavior of the E. coli xapABR system, using
+theoretical analysis of the behavior of the \emph{E. coli} xapABR system, using
 both deterministic and stochastic simulations to demonstrate that the
 system can show meaningful and important bistability driven by the
 activity of the membrane transporter. In general the work is well done,
@@ -148,35 +150,31 @@ mRNA copy numbers present here.
 
 \begin{response}
 We agree with the concern of the reviewer that in general, deterministic
-approximations of systems with such low copy numbers should not be
-trusted. We do not intend to give the general recommendation that a
+approximations of systems with such low copy numbers need to be verified. We do not intend to give the general recommendation that a
 continuous treatment alone is usually sufficient, and in order to avoid
 this, we added some words of warning in the beginning of our
 deterministic as well as our stochastic analysis.
 
-Nevertheless, despite the low copy numbers,
-for the system we investigate the deterministic model is a
-surprisingly accurate description of the means of copy number and
-waiting time distributions produced by the stochastic simulations.
-To make this more apparent, we added some additional comparisons of the two
+Nevertheless, for our system we did successfully test the concordance of the stochastic simulations and the deterministic model. To make this more apparent, we included some additional comparisons of the two
 models. We address these in more detail in our responses below,
 but to summarize: we added a bifurcation diagram
 (Fig~\ref{bifucation}) which illustrates that the stochastic
-distributions track the deterministic fixed points surprisingly well,
+distributions track the deterministic fixed points very well,
 and we compared the stochastic timescales with the solution of the
 deterministic model (Fig~\ref{adaptationtime}) and found excellent
-agreement there too.
+agreement there too. 
+
 Even though stochastic fluctuations around the deterministic
 trajectories may be large, the stochastic trajectories do still flow to
-the fixed points as predicted by the deterministic model, except when
-the system is close to either of the bifurcation points in
-Fig~\ref{bifucation}, where it is unsurprising that fluctuations are
-magnified in importance.
-Hence, while we find the close agreement surprising, we believe it to be
-appropriate to show and draw conclusions from deterministic phase
-diagrams. The latter have the advantage of providing the reader with a
-more intuitive understanding of the system than the plots of the results
-from the stochastic simulation.
+the fixed points as predicted by the deterministic model.
+Hence, the excellent agreement may be surprising or unintuitive at first, but the conclusions we draw from the deterministic phase diagrams turn out to be accurate.
+
+%, except when
+%the system is close to either of the bifurcation points in
+%Fig~\ref{bifucation}, where it is unsurprising that fluctuations are
+%magnified in importance.
+
+Given this concordance, we prefer to start by showing the deterministic case and illustrating our conclusions there before moving on to the stochastic picture. That is because the deterministic phase diagrams have the advantage of providing the reader with a more intuitive understanding of the system than the plots of the results from the stochastic simulation.
 \end{response}
 
 \begin{review}
@@ -218,7 +216,7 @@ bimodality is contrary to robust bistability.
 	\centering
 	\includegraphics{Fig10_bifurcation.eps}
 	\caption{{\bf Bifurcation diagram showing the hysteresis loop in the stochastic system.}
-		The blue line shows the positions of the deterministic fixed points, while the dashed line indicates the instability of the middle one. The orange and yellow points show the mean of the stochastic simulations when started at zero and at the high fixed point, respectively. The positions of the two peaks in the bimodal distributions are indicated by smaller points, connected by dotted lines. The arrows illustrate the hysteresis loop in the stochastic simulations.}
+		The blue line shows the positions of the deterministic fixed points, while the dashed line indicates the instability of the middle one. The orange and yellow points show the mean of the stochastic simulations when started at zero and at the high fixed point, respectively. The positions of the two peaks in the bimodal distributions are indicated by smaller points, connected by dotted lines. To make this clearer, the bimodal distributions themselves are shown in a light color (in a smoothed form). The arrows illustrate the hysteresis loop in the stochastic simulations.}
 	\label{bifucation}
 \end{figure}
 
@@ -248,7 +246,7 @@ explicitly considered.
 		\centering
 		\includegraphics{Fig9_evolution.eps}
 		\caption{{\bf Stochastic and deterministic time evolution of protein (XapA/XapB) and adaptation time.}
-			(A) Blue shows the results from one run of the stochastic simulation, orange shows the trajectory obtained from solving the deterministic ODE's. The simulation was started
+			(A) Blue shows the results from one typical run of the stochastic simulation, light blue shows two more extreme runs, and orange shows the trajectory obtained from solving the deterministic ODE's. The simulation was started
 			at an mRNA, protein and intracellular xanthosine count of 0. The
 			extracellular xanthosine concentration was chosen to be
 			$\mathrm{[c]_a} = 25$. (B) Blue shows the time until 90\% of the protein concentration at the upper fixed point was reached in 1000 runs of the simulation (same conditions as (A)). The orange line shows the corresponding deterministic time. The green dashed line right next to it indicated the mean of the blue distribution.}
@@ -309,12 +307,12 @@ My recommendation would be that the authors put in some more cautionary words ab
 \begin{response}
 We hope that we have addressed all these points in our responses above
 and shortly summarize here: We put in some cautionary words about the
-general usage of continuous models and demonstrated that for our system
-and the conclusions we draw, the continuous model is surprisingly appropriate.
+general usage of continuous models (beginning of sections on deterministic as well as stochastic results) and demonstrated that for our system
+and the conclusions we draw, the continuous model is surprisingly appropriate (bifurcation diagram and time evolution, end of results section).
 Furthermore, we extended our characterization of the stochastic model as
 suggested by investigating the distribution of adaptation/switching
-times as well as by incorporating transcriptional bursting in our
-simulation. The deterministic and stochastic model are now directly
+times (end of results section) as well as by incorporating transcriptional bursting in our
+simulation (end of section C in S1 Text). The deterministic and stochastic model are now directly
 compared (for the same set of parameters) in the bifurcation diagram as
 well as in terms of their adaptation/switching times.
 \end{response}
@@ -335,16 +333,14 @@ with this one.
 With further consideration, we agree with the reviewer that we relied
 rather heavily on this unpublished data and that it is therefore
 essential to make the experimental data available.
-\textbf{Also address changes to author list once finalized.}
 We have opted to include the data with this publication rather than
-separately. We have added a new section, ``experimental motivation,'' in
+separately. For this reason, we have added Griffin Chure, Nathan Belliveau, Charlotte Strandkvist, and Kyle Naughton to the author list, who collected or were involved in collecting the data. We have added a new section, ``experimental motivation,'' in
 the beginning of the main text which discusses the main features of the
 data that are relevant for our model. Furthermore, we added a section on
 the materials and experimental methods at the end of S1 Text (section
 E).
 The raw data is
-publicly available at \textbf{!!still need to sort out
-DOI/caltechData/ETHZ hosting/...??}.
+publicly available at \url{https://github.com/RPGroup-PBoC/mwc_activation/}.
 \end{response}
 
 %\begin{figure}[h]

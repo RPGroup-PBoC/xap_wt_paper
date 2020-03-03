@@ -244,15 +244,15 @@
 	\end{flushleft}
 	% Please keep the abstract below 300 words
 	\section*{Abstract}
-	Membrane transporters carry key metabolites through the cell membrane
-	and, from a resource standpoint, are hypothesized to be produced only when necessary. The
+	Membrane transporters carry key metabolites across the cell membrane
+	and, from a resource standpoint, are hypothesized to be produced when necessary. The
 	expression of membrane transporters in metabolic pathways is often
 	upregulated by the transporter substrate. In \emph{E. coli}, such systems
 	include for example the \emph{lacY}, \emph{araFGH}, and \emph{xylFGH} genes,
 	which encode for lactose, arabinose, and xylose transporters, respectively.
 	As a case study of a minimal system, we build a
 	generalizable physical model of the \emph{xapABR} genetic
-	circuit, which features a regulatory feedback loop through membrane
+	circuit, which features a regulatory feedback loop via membrane
 	transport (positive feedback) and enzymatic degradation (negative feedback)
 	of an inducer. Dynamical systems analysis and stochastic simulations show
 	that the membrane transport makes the model system bistable in certain
@@ -335,14 +335,14 @@
 	arabinose and xylose transporters, respectively. For \emph{lac} and
 	\emph{araFGH}, bistability has indeed been observed and attributed to such a
 	positive feedback
-	loop, for example in the well-known study of Novick and Weiner,
+	loop, for example in the well-known study by Novick and Weiner (1957),
 	among other works~\cite{Novick1957,Santillan2008,Ozbudak2004,Narang2008,Choi2008,Fritz2014,Jenkins2017,Siegele1997}.
 	A eukaryotic example is the glucose transporter GLUT-2 in liver and
 	\textbeta-cells~\cite{Bae2010,Tiedge1991}, though this system is much more
 	complex than the following analysis.
 	
 	It is quite conceivable that this auto-activation process is common to many
-	substances that a cell would want to accumulate. Such a switch enables the
+	substances that a cell would want to consume. Such a switch enables the
 	cell to sense and respond to its environment: if the substrate enters the
 	cell, it activates the production of membrane transporters. The cell then
 	starts accumulating the substrate, thereby ``testing'' the substrate's
@@ -354,8 +354,8 @@
 	short-term adaptation.
 	
 	A key element of this mechanism is the presence of a transcription factor
-	which is always expressed at a low level (often at copy numbers
-	of order $\sim10$) and which binds to the transporter substrate.
+	which binds to the transporter substrate and which is often expressed at a low level (often at copy numbers
+	of order $\sim10$, \cite{Schmidt2015, Li2014}).
 	This is resource efficient for the cell, as this low copy number
 	transcription factor acts as an ``always on'' sensor to detect
 	the substrate, allowing high copy numbers of the membrane transporter
@@ -369,7 +369,7 @@
 	complex. Instead of lactose, its purpose is to make use of the nucleoside
 	xanthosine as an energy source~\cite{Buxton1980,Hammer-Jespersen1980}. The
 	circuit is made up of two operons: one that encodes for XapR and another
-	that encodes for XapA and XapB. XapR appears to be a transcription factor
+	that encodes for XapA and XapB. XapR is a transcription factor
 	that is induced by xanthosine and activates the \emph{xapAB} promoter,
 	in close analogy to AraC, XylR, and also LacI.\footnote{One might object that LacI represses its target operon, while
 	XapR, AraC, and XylR activate their target operons. However, the analogy
@@ -387,10 +387,10 @@
 	membrane transporter of xanthosine~\cite{Seeger1995,Norholm2001}.
 	
 	Experimentally, we found that the expression level of \emph{xapAB} among
-	cells follows a bimodal distribution and that the system seems to be
+	cells is bimodal and that the system seems to be
 	bistable (see next section). We aim to understand which of the circuit's
 	features are necessary for bistability and investigate its behavior in
-	different parameter regimes. After presenting some experimental background on the \emph{xap} genes, we will discuss the
+	different parameter regimes. After presenting some experimental background on the \emph{xap} genes, we discuss the
 	details of our model. Next, we estimate the free parameters and then present
 	the observations we made through phase diagrams, followed by the results
 	from stochastic simulations.
@@ -403,7 +403,10 @@
 	placed a fluorescent reporter under the control of the wild type
 	(wt) \emph{xapAB} promoter. This construct was placed in three
 	different backgrounds: \textDelta\emph{xapABR},
-	\textDelta\emph{xapAB}, and wt. The right panel of
+	\textDelta\emph{xapAB}, and wt,
+	and expression as a function of extracellular xanthosine concentration
+	was measured using flow cytometetry, as has been described
+	previously~\cite{RazoMejia2018}. The left panel of
 	Fig~\subref{fig1:data}{A} shows that for increasing xanthosine
 	concentration, expression in the wt-background increases in a
 	switch-like way: it is nearly zero when there is little xanthosine
@@ -414,23 +417,24 @@
 		
 	\begin{figure}%[h!]
 		\centering
-		\includegraphics[width=1\textwidth]{media/Fig1_data.eps}
+		\includegraphics[width=1\textwidth]{media/Fig1_experiment.eps}
 		\caption{{\bf Experimental data on the \emph{xap} circuit.}
 		(A) The expression of the \emph{xapAB} promoter was measured for
-		different extracellular concentrations of xanthosine.
-		The right panel shows the wild type circuit while
-		on the left the genes \emph{xapABR} and in the middle the genes
-		\emph{xapAB} are removed. The wild type circuit behaves like a
+		different extracellular concentrations of xanthosine (vertical axis).
+		The left panel shows the wild type circuit while
+		the middle and right panels show the effect of deleting
+		the genes \emph{xapABR} and \emph{xapAB}, respectively.
+		The wild type circuit behaves like a
 		switch. Note that the fluorescence scale of the middle panel
 		is not comparable with the other two,
 		and also that the chosen xanthosine concentrations are different.
-		(B) The fold-change in gene expression upon addition of
+		(B) shows the fold-change in gene expression upon addition of
 		xanthosine for the wt promoter (left panel)
 		and for the promoter with only the XapR binding site adjacent
 		to the polymerase binding site (right panel).
 		Note that the fold-change used here differs from fold-change in,
 		e.g.,~\cite{Garcia2011,RazoMejia2018,Chure2019},
-		in that no subtraction of autofluorescence was carried out,
+		in that no subtraction of autofluorescence was performed,
 		which is adequate for the qualitative comparison
 		of these two promoters.
 		}
@@ -450,8 +454,7 @@
 	the circuit now lacks the positive feedback loop due to the
 	xanthosine membrane transporter XapB. 
 	
-	Can we gain further insight into how XapR regulates
-	the \emph{xapAB} promoter? As mentioned in
+	As mentioned in
 	the introduction, there are two binding sites for XapR on the
 	\emph{xapAB} promoter: one directly at the polymerase binding site
 	and one further upstream.
@@ -480,13 +483,13 @@
 	\begin{itemize}
 		\item In the initial absense of XapB, small amounts of xanthosine permeate
 				into and out of the cell (discussed in more detail below).
-		\item XapR is induced by xanthosine.
-		\item The induced XapR binds to the \emph{xapAB} promoter, leading to transcription.
+		\item The presence of xanthosine shifts XapR's equilibrium from inactive to active.
+		\item Active XapR binds to the \emph{xapAB} promoter, leading to transcription.
 		\item From this mRNA transcript, translation produces the two proteins XapA and XapB.
 		\item XapB actively transports much larger amounts of xanthosine into the cell and XapA degrades xanthosine.
-		\item Production of more XapA and XapB is balanced by decay or dilution through cell divisions.
+		\item Production of more XapA and XapB is balanced by degradation or dilution through cell divisions.
 	\end{itemize}
-	Because xanthosine induces the transcription factor XapR, we have positive
+	Because xanthosine activates the transcription factor XapR, we have positive
 	and negative feedback loops due to XapB and XapA, respectively. The remainder
 	of this subsection discusses each of the above steps in detail, leading us
 	to a set of two coupled ODEs. More in-depth explanations can be found
@@ -604,7 +607,7 @@
 	gene copy number per cell, it has units of $\n{M^{-1} \ s^{-1}}$ and not
 	just $\n{s^{-1}}$. This rate equation gives the mean mRNA concentration
 	$\langle\n{[mRNA]}\rangle = \frac{r_{\n{m}}}{\gamma_{\n{m}}}
-	p_{\n{active}}$, which we will need in the next paragraph. The mean can also be found from the full chemical master equation, which is shown in~\nameref{S1_Text}.
+	p_{\n{active}}$, which we will need in the next paragraph. The mean can also be found from the full chemical master equation, which is provided in~\nameref{S1_Text}.
 	
 	\paragraph*{Translation.} 
 	The next step in our modeling progression is translation. As a
@@ -764,7 +767,7 @@
 	\subsection*{Deterministic phase portraits}
 	A standard way to analyze dynamical systems deterministically is
 	to plot phase portraits. In the following, we present such plots where the
-	state variables are the mRNA, the protein, and the xanthosine concentration. Note that for the low copy numbers that can occur in our system, a deterministic analysis is not necessarily meaningful. Nevertheless, in our case we find that stochastic simulations agree well with the deterministic results. Thus, deterministic phase portraits are a surprisingly good starting point.
+	state variables are the mRNA, the protein, and the xanthosine concentration. Note that for the low copy numbers that can occur in our system, a deterministic analysis is not necessarily meaningful. Nevertheless, in our case we find that stochastic simulations agree well with the deterministic results. Thus, deterministic phase portraits are a valid starting point.
 	
 	\paragraph*{From a 3D to a 2D system.} 
 	Fig~\subref{fig4:bistability}{A} shows the 3D phase portrait for a
@@ -868,7 +871,7 @@
 	concentrations followed from this, but with some variation in the parameters
 	they could still be tuned to a certain extent.
 	
-	As a remark we point out that we have not observed any oscillations in the
+	We point out that we have not observed any oscillations in the
 	system. Intuitively, they might be expected when the XapA rate is
 	significantly larger than the XapB rate, but it turns out that oscillations
 	cannot be obtained. Why they do not occur can be understood when looking at the regions that
@@ -936,7 +939,7 @@
 	are necessary. The model implies that the bistability is due to XapB only. XapA
 	is neither sufficient nor necessary and, within the estimated parameter
 	regime, does not even have a significant influence on the system. This can
-	be seen from the plots in figure~\ref{fig6:xapAB}.
+	be seen from the plots in Fig~\ref{fig6:xapAB}.
 	Degradation of xanthosine by XapA lowers the xanthosine and protein concentration at the upper
 	fixed point by a small amount and could, in principle, thereby make the
 	high-expression solution vanish. For our choice of all other parameters,
@@ -949,8 +952,11 @@
 	only has the one fixed point at low expression.\footnote{
 		Seeger et.\ al.\cite{Seeger1995} observed that $\Delta xapB$ mutants could
 		survive, but grew extremely slowly, with xanthosine as the only carbon
-		source, which makes sense in light of Fig~\ref{fig6:xapAB}.
-		With \textit{xapB} removed, the switch never activates and the cells are
+		source. This suggests that low-affinity
+		import of xanthosine by NupC and NupG is sufficient to sustain slow growth,
+		but insufficient to serve as a stand-in for XapB.
+		Fig~\ref{fig6:xapAB} supports this supposition: in our model,
+		with \textit{xapB} removed, the switch never activates and the cells are
 		forced to survive with an extremely meager quantity of XapA to metabolize
 		the abundant xanthosine.}
 	
@@ -979,7 +985,7 @@
 	its environment may be used by cells for many metabolic processes.
 	
 	\paragraph*{The role of cooperativity.} 
-	The model has two cooperatively interacting binding sites for XapR on the
+	The model has two (putatively) cooperatively interacting binding sites for XapR on the
 	\emph{xapAB} promoter and two cooperative binding sites on XapR for
 	xanthosine. It is interesting to consider whether the cooperativity is
 	a necessary feature for bistability. This question is motivated by the importance of
@@ -1069,7 +1075,7 @@
 	concentration. The parameters that were used are the same as in the previous
 	section (listed in Table~\ref{table1:nondim}). However, we also find good agreement of the simulations and the deterministic results for other sets of parameters. To obtain the distributions,
 	we ran the simulation 5000 times for a simulated time of $10^6 \unit{s}$
-	each and started at a mRNA, protein and intracellular xanthosine count of 0.
+	each and started at an mRNA, protein and intracellular xanthosine count of 0.
 	
 	\begin{figure}%[h!]
 		\centering
@@ -1101,7 +1107,7 @@
 	implies that bistability, characterized by two separate
 	\emph{stable} steady-states, largely persists even in the presence
 	of stochastic fluctuations, suggesting that the deterministic
-	picture is surprisingly and unreasonably effective. In other words,
+	picture is remarkably effective. In other words,
 	the fact that bimodality only occurs with some fine tuning of
 	parameters means that the circuit is a strong switch and the
 	deterministic picture is sufficient except in a small region of
@@ -1112,7 +1118,7 @@
 	we found that the two lower fixed points (marked as 1 and 2 in
 	Fig~\ref{fig4:bistability}) need to be very close like in
 	Fig~\subref{fig8:stochC}{(B)} to give bimodality. For lower $\n{[c]_a}$,
-	meaning larger distance between the first and second fixed point,
+	meaning larger difference between the concentrations at the first and second fixed point,
 	almost no switching was observed. Of course, switching is also a matter of the
 	waiting time and stochastic effects: if one waits for long enough, it
 	should eventually occur. However, switching times of more than several hours
@@ -1126,7 +1132,7 @@
 	continuous, the simulations work with discrete numbers of mRNA, protein, and
 	xanthosine. This per se is no problem, because the deterministic analysis
 	describes the mean values and the simulation fluctuates around this mean.
-	If, however, the mRNA number at the third (high) fixed point is too low, the
+	However, if the mRNA number of the third (high) fixed point is so low that stochastic fluctuations are larger than the difference in concentrations between the first and the second fixed point, the
 	system may not be able to resolve the two points anymore. The tolerance to this is surprisingly large, though: In Fig~\ref{fig8:stochC}, the distance between the first and the third fixed point is around 3 mRNA molecules. While this is around the size of the fluctuations in Fig~\ref{fig8:stochC}, the latter become as large as 10 mRNA molecules when bursts are included in the simulation (see~\nameref{S1_Text}) and yet, the system is able to resolve the fixed points very well.
 	
 	\paragraph*{Time evolution and adaptation times.}
@@ -1145,7 +1151,7 @@
 		\centering
 		\includegraphics{media/Fig9_evolution.eps}
 		\caption{{\bf Stochastic and deterministic time evolution of protein (XapA/XapB) and adaptation time.}
-			(A) Shown in blue is the result from one run of the stochastic simulation, and in orange the trajectory obtained from solving the deterministic ODE's. The simulation was run once for $5 \cdot 10^5 \unit{s}$ and started
+			(A) Shown in blue is the result from one typical run of the stochastic simulation, and in orange the trajectory obtained from solving the deterministic ODE's. In light blue, two more extreme runs of the simulation are shown for comparison. The simulation was run for $5 \cdot 10^5 \unit{s}$ each and started
 			at an mRNA, protein and intracellular xanthosine count of 0. The parameters that were used are the same as in
 			Table~\ref{table1:nondim}, the only exception being the
 			extracellular xanthosine concentration, which was chosen to be
@@ -1203,7 +1209,8 @@
 			of the stochastic simulations when started at zero and at
 			the high fixed point, respectively. The positions of the two
 			peaks in the bimodal distributions are indicated by smaller
-			points, connected by dotted lines. The arrows illustrate the
+			points, connected by dotted lines. To make this clearer, the
+			bimodal distributions themselves are shown in a light color (in a smoothed form). The arrows illustrate the
 			hysteresis loop in the stochastic simulations.
 			}
 		\label{fig10:Bifurcation}
@@ -1226,7 +1233,7 @@
 	
 	
 	\section*{Conclusion}
-	In this paper, we propose a simple model for genetic circuits containing
+	Here, we propose a simple model for genetic circuits containing
 	a membrane transporter whose gene expression is, directly or indirectly,
 	activated by its substrate. We have shown that such a system can be bistable
 	and thus work as a genetic switch which reacts to the extracellular
@@ -1260,7 +1267,7 @@
 	Despite the small copy numbers at the lower fixed point, the stochastic simulations are in excellent agreement with deterministic predictions. All model parameters could be reasonably estimated despite the paucity of
 	experimental knowledge about the model system. The concentrations of mRNA, protein, and xanthosine at the fixed points as well as all qualitative features are as expected from similar systems and the few experiments on the \emph{xap} circuit. These points suggest that the model captures the relevant components of the system correctly and is able to describe its
 	dynamics. 
-	Furthermore, the modeling results let us, to some extent, understand why the biological system is constructed the way it is. By keeping the model as minimal as possible, but still modeling every part explicitly with an appropriate complexity, we can investigate the interesting features while still being able to understand the influence of all parameters and their interplay intuitively.
+	The modeling results let us, to some extent, understand how the biological system can achieve its function. By keeping the model as minimal as possible, but still modeling every part explicitly with an appropriate complexity, we can investigate the interesting features while still being able to understand the influence of all parameters and their interplay intuitively.
 		
 	With the framework given in this text, it
 	should be straightforward to model other promoters, regulatory pathways or
@@ -1282,14 +1289,10 @@
 	chemical master equation of this circuit. Experimental materials and methods.
 	
 	\section*{Acknowledgments}
+	We thank Jane Kondev and Jin Wang for interesting discussions, Patrick Lenggenhager for his help with \emph{Mathematica} issues, and Nigel Orme for assistance with illustrations.
 	Portions of the experiments reported here were carried out at the
-	Physiology summer course at the Marine Biological Laboratory in Woods
-	Hole, MA, operated by the University of Chicago. We thank Charlotte
-	Strandkvist and Kyle Naughton for their work on the project during the
-	course. We also Nathan Belliveau for strain creation work and for
-	bringing similar systems to our
-	attention, Patrick Lenggenhager for his help with \emph{Mathematica} issues, and Jane Kondev and Jin Wang for interesting discussions.
-	For assistance with illustrations, we also thank Nigel Orme.
+	Physiology Course at the Marine Biological Laboratory in Woods
+	Hole, MA, operated by the University of Chicago.
 	This work was supported by 1R35 GM118043-01 Maximizing Investigators'
 	Research Award (MIRA) (to R.P.), and the Werner Siemens Foundation
 	through the Swiss Study Foundation (K.S.L.). This material is based upon
