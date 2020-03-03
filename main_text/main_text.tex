@@ -1118,7 +1118,7 @@
 	we found that the two lower fixed points (marked as 1 and 2 in
 	Fig~\ref{fig4:bistability}) need to be very close like in
 	Fig~\subref{fig8:stochC}{(B)} to give bimodality. For lower $\n{[c]_a}$,
-	meaning larger distance between the first and second fixed point,
+	meaning larger difference between the concentrations at the first and second fixed point,
 	almost no switching was observed. Of course, switching is also a matter of the
 	waiting time and stochastic effects: if one waits for long enough, it
 	should eventually occur. However, switching times of more than several hours
@@ -1132,7 +1132,7 @@
 	continuous, the simulations work with discrete numbers of mRNA, protein, and
 	xanthosine. This per se is no problem, because the deterministic analysis
 	describes the mean values and the simulation fluctuates around this mean.
-	If, however, the mRNA number at the third (high) fixed point is too low, the
+	However, if the mRNA number of the third (high) fixed point is so low that stochastic fluctuations are larger than the difference in concentrations between the first and the second fixed point, the
 	system may not be able to resolve the two points anymore. The tolerance to this is surprisingly large, though: In Fig~\ref{fig8:stochC}, the distance between the first and the third fixed point is around 3 mRNA molecules. While this is around the size of the fluctuations in Fig~\ref{fig8:stochC}, the latter become as large as 10 mRNA molecules when bursts are included in the simulation (see~\nameref{S1_Text}) and yet, the system is able to resolve the fixed points very well.
 	
 	\paragraph*{Time evolution and adaptation times.}
@@ -1151,7 +1151,7 @@
 		\centering
 		\includegraphics{media/Fig9_evolution.eps}
 		\caption{{\bf Stochastic and deterministic time evolution of protein (XapA/XapB) and adaptation time.}
-			(A) Shown in blue is the result from one run of the stochastic simulation, and in orange the trajectory obtained from solving the deterministic ODE's. The simulation was run once for $5 \cdot 10^5 \unit{s}$ and started
+			(A) Shown in blue is the result from one typical run of the stochastic simulation, and in orange the trajectory obtained from solving the deterministic ODE's. In light blue, two more extreme runs of the simulation are shown for comparison. The simulation was run for $5 \cdot 10^5 \unit{s}$ each and started
 			at an mRNA, protein and intracellular xanthosine count of 0. The parameters that were used are the same as in
 			Table~\ref{table1:nondim}, the only exception being the
 			extracellular xanthosine concentration, which was chosen to be
@@ -1233,7 +1233,7 @@
 	
 	
 	\section*{Conclusion}
-	In this paper, we propose a simple model for genetic circuits containing
+	Here, we propose a simple model for genetic circuits containing
 	a membrane transporter whose gene expression is, directly or indirectly,
 	activated by its substrate. We have shown that such a system can be bistable
 	and thus work as a genetic switch which reacts to the extracellular
@@ -1267,7 +1267,7 @@
 	Despite the small copy numbers at the lower fixed point, the stochastic simulations are in excellent agreement with deterministic predictions. All model parameters could be reasonably estimated despite the paucity of
 	experimental knowledge about the model system. The concentrations of mRNA, protein, and xanthosine at the fixed points as well as all qualitative features are as expected from similar systems and the few experiments on the \emph{xap} circuit. These points suggest that the model captures the relevant components of the system correctly and is able to describe its
 	dynamics. 
-	Furthermore, the modeling results let us, to some extent, understand why the biological system is constructed the way it is. By keeping the model as minimal as possible, but still modeling every part explicitly with an appropriate complexity, we can investigate the interesting features while still being able to understand the influence of all parameters and their interplay intuitively.
+	The modeling results let us, to some extent, understand how the biological system can achieve its function. By keeping the model as minimal as possible, but still modeling every part explicitly with an appropriate complexity, we can investigate the interesting features while still being able to understand the influence of all parameters and their interplay intuitively.
 		
 	With the framework given in this text, it
 	should be straightforward to model other promoters, regulatory pathways or
@@ -1289,7 +1289,7 @@
 	chemical master equation of this circuit. Experimental materials and methods.
 	
 	\section*{Acknowledgments}
-	We thank Patrick Lenggenhager for his help with \emph{Mathematica} issues, Jane Kondev and Jin Wang for interesting discussions, and Nigel Orme for assistance with illustrations.
+	We thank Jane Kondev and Jin Wang for interesting discussions, Patrick Lenggenhager for his help with \emph{Mathematica} issues, and Nigel Orme for assistance with illustrations.
 	Portions of the experiments reported here were carried out at the
 	Physiology Course at the Marine Biological Laboratory in Woods
 	Hole, MA, operated by the University of Chicago.
