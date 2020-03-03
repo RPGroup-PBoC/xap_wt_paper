@@ -342,7 +342,7 @@
 	complex than the following analysis.
 	
 	It is quite conceivable that this auto-activation process is common to many
-	substances that a cell would want to accumulate. Such a switch enables the
+	substances that a cell would want to consume. Such a switch enables the
 	cell to sense and respond to its environment: if the substrate enters the
 	cell, it activates the production of membrane transporters. The cell then
 	starts accumulating the substrate, thereby ``testing'' the substrate's
@@ -355,7 +355,7 @@
 	
 	A key element of this mechanism is the presence of a transcription factor
 	which binds to the transporter substrate and which is often expressed at a low level (often at copy numbers
-	of order $\sim10$, \cite{Schmidt2015}).
+	of order $\sim10$, \cite{Schmidt2015, Li2014}).
 	This is resource efficient for the cell, as this low copy number
 	transcription factor acts as an ``always on'' sensor to detect
 	the substrate, allowing high copy numbers of the membrane transporter
@@ -403,7 +403,10 @@
 	placed a fluorescent reporter under the control of the wild type
 	(wt) \emph{xapAB} promoter. This construct was placed in three
 	different backgrounds: \textDelta\emph{xapABR},
-	\textDelta\emph{xapAB}, and wt. The left panel of
+	\textDelta\emph{xapAB}, and wt,
+	and expression as a function of extracellular xanthosine concentration
+	was measured using flow cytometetry, as has been described
+	previously~\cite{RazoMejia2018}. The left panel of
 	Fig~\subref{fig1:data}{A} shows that for increasing xanthosine
 	concentration, expression in the wt-background increases in a
 	switch-like way: it is nearly zero when there is little xanthosine
@@ -417,10 +420,11 @@
 		\includegraphics[width=1\textwidth]{media/Fig1_experiment.eps}
 		\caption{{\bf Experimental data on the \emph{xap} circuit.}
 		(A) The expression of the \emph{xapAB} promoter was measured for
-		different extracellular concentrations of xanthosine.
+		different extracellular concentrations of xanthosine (vertical axis).
 		The left panel shows the wild type circuit while
-	in the middle the genes \emph{xapABR} and on the right the genes
-		\emph{xapAB} are removed. The wild type circuit behaves like a
+		the middle and right panels show the effect of deleting
+		the genes \emph{xapABR} and \emph{xapAB}, respectively.
+		The wild type circuit behaves like a
 		switch. Note that the fluorescence scale of the middle panel
 		is not comparable with the other two,
 		and also that the chosen xanthosine concentrations are different.
@@ -430,7 +434,7 @@
 		to the polymerase binding site (right panel).
 		Note that the fold-change used here differs from fold-change in,
 		e.g.,~\cite{Garcia2011,RazoMejia2018,Chure2019},
-		in that no subtraction of autofluorescence was carried out,
+		in that no subtraction of autofluorescence was performed,
 		which is adequate for the qualitative comparison
 		of these two promoters.
 		}
@@ -450,8 +454,7 @@
 	the circuit now lacks the positive feedback loop due to the
 	xanthosine membrane transporter XapB. 
 	
-	Can we gain further insight into how XapR regulates
-	the \emph{xapAB} promoter? As mentioned in
+	As mentioned in
 	the introduction, there are two binding sites for XapR on the
 	\emph{xapAB} promoter: one directly at the polymerase binding site
 	and one further upstream.
@@ -480,13 +483,13 @@
 	\begin{itemize}
 		\item In the initial absense of XapB, small amounts of xanthosine permeate
 				into and out of the cell (discussed in more detail below).
-		\item XapR is induced by xanthosine.
-		\item The induced XapR binds to the \emph{xapAB} promoter, leading to transcription.
+		\item The presence of xanthosine shifts XapR's equilibrium from inactive to active.
+		\item Active XapR binds to the \emph{xapAB} promoter, leading to transcription.
 		\item From this mRNA transcript, translation produces the two proteins XapA and XapB.
 		\item XapB actively transports much larger amounts of xanthosine into the cell and XapA degrades xanthosine.
-		\item Production of more XapA and XapB is balanced by decay or dilution through cell divisions.
+		\item Production of more XapA and XapB is balanced by degradation or dilution through cell divisions.
 	\end{itemize}
-	Because xanthosine induces the transcription factor XapR, we have positive
+	Because xanthosine activates the transcription factor XapR, we have positive
 	and negative feedback loops due to XapB and XapA, respectively. The remainder
 	of this subsection discusses each of the above steps in detail, leading us
 	to a set of two coupled ODEs. More in-depth explanations can be found
@@ -604,7 +607,7 @@
 	gene copy number per cell, it has units of $\n{M^{-1} \ s^{-1}}$ and not
 	just $\n{s^{-1}}$. This rate equation gives the mean mRNA concentration
 	$\langle\n{[mRNA]}\rangle = \frac{r_{\n{m}}}{\gamma_{\n{m}}}
-	p_{\n{active}}$, which we will need in the next paragraph. The mean can also be found from the full chemical master equation, which is shown in~\nameref{S1_Text}.
+	p_{\n{active}}$, which we will need in the next paragraph. The mean can also be found from the full chemical master equation, which is provided in~\nameref{S1_Text}.
 	
 	\paragraph*{Translation.} 
 	The next step in our modeling progression is translation. As a
@@ -764,7 +767,7 @@
 	\subsection*{Deterministic phase portraits}
 	A standard way to analyze dynamical systems deterministically is
 	to plot phase portraits. In the following, we present such plots where the
-	state variables are the mRNA, the protein, and the xanthosine concentration. Note that for the low copy numbers that can occur in our system, a deterministic analysis is not necessarily meaningful. Nevertheless, in our case we find that stochastic simulations agree well with the deterministic results. Thus, deterministic phase portraits are a surprisingly good starting point.
+	state variables are the mRNA, the protein, and the xanthosine concentration. Note that for the low copy numbers that can occur in our system, a deterministic analysis is not necessarily meaningful. Nevertheless, in our case we find that stochastic simulations agree well with the deterministic results. Thus, deterministic phase portraits are a valid starting point.
 	
 	\paragraph*{From a 3D to a 2D system.} 
 	Fig~\subref{fig4:bistability}{A} shows the 3D phase portrait for a
@@ -868,7 +871,7 @@
 	concentrations followed from this, but with some variation in the parameters
 	they could still be tuned to a certain extent.
 	
-	As a remark we point out that we have not observed any oscillations in the
+	We point out that we have not observed any oscillations in the
 	system. Intuitively, they might be expected when the XapA rate is
 	significantly larger than the XapB rate, but it turns out that oscillations
 	cannot be obtained. Why they do not occur can be understood when looking at the regions that
@@ -936,7 +939,7 @@
 	are necessary. The model implies that the bistability is due to XapB only. XapA
 	is neither sufficient nor necessary and, within the estimated parameter
 	regime, does not even have a significant influence on the system. This can
-	be seen from the plots in figure~\ref{fig6:xapAB}.
+	be seen from the plots in Fig~\ref{fig6:xapAB}.
 	Degradation of xanthosine by XapA lowers the xanthosine and protein concentration at the upper
 	fixed point by a small amount and could, in principle, thereby make the
 	high-expression solution vanish. For our choice of all other parameters,
@@ -949,8 +952,11 @@
 	only has the one fixed point at low expression.\footnote{
 		Seeger et.\ al.\cite{Seeger1995} observed that $\Delta xapB$ mutants could
 		survive, but grew extremely slowly, with xanthosine as the only carbon
-		source, which makes sense in light of Fig~\ref{fig6:xapAB}.
-		With \textit{xapB} removed, the switch never activates and the cells are
+		source. This suggests that low-affinity
+		import of xanthosine by NupC and NupG is sufficient to sustain slow growth,
+		but insufficient to serve as a stand-in for XapB.
+		Fig~\ref{fig6:xapAB} supports this supposition: in our model,
+		with \textit{xapB} removed, the switch never activates and the cells are
 		forced to survive with an extremely meager quantity of XapA to metabolize
 		the abundant xanthosine.}
 	
@@ -979,7 +985,7 @@
 	its environment may be used by cells for many metabolic processes.
 	
 	\paragraph*{The role of cooperativity.} 
-	The model has two cooperatively interacting binding sites for XapR on the
+	The model has two (putatively) cooperatively interacting binding sites for XapR on the
 	\emph{xapAB} promoter and two cooperative binding sites on XapR for
 	xanthosine. It is interesting to consider whether the cooperativity is
 	a necessary feature for bistability. This question is motivated by the importance of
@@ -1069,7 +1075,7 @@
 	concentration. The parameters that were used are the same as in the previous
 	section (listed in Table~\ref{table1:nondim}). However, we also find good agreement of the simulations and the deterministic results for other sets of parameters. To obtain the distributions,
 	we ran the simulation 5000 times for a simulated time of $10^6 \unit{s}$
-	each and started at a mRNA, protein and intracellular xanthosine count of 0.
+	each and started at an mRNA, protein and intracellular xanthosine count of 0.
 	
 	\begin{figure}%[h!]
 		\centering
@@ -1101,7 +1107,7 @@
 	implies that bistability, characterized by two separate
 	\emph{stable} steady-states, largely persists even in the presence
 	of stochastic fluctuations, suggesting that the deterministic
-	picture is surprisingly and unreasonably effective. In other words,
+	picture is remarkably effective. In other words,
 	the fact that bimodality only occurs with some fine tuning of
 	parameters means that the circuit is a strong switch and the
 	deterministic picture is sufficient except in a small region of
@@ -1283,9 +1289,10 @@
 	chemical master equation of this circuit. Experimental materials and methods.
 	
 	\section*{Acknowledgments}
-	We thank Patrick Lenggenhager for his help with \emph{Mathematica} issues, Jane Kondev and Jin Wang for interesting discussions, and Nigel Orme for assistance with illustrations. \textcolor{red}{Portions of the experiments reported here were carried out at the
+	We thank Patrick Lenggenhager for his help with \emph{Mathematica} issues, Jane Kondev and Jin Wang for interesting discussions, and Nigel Orme for assistance with illustrations.
+	Portions of the experiments reported here were carried out at the
 	Physiology Course at the Marine Biological Laboratory in Woods
-	Hole, MA, operated by the University of Chicago.}
+	Hole, MA, operated by the University of Chicago.
 	This work was supported by 1R35 GM118043-01 Maximizing Investigators'
 	Research Award (MIRA) (to R.P.), and the Werner Siemens Foundation
 	through the Swiss Study Foundation (K.S.L.). This material is based upon
