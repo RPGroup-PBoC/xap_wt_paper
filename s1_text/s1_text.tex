@@ -480,18 +480,48 @@ Note that in the case with bursts that is discussed above, the transcription ter
 \newpage
 
 \section{Experimental materials and methods} \label{sec:exp}
-Strains used in this work derive from \emph{E.\ coli} K12 MG1655 with
-the \emph{lac} operon removed and were constructed similarly to those
-used in~\cite{RazoMejia2018}. The YFP-expressing reporter constructs
-were cloned into a pZS25 backbone with kanamycin resistance and
-integrated at the \emph{galK} locus using recombineering.
-\textDelta\emph{xapAB} and \textDelta\emph{xapABR} knockouts were
-generated \textbf{???using P1 transduction from the Keio collection???}
+\paragraph{Construction of $\Delta{xapABR}$ deletion strain.} Cells containing
+plasmid pSIM6 were diluted 1:100 in 50 ml LB media and grown to an OD600
+of $\approx 0.4$ at $30 ^\circ$C. The culture was immediately placed in
+a water bath shaker at 43$^\circ$C for 15 minutes and then cooled in an
+ice bath for 10 minutes. Cells were then spun down for 10 minutes
+(4,000~$g$, 4$^\circ$C) and resuspended on ice in 50~ml of chilled
+water. This was repeated three times before resuspending in 200~$\mu$L
+of chilled water to generate competent cells. Homologous primer
+extension sequences were obtained from Baba {\it et al.} \cite{Baba2006}
+and used to generate linear DNA containing a kanamycin resistance
+gene insert by PCR (amplified from plasmid pKD4), using primers that.
+contained homology for the region on the chromosome to be deleted
+\cite{Datsenko2000}. Electroporation was performed using 1~$\mu$L
+purified PCR product (about 100~ng DNA), mixed with 50~$\mu$L cells.
+Cells were resuspended in 750~$\mu$L SOC media and outgrowth was
+performed on a shaker at 30$^\circ$C for 90-120 minutes. Cells were then
+selected on an LB-agar plate containing kanamycin (30~$\mu$g/ml) and
+grown overnight at 30$^\circ$C. The deletions were confirmed by both
+colony PCR and sequencing. After confirmation, the deletion was
+transferred to a clean strain through P1 transduction and selection on
+kanamycin. Removal of kanamycin resistance was achieved by transforming
+cells with plasmid pCP20 (expressing FLP recombinase, carbenicillin
+resistance, on a temperature-sensitive replicon), with cells grown at
+30$^\circ$C. Lastly, several colonies were then growth colony-purified
+once non-selectively at 43$^\circ$C and then tested for loss of
+antibiotic resistance for both kanamycin and carbenicillin. 
 
-Flow cytometry measurements, as well as growth and preparation of cell
-cultures, were carried out as in~\cite{RazoMejia2018}.
+\paragraph{Construction of $\Delta{xapAB}$ strain.}
+Further experiments are underway in which precise control of the xapR copy number are needed and the preliminary data from these experiments are shown in the middle panel of Fig. 2A of the main text. This strain was constructed by creating a XapR-mCherry fusion protein expressed from a tetR regulated promoter. This fusion construct was integrated into the ycbN locus of the $\Delta{xapABR}$ strain making an effective $\Delta{xapAB}$ strain. A pZS3-PN25-TetR expression plasmid was also inserted into this genetic background which permits titratable control over the xapR-mCherry copy number. For the data presented in this work, expression was maximized using 10~ng/mL of the tetR inducer anhydro-tetracycline. Further information of a similar construct (LacI-mCherry) can be found in~\cite{Brewster2014} and~\cite{Chure2019}.
 
-\textbf{??What else needs adding here??}
+\paragraph{Primers for deletion strains}
+Generation of $\Delta{xapABR}$:
+actatttccggcaattcctgtctcctcacctactgtgtcaatgcagccaaCATATGAATATCCTCCTTAG; $xapABR<>P2$
+(lower case is homology, upper case is pKD4 primer)
+
+agatacaacaggtatcgctaatatagaggaaagtgtcagagttaaaagatgttttttcatGTGTAGGCTGGAGCTGCTTC; $xapABR<>P1$ (lower case is homology, upper case is pKD4 primer)
+
+Primers for colony-PCR to confirm deletion of xapABR:
+(upstream of xapR) cgggtcgttagctcagttggta
+(downstream of XapA): ttcccagtcgaagaacccgtac
+
+\textbf{Finish reformatting to table, add other primers?}
 
 \FloatBarrier
 \newpage
@@ -608,6 +638,20 @@ cultures, were carried out as in~\cite{RazoMejia2018}.
 	\newblock Cell. 2005;123(6):1025--1036.
 	\newblock doi:{10.1016/j.cell.2005.09.031}.
 	
+	\bibitem{Baba2006} Baba T, Ara T, Hasegawa M,
+	Takai Y, Okumura Y, Baba, M, et al.
+	\newblock Construction of \textit{Escherichia coli} K-12 in-frame,
+	single-gene knockout mutants: the Keio collection.
+	\newblock Molecular Systems Biology, 2006;2(1), 2460.
+	\newblock doi:{10.1038/msb4100050}
+
+	\bibitem{Datsenko2000}
+	Datsenko, KA, Wanner, BL.
+	\newblock One-step inactivation of chromosomal genes
+	in Escherichia coli K-12 using PCR products.
+	\newblock PNAS, 2000;97(12), 6640–6645.
+	\newblock doi:{10.1073/pnas.120163297}
+
 \end{thebibliography}
 
 \end{document}

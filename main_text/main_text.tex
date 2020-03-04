@@ -211,6 +211,9 @@
 		Kathrin S. Laxhuber\textsuperscript{1},
 		Muir J. Morrison\textsuperscript{2},
 		Griffin Chure\textsuperscript{3},
+		Nathan M. Belliveau\textsuperscript{4},
+		Charlotte Strandkvist\textsuperscript{5},
+		Kyle L. Naughton\textsuperscript{6},
 		Rob Phillips\textsuperscript{2,3$\ast$}
 		\\
 		\bigskip
@@ -219,6 +222,12 @@
 		\textbf{2} Department of Physics, California Institute of Technology, Pasadena, CA, USA
 		\\
 		\textbf{3} Division of Biology and Biological Engineering, California Institute of Technology, Pasadena, CA, USA
+		\\
+		\textbf{4} Howard Hughes Medical Institute, University of Washington, Seattle, WA, USA
+		\\
+		\textbf{5} Department of Systems Biology, Harvard Medical School, Boston, MA, USA
+		\\
+		\textbf{6} Department of Physics and Astronomy, University of Southern California, Los Angeles, CA, USA
 		\\
 		\bigskip
 		
@@ -350,8 +359,9 @@
 	expression stabilizes at an ``on'' state and the cell has, in a short-term
 	sense, adapted. When there is not enough substrate, the operon, which
 	often encodes for a whole set of enzymes for this one metabolite, switches
-	``off'' again. Such a mechanism could be involved in various cases of
-	short-term adaptation.
+	``off'' again. Such a mechanism could plausibly be involved in various cases of
+	short-term adaptation such as, but not limited to, the \emph{lacZYA}, \emph{araFGH},
+	and \emph{xylFGH} examples mentioned above.
 	
 	A key element of this mechanism is the presence of a transcription factor
 	which binds to the transporter substrate and which is often expressed at a low level (often at copy numbers
@@ -391,7 +401,7 @@
 	bistable (see next section). We aim to understand which of the circuit's
 	features are necessary for bistability and investigate its behavior in
 	different parameter regimes. After presenting some experimental background on the \emph{xap} genes, we discuss the
-	details of our model. Next, we estimate the free parameters and then present
+	details of our model. Lastly, we estimate the free parameters and then present
 	the observations we made through phase diagrams, followed by the results
 	from stochastic simulations.
 	
@@ -466,7 +476,8 @@
 	(Fig~\subref{fig1:data}{B}, right panel).
 	Clearly, removing one XapR binding site dramatically reduced the
 	responsiveness of the promoter to xanthosine (though not apparent
-	from Fig~\subref{fig1:data}{B}, this response remains detectable).
+	from Fig~\subref{fig1:data}{B}, this response remains detectable
+	in other measurements covering a smaller dynamic range).
 	
 	Already, we believe these data, combined with the prior knowledge of
 	the field, clearly suggest a minimal model of the \emph{xapABR}
@@ -477,14 +488,14 @@
 	
 	\section*{Model}
 	\subsection*{Step by step modeling of the system}
-	In this section, we present our model of the \emph{xapAB} genetic circuit.
+	In this section, we present our model of the \emph{xapABR} genetic circuit.
 	Fig~\ref{fig2:model} shows an overview of this model.
 	The qualitative picture of the circuit switching its state is as follows:
 	\begin{itemize}
 		\item In the initial absense of XapB, small amounts of xanthosine permeate
 				into and out of the cell (discussed in more detail below).
 		\item The presence of xanthosine shifts XapR's equilibrium from inactive to active.
-		\item Active XapR binds to the \emph{xapAB} promoter, leading to transcription.
+		\item Active XapR binds to the \emph{xapAB} promoter, increasing transcription.
 		\item From this mRNA transcript, translation produces the two proteins XapA and XapB.
 		\item XapB actively transports much larger amounts of xanthosine into the cell and XapA degrades xanthosine.
 		\item Production of more XapA and XapB is balanced by degradation or dilution through cell divisions.
@@ -535,7 +546,7 @@
 	active at high concentrations of xanthosine. 
 	
 	\paragraph*{Transcription.}
-	Transcription and translation of the \emph{xapAB} gene, regulated by the
+	Transcription and translation of the \emph{xapAB} operon, regulated by the
 	induced XapR, produce the two proteins XapA and XapB. We start with
 	transcription and assume that the binding of XapR and polymerase to the
 	promoter is at quasi-equilibrium. The polymerase binding is modeled as
@@ -679,6 +690,7 @@
 	parameters and their definitions are listed. Furthermore, we define
 	$\n{[m]_a} \defeq \frac{\n{[m]}}{K_{\n{a}}}$, $\n{[p]_a} \defeq
 	\frac{\n{[p]}}{K_{\n{a}}}$, $\n{[x]_a} \defeq \frac{\n{[x]}}{K_{\n{a}}}$,
+	$\n{[c]_a} \defeq \frac{\n{[c]}}{K_{\n{a}}}$,
 	and $\tau \defeq \gamma_{\n{p}} t$. Using these definitions, the following
 	equations are obtained
 	\begin{alignat}{2}
@@ -866,8 +878,9 @@
 	``switch-point'' is around 1: this is large enough to enable the system to
 	clearly resolve the two stable fixed points (as we will see from the
 	stochastic simulations later on), but is low enough to lead to mean mRNA
-	numbers that are very reasonable (see~\cite{Milo2016} for the average mRNA
-	numbers in bacterial cells). The protein and xanthosine
+	numbers that are very reasonable (of order $10^{-2}$ to $10^{1}$
+	transcripts per gene per cell in \textit{E.\ coli}~\cite{Milo2016}).
+	The protein and xanthosine
 	concentrations followed from this, but with some variation in the parameters
 	they could still be tuned to a certain extent.
 	
@@ -1055,8 +1068,8 @@
 	five to several thousand. Even worse, xanthosine copy numbers may range
 	as high as $10^7$ at the high expression fixed point. For such large
 	copy numbers, the number of reaction firings that must be simulated with
-	Gillespie's classical algorithm leads to an impractical computational
-	cost. This would make Gillespie's \texttau-leap algorithm ideal for the high
+	Gillespie's classical algorithm~\cite{Gillespie1976} leads to an impractical computational
+	cost. This would make Gillespie's \texttau-leap algorithm~\cite{Gillespie2001} ideal for the high
 	expression state. On the other hand, \texttau-leaping cannot be used for
 	the small protein copy numbers in the low expression state, or the mRNA
 	copy number which remains of order ten or less in both states. For
@@ -1280,7 +1293,38 @@
 	efficient way to gain a very thorough understanding of the behavior of the
 	system. 
 	
+	\subsection*{Materials and Methods}
+	\paragraph*{Bacterial Strains.} Strains used in this work
+	derive from {\it E. coli} K12 MG1655 with the {\it lac} operon
+	removed and were constructed similarly to those used in
+	\cite{RazoMejia 2018, Belliveau2019}. $\Delta{xapAB}$ and
+	$\Delta{xapABR}$ knockouts were generated using the approach of
+	Datsenko and Wanner \cite{Datsenko2000}. For the fluorescent
+	reporter constructs the {\it xapAB} promoter region, with one or
+	both XapR binding sites, were extracted from {\it E. coli} K12
+	MG1655 by PCR. These were cloned into the YFP-expressing reporter
+	plasmid pZS25,  containing kanamycin resistance, and integrated at
+	the {\it galK} locus using $\lambda$ Red recombineering \cite{Sharan2009}.
 	
+	\paragraph*{Flow Cytometry Measurements.}
+	Experimental measurements in Fig. 2B of the main text were obtained
+	via flow cytometry and were performed in a similar manner as
+	described in~\cite{RazoMejia2018}. Briefly, wild-type,
+	$\Delta{xapABR}$, and $\Delta{xapAB}$ were grown to saturation in
+	rich LB Miller (BD Medical) medium and were diluted 1:1000 into M9
+	minimal medium supplemented with 0.5\% (w/v) glucose and the
+	appropriate concentration of xanthosine. For measurements of the
+	$\Delta{xapAB}$ strain, chloramphenicol was also added to the growth
+	medium to ensure stability of the pZ3PN25-tetR plasmid along with 10
+	ng /mL of anhydro-tetracycline to maximize expression of
+	xapR-mCherry. Cultures were allowed to grow at 37$^\circ$ C for six
+	to eight hours to an OD$_{600nm}$ of $\approx$ 0.3 At this point,
+	the cultures were diluted 1:10 into M9 + 0.5\% glucose and were
+	immediately analyzed via a MacsQuant VYB Flow Cytometery
+	(MiltenyiBiotec). Measurement files were exported to CSV file
+	formats and analyzed as previously described
+	in~\cite{RazoMejia2018}.
+
 	\section*{Supporting information}
 	\paragraph*{S1 Text.}
 	\label{S1_Text}
@@ -1427,26 +1471,26 @@
 		Hammer-Jespersen K, Buxton RS, Hansen TD.
 		\newblock A second purine nucleoside phosphorylase in \emph{Escherichia coli}
 		K-12.
-		\newblock Molecular and General Genetics MGG. 1980;179(2):341--348.
+		\newblock Molecular and General Genetics. 1980;179(2):341--348.
 		
 		\bibitem{Seeger1995}
 		Seeger C, Poulsen C, Dandanell G.
 		\newblock Identification and characterization of genes (xapA, xapB, and xapR)
 		involved in xanthosine catabolism in \emph{Escherichia coli}.
-		\newblock Journal of bacteriology. 1995;177(7559336):5506--5516.
+		\newblock Journal of Bacteriology. 1995;177(7559336):5506--5516.
 		
 		\bibitem{Joergensen1999}
 		Jorgensen C, Dandanell G.
 		\newblock Isolation and characterization of mutations in the \emph{Escherichia
 			coli} regulatory protein XapR.
-		\newblock Journal of bacteriology. 1999;181(10400599):4397--4403.
+		\newblock Journal of Bacteriology. 1999;181(10400599):4397--4403.
 		
 		\bibitem{Norholm2001}
 		Norholm MH, Dandanell G.
 		\newblock Specificity and topology of the \emph{Escherichia coli} xanthosine
 		permease, a representative of the NHS subfamily of the major facilitator
 		superfamily.
-		\newblock Journal of bacteriology. 2001;183(11466294):4900--4904.
+		\newblock Journal of Bacteriology. 2001;183(11466294):4900--4904.
 		
 		\bibitem{Garcia2011}
 		Garcia HG, Phillips R.
@@ -1490,13 +1534,25 @@
 		
 		\bibitem{Milo2016}
 		Milo R, Phillips R.
-		\newblock In: Cell biology by the numbers. Garland Science. 2016; 217.
+		\newblock In: Cell Biology by the Numbers. Garland Science. 2016; 217.
 		
 		\bibitem{Cherry2000}
 		Cherry JL, Adler FR.
 		\newblock How to make a Biological Switch.
 		\newblock Journal of Theoretical Biology. 2000;203(2):117--133.
-		
+
+		\bibitem{Gillespie1976}
+		Gillespie, DT.
+		\newblock A General Method for Numerically Simulating the Stochastic
+		Time Evolution of Coupled Chemical Reactions.
+		\newblock Journal of Computational Physics. 1976;22(4):403--434.
+
+		\bibitem{Gillespie2001}
+		Gillespie, DT.
+		\newblock Approximate Accelerated Stochastic Simulation
+		of Chemically Reacting Systems.
+		\newblock J Chem Phys. 2001;115(4):1716--1733.
+
 		\bibitem{Cao2006}
 		Cao Y, Gillespie DT, Petzold LR.
 		\newblock Efficient step size selection for the tau-leaping simulation method.
@@ -1507,6 +1563,28 @@
 		Maarleveld TR, Olivier BG, Bruggeman FJ. StochPy, Stochastic Modeling in
 		Python. 2015.
 		\newblock Available from: \url{http://stochpy.sourceforge.net/}.
+
+		\bibitem{Belliveau2019}
+		Belliveau, NM, Barnes, SL, Ireland, WT,
+		Jones, DL, Sweredoski, MJ, Moradian, A, et al.
+		\newblock Systematic approach for dissecting the molecular
+		mechanisms of transcriptional regulation in bacteria.
+		\newblock PNAS, 2018;115(21), E4796–E4805.
+		\newblock doi:{10.1073/pnas.1722055115}
+
+		\bibitem{Datsenko2000}
+		Datsenko, KA, Wanner, BL.
+		\newblock One-step inactivation of chromosomal genes
+		in Escherichia coli K-12 using PCR products.
+		\newblock PNAS, 2000;97(12), 6640–6645.
+		\newblock doi:{10.1073/pnas.120163297}
+
+		\bibitem{Sharan2009}
+		Sharan, SK, Thomason, LC, Kuznetsov, SG, Court, DL.
+		\newblock Recombineering: a homologous recombination-based
+		method of genetic engineering.
+		\newblock Nature Protocols, 2009;4(2), 206–223.
+		\newblock doi{10.1038/nprot.2008.227}
 		
 	\end{thebibliography}
 	
