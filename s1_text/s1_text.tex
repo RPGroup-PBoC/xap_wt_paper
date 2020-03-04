@@ -78,6 +78,7 @@
 \usepackage{placeins}
 \usepackage{refcount}
 \usepackage{textgreek}
+\usepackage{upgreek}
 \usepackage{bm}
 \usepackage{url} % url in Quellen verlinken
 
@@ -126,7 +127,7 @@
 	\\
 	\textbf{2} Department of Physics, California Institute of Technology, Pasadena, CA, USA
 	\\
-	\textbf{3} Department of Biology and Biological Engineering, California Institute of Technology, Pasadena, CA, USA
+	\textbf{3} Division of Biology and Biological Engineering, California Institute of Technology, Pasadena, CA, USA
 	\\
 	\bigskip
 	
@@ -210,10 +211,11 @@ Furthermore, we do not expect our approximation to have a large influence: the i
 The proteins are transcribed together, and thus, their rate of transcription and mRNA decay should be the same. The protein decay is assumed to be dominated by cell division, making the decay rates roughly equal as well. What could differ is the translation rate. Changes in this rate rescale the protein synthesis rate by the same factor and thus, in steady-state, change the total number of proteins. The only other place where the proteins appear in the ODE's is in their respective Michaelis-Menten term, and the latter is proportional to $k_{\n{cat}} \n{[E]_0}$. Hence, different numbers of XapA and XapB can be accounted for by changing their respective values of $k_{\n{cat}}$.
 
 \paragraph*{Exponential protein decay.}
-The protein decay should be dominated by dilution through cell division, which is a discrete process. However, the cell grows before division, resulting in a continuous dilution. Furthermore, replication leads to a varying number of gene copies and thereby also a varying transcription rate. Trying to capture all these mechanistic details would lead to an overcomplicated model. Treating the protein decay as a Poisson process has produced correct results in past research, which is why we expect this assumption to be reasonable. 
+The protein decay should be dominated by dilution through cell division, which is a discrete process. However, the cell grows before division, resulting in a continuous dilution in concentration. Furthermore, replication leads to a varying number of gene copies and thereby also a varying transcription rate. Trying to capture all these mechanistic details would lead to an overcomplicated model. Treating the protein decay as a Poisson process has produced correct results in past research, which is why we expect this assumption to be reasonable. 
 
 \paragraph*{Kinetics of XapB, NupC, and NupG.}
-Entering the cell consists of two steps. In a first transport step, xanthosine passes the
+All statements in this paragraph are based on data
+from~\cite{Norholm2001}. Xanthosine entering the cell consists of two steps. In a first transport step, xanthosine passes the
 outer membrane through porins like Tsx, OmpF and OmpC. This does not seem to
 be a rate-limiting step. Then, XapB actively transports it across the inner
 membrane, powered by the proton motive force. There are two other active
@@ -222,8 +224,7 @@ low affinity: NupC and NupG. It was found that \textDelta\emph{nupC}
 \textDelta\emph{nupG} strains cannot grow on xanthosine. Hence, these seem
 to be necessary to ``start'' the system by importing small amounts of
 xanthosine that then activate \emph{xapB}, and there appears to be no other
-significant way in which xanthosine can enter the cell. All statements in this paragraph are based on data
-from~\cite{Norholm2001}. 
+significant way in which xanthosine can enter the cell. 
 
 As mentioned in the main text, we assume the kinetic scheme of all three transporters to be similar to that
 of \emph{lac} permease (as it is described in~\cite{Kaback2015}), which is discussed in more detail in the next subsection. One transporter of this type can do two things to change the intracellular xanthosine
@@ -480,35 +481,35 @@ Note that in the case with bursts that is discussed above, the transcription ter
 \newpage
 
 \section{Experimental materials and methods} \label{sec:exp}
-\paragraph{Construction of $\Delta{xapABR}$ deletion strain.} Cells containing
-plasmid pSIM6 were diluted 1:100 in 50 ml LB media and grown to an OD600
-of $\approx 0.4$ at $30 ^\circ$C. The culture was immediately placed in
-a water bath shaker at 43$^\circ$C for 15 minutes and then cooled in an
+\paragraph{Construction of $\bm{\Delta{xapABR}}$ deletion strain.} Cells containing
+plasmid pSIM6 were diluted 1:100 in $50 \unit{mL}$ LB media and grown to an OD600
+of $\approx 0.4$ at $30^\circ$C. The culture was immediately placed in
+a water bath shaker at $43\unit{^\circ C}$ for 15 minutes and then cooled in an
 ice bath for 10 minutes. Cells were then spun down for 10 minutes
-(4,000~$g$, 4$^\circ$C) and resuspended on ice in 50~ml of chilled
-water. This was repeated three times before resuspending in 200~$\mu$L
+($4,000 \unit{g}$, $4\unit{^\circ C}$) and resuspended on ice in $50\unit{mL}$ of chilled
+water. This was repeated three times before resuspending in $200 \unit{\upmu L}$
 of chilled water to generate competent cells. Homologous primer
 extension sequences were obtained from Baba {\it et al.} \cite{Baba2006}
 and used to generate linear DNA containing a kanamycin resistance
 gene insert by PCR (amplified from plasmid pKD4), using primers that.
 contained homology for the region on the chromosome to be deleted
-\cite{Datsenko2000}. Electroporation was performed using 1~$\mu$L
-purified PCR product (about 100~ng DNA), mixed with 50~$\mu$L cells.
-Cells were resuspended in 750~$\mu$L SOC media and outgrowth was
-performed on a shaker at 30$^\circ$C for 90-120 minutes. Cells were then
-selected on an LB-agar plate containing kanamycin (30~$\mu$g/ml) and
-grown overnight at 30$^\circ$C. The deletions were confirmed by both
+\cite{Datsenko2000}. Electroporation was performed using $1 \unit{\upmu L}$
+purified PCR product (about $100 \unit{ng}$ DNA), mixed with $50 \unit{\upmu L}$ cells.
+Cells were resuspended in $750 \unit{\upmu L}$ SOC media and outgrowth was
+performed on a shaker at $30\unit{^\circ C}$ for 90-120 minutes. Cells were then
+selected on an LB-agar plate containing kanamycin ($30 \unit{\upmu g/mL}$) and
+grown overnight at $30\unit{^\circ C}$. The deletions were confirmed by both
 colony PCR and sequencing. After confirmation, the deletion was
 transferred to a clean strain through P1 transduction and selection on
 kanamycin. Removal of kanamycin resistance was achieved by transforming
 cells with plasmid pCP20 (expressing FLP recombinase, carbenicillin
 resistance, on a temperature-sensitive replicon), with cells grown at
-30$^\circ$C. Lastly, several colonies were then growth colony-purified
-once non-selectively at 43$^\circ$C and then tested for loss of
+$30\unit{^\circ C}$. Lastly, several colonies were then growth colony-purified
+once non-selectively at $43\unit{^\circ C}$ and then tested for loss of
 antibiotic resistance for both kanamycin and carbenicillin. 
 
-\paragraph{Construction of $\Delta{xapAB}$ strain.}
-Further experiments are underway in which precise control of the xapR copy number are needed and the preliminary data from these experiments are shown in the middle panel of Fig. 2A of the main text. This strain was constructed by creating a XapR-mCherry fusion protein expressed from a tetR regulated promoter. This fusion construct was integrated into the ycbN locus of the $\Delta{xapABR}$ strain making an effective $\Delta{xapAB}$ strain. A pZS3-PN25-TetR expression plasmid was also inserted into this genetic background which permits titratable control over the xapR-mCherry copy number. For the data presented in this work, expression was maximized using 10~ng/mL of the tetR inducer anhydro-tetracycline. Further information of a similar construct (LacI-mCherry) can be found in~\cite{Brewster2014} and~\cite{Chure2019}.
+\paragraph{Construction of $\bm{\Delta{xapAB}}$ strain.}
+Further experiments are underway in which precise control of the xapR copy number are needed and the preliminary data from these experiments are shown in the middle panel of Fig. 2A of the main text. This strain was constructed by creating a XapR-mCherry fusion protein expressed from a tetR regulated promoter. This fusion construct was integrated into the ycbN locus of the $\Delta{xapABR}$ strain making an effective $\Delta{xapAB}$ strain. A pZS3-PN25-TetR expression plasmid was also inserted into this genetic background which permits titratable control over the xapR-mCherry copy number. For the data presented in this work, expression was maximized using $10 \unit{ng/mL}$ of the tetR inducer anhydro-tetracycline. Further information of a similar construct (LacI-mCherry) can be found in~\cite{Brewster2014} and~\cite{Chure2019}.
 
 \paragraph{Primers for deletion strains}
 Generation of $\Delta{xapABR}$:
@@ -651,6 +652,12 @@ Primers for colony-PCR to confirm deletion of xapABR:
 	in Escherichia coli K-12 using PCR products.
 	\newblock PNAS, 2000;97(12), 6640–6645.
 	\newblock doi:{10.1073/pnas.120163297}
+	
+	\bibitem{Chure2019}
+	Chure G, Kaczmarek ZA, Phillips R.
+	\newblock Physiological Adaptability and Parametric Versatility in a Simple
+	Genetic Circuit.
+	\newblock bioRxiv. 2019;doi:{10.1101/2019.12.19.878462}.
 
 \end{thebibliography}
 
