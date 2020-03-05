@@ -453,12 +453,12 @@
 
 	When all genes of the \emph{xapABR} circuit are removed, the
 	xanthosine response of our reporter construct disappears (see
-	Fig~\subref{fig1:data}{A}, left panel).
+	Fig~\subref{fig1:data}{A}, middle panel).
 	This is the result of removing the transcription factor XapR that is
 	induced by xanthosine. When only the genes \emph{xapAB} are removed
 	but \emph{xapR} is kept, a response to the xanthosine concentration
 	is regained but it is no longer switch-like (see
-	Fig~\subref{fig1:data}{A}, middle panel). Instead, the distribution remains
+	Fig~\subref{fig1:data}{A}, right panel). Instead, the distribution remains
 	unimodal and simply shifts to higher expression as the xanthosine
 	concentration is increased. As we will see later on, this is because
 	the circuit now lacks the positive feedback loop due to the
@@ -466,7 +466,7 @@
 	
 	As mentioned in
 	the introduction, there are two binding sites for XapR on the
-	\emph{xapAB} promoter: one directly at the polymerase binding site
+	\emph{xapAB} promoter: one partially overlapping the polymerase -35 site
 	and one further upstream.
 	Working in the \textDelta\emph{xapAB} background,
 	we measured the expression level of our reporter when driven by two
@@ -1296,28 +1296,33 @@
 	\subsection*{Materials and Methods}
 	\paragraph*{Bacterial Strains.} Strains used in this work
 	derive from {\it E. coli} K12 MG1655 with the {\it lac} operon
-	removed and were constructed similarly to those used in~\cite{RazoMejia2018, Belliveau2019}. $\Delta{xapAB}$ and
-	$\Delta{xapABR}$ knockouts were generated using the approach of
+	removed and were constructed similarly to those used in~\cite{RazoMejia2018, Belliveau2019}. 
+	The $\Delta{xapABR}$ knockout was generated using the approach of
 	Datsenko and Wanner~\cite{Datsenko2000}. For the fluorescent
 	reporter constructs the {\it xapAB} promoter region, with one or
 	both XapR binding sites, were extracted from {\it E. coli} K12
 	MG1655 by PCR. These were cloned into the YFP-expressing reporter
-	plasmid pZS25, containing kanamycin resistance, and integrated at
+	plasmid pZS25~\cite{Lutz1997},
+	containing kanamycin resistance, and integrated at
 	the {\it galK} locus using $\lambda$ Red recombineering~\cite{Sharan2009}.
+	A xapR-mCherry fusion was constructed in a pZS31 plasmid and was integrated
+	into the \textit{ybcN} locus, also using $\lambda$ Red recombineering.
+	Expression of the xapR-mCherry fusion was regulated by TetR expressed
+	extrachromosomally from a pZS3-PN25 plasmid.
+	Expression of the xapR-mCherry fusion was induced by the addition of
+	10~ng/mL anhydro-tetracycline.
+	A similar expression system was used in~\cite{Brewster2014}
 	More details can be found in~\nameref{S1_Text}.
 	
 	\paragraph*{Flow Cytometry Measurements.}
-	Experimental measurements in Fig. 2B of the main text were obtained
+	Experimental measurements in Fig. 2 were obtained
 	via flow cytometry and were performed in a similar manner as
 	described in~\cite{RazoMejia2018}. Briefly, wild-type,
 	$\Delta{xapABR}$, and $\Delta{xapAB}$ were grown to saturation in
 	rich LB Miller (BD Medical) medium and were diluted 1:1000 into M9
 	minimal medium supplemented with 0.5\% (w/v) glucose and the
-	appropriate concentration of xanthosine. For measurements of the
-	$\Delta{xapAB}$ strain, chloramphenicol was also added to the growth
-	medium to ensure stability of the pZ3PN25-tetR plasmid along with 10
-	ng /mL of anhydro-tetracycline to maximize expression of
-	xapR-mCherry. Cultures were allowed to grow at $37\unit{^\circ C}$ for six
+	appropriate concentration of xanthosine.
+	Cultures were allowed to grow at $37\unit{^\circ C}$ for six
 	to eight hours to an OD$_{600\unit{nm}}$ of $\approx 0.3$. At this point,
 	the cultures were diluted 1:10 into M9 + 0.5\% glucose and were
 	immediately analyzed via a MacsQuant VYB Flow Cytometery
@@ -1579,12 +1584,24 @@
 		\newblock PNAS, 2000;97(12), 6640–6645.
 		\newblock doi:{10.1073/pnas.120163297}
 
+		\bibitem{Lutz1997}
+		Lutz R, and Bujard, H
+		\newblock Independent and Tight Regulation of Transcriptional Units in \textit{Escherichia Coli} Via the {{LacR}}/{{O}}, the {{TetR}}/{{O}} and {{AraC}}/{{I1}}-{{I2}} Regulatory Elements.
+		\newblock Nucleic Acids Research, 1997;25(6), 1203--1210.
+		\newblock doi:{10.1093/nar/25.6.1203}
+
 		\bibitem{Sharan2009}
 		Sharan, SK, Thomason, LC, Kuznetsov, SG, Court, DL.
 		\newblock Recombineering: a homologous recombination-based
 		method of genetic engineering.
 		\newblock Nature Protocols, 2009;4(2), 206–223.
 		\newblock doi{10.1038/nprot.2008.227}
+
+		\bibitem{Brewster2014}
+		Jones, DL, Brewster, RC, Phillips, R
+		\newblock Promoter architecture dictates cell-to-cell variability in gene expression.
+		\newblock Science, 2014;346(6216), 1533--1536.
+		\newblock doi:{10.1126/science.1255301}	
 		
 	\end{thebibliography}
 	
