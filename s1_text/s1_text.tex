@@ -120,6 +120,9 @@
 	Kathrin S. Laxhuber\textsuperscript{1},
 	Muir J. Morrison\textsuperscript{2},
 	Griffin Chure\textsuperscript{3},
+	Nathan M. Belliveau\textsuperscript{4},
+	Charlotte Strandkvist\textsuperscript{5},
+	Kyle L. Naughton\textsuperscript{6},
 	Rob Phillips\textsuperscript{2,3$\ast$}
 	\\
 	\bigskip
@@ -128,6 +131,12 @@
 	\textbf{2} Department of Physics, California Institute of Technology, Pasadena, CA, USA
 	\\
 	\textbf{3} Division of Biology and Biological Engineering, California Institute of Technology, Pasadena, CA, USA
+	\\
+	\textbf{4} Howard Hughes Medical Institute, University of Washington, Seattle, WA, USA
+	\\
+	\textbf{5} Department of Systems Biology, Harvard Medical School, Boston, MA, USA
+	\\
+	\textbf{6} Department of Physics and Astronomy, University of Southern California, Los Angeles, CA, USA
 	\\
 	\bigskip
 	
@@ -491,7 +500,7 @@ water. This was repeated three times before resuspending in $200 \unit{\upmu L}$
 of chilled water to generate competent cells. Homologous primer
 extension sequences were obtained from Baba {\it et al.} \cite{Baba2006}
 and used to generate linear DNA containing a kanamycin resistance
-gene insert by PCR (amplified from plasmid pKD4), using primers that.
+gene insert by PCR (amplified from plasmid pKD4), using primers that
 contained homology for the region on the chromosome to be deleted
 \cite{Datsenko2000}. Electroporation was performed using $1 \unit{\upmu L}$
 purified PCR product (about $100 \unit{ng}$ DNA), mixed with $50 \unit{\upmu L}$ cells.
@@ -511,18 +520,31 @@ antibiotic resistance for both kanamycin and carbenicillin.
 \paragraph{Construction of $\bm{\Delta{xapAB}}$ strain.}
 Further experiments are underway in which precise control of the xapR copy number are needed and the preliminary data from these experiments are shown in the middle panel of Fig. 2A of the main text. This strain was constructed by creating a XapR-mCherry fusion protein expressed from a tetR regulated promoter. This fusion construct was integrated into the ycbN locus of the $\Delta{xapABR}$ strain making an effective $\Delta{xapAB}$ strain. A pZS3-PN25-TetR expression plasmid was also inserted into this genetic background which permits titratable control over the xapR-mCherry copy number. For the data presented in this work, expression was maximized using $10 \unit{ng/mL}$ of the tetR inducer anhydro-tetracycline. Further information of a similar construct (LacI-mCherry) can be found in~\cite{Brewster2014} and~\cite{Chure2019}.
 
-\paragraph{Primers for deletion strains}
-Generation of $\Delta{xapABR}$:
-actatttccggcaattcctgtctcctcacctactgtgtcaatgcagccaaCATATGAATATCCTCCTTAG; $xapABR<>P2$
-(lower case is homology, upper case is pKD4 primer)
-
-agatacaacaggtatcgctaatatagaggaaagtgtcagagttaaaagatgttttttcatGTGTAGGCTGGAGCTGCTTC; $xapABR<>P1$ (lower case is homology, upper case is pKD4 primer)
-
-Primers for colony-PCR to confirm deletion of xapABR:
-(upstream of xapR) cgggtcgttagctcagttggta
-(downstream of XapA): ttcccagtcgaagaacccgtac
-
-\textbf{Finish reformatting to table, add other primers?}
+\begin{table}
+\begin{tabular}{c p{5cm} p{4cm}}
+Primer & Sequence & Comments \\
+\hline
+$xapABR<>P2$ &
+actatttccggcaattcctgtctcctcac ctactgtgtcaatgcagccaaCATAT GAATATCCTCCTTAG &
+Forward primer for pKD4 with homology to \textit{xapABR} locus
+\\
+$xapABR<>P1$ &
+agatacaacaggtatcgctaatatagagg aaagtgtcagagttaaaagatgtttt ttcatGTGTAGGCTGGAGCTGCTTC &
+Reverse primer for pKD4 with homology to \textit{xapABR} locus
+\\
+xapABR-seq-fwd &
+cgggtcgttagctcagttggta &
+upstream of \textit{xapR}, to check \textit{xapABR} deletion
+\\
+xapABR-seq-rev &
+ttcccagtcgaagaacccgtac &
+downstream of \textit{xapA}, to check \textit{xapABR} deletion
+\end{tabular}
+\caption{\textbf{Primers for deletion strains.}
+Lower case sequences are homologous to a chromosomal locus.
+Upper case indicates sequences used for PCR amplification.
+}
+\end{table}
 
 \FloatBarrier
 \newpage
@@ -647,12 +669,18 @@ Primers for colony-PCR to confirm deletion of xapABR:
 	\newblock doi:{10.1038/msb4100050}
 
 	\bibitem{Datsenko2000}
-	Datsenko, KA, Wanner, BL.
+	Datsenko KA, Wanner BL.
 	\newblock One-step inactivation of chromosomal genes
 	in Escherichia coli K-12 using PCR products.
 	\newblock PNAS, 2000;97(12), 6640–6645.
 	\newblock doi:{10.1073/pnas.120163297}
-	
+
+	\bibitem{Brewster2014}
+	Jones, DL, Brewster, RC, Phillips, R
+	\newblock Promoter architecture dictates cell-to-cell variability in gene expression.
+	\newblock Science, 2014;346(6216), 1533--1536.
+	\newblock doi:{10.1126/science.1255301}
+
 	\bibitem{Chure2019}
 	Chure G, Kaczmarek ZA, Phillips R.
 	\newblock Physiological Adaptability and Parametric Versatility in a Simple
