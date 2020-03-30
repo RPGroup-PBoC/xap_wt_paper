@@ -1,0 +1,150 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[top=0.85in,left=0.85in,footskip=0.75in]{geometry}
+\usepackage{mathpazo}
+\usepackage{mdframed}
+\usepackage{graphicx}
+\usepackage{sectsty}
+\allsectionsfont{\normalfont\sffamily\bfseries}
+\subsectionfont{\normalfont\sffamily\bfseries}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+\usepackage{amsmath}
+
+% To place figures exactly on a page
+\usepackage{float}
+\usepackage{graphicx}
+
+% Bold the 'Figure #' in the caption and separate it from the title caption with a period
+% Captions will be left justified
+\usepackage[aboveskip=1pt,font=small,labelfont=bf,labelsep=period,singlelinecheck=off]{caption}
+
+% Strike out
+\usepackage[normalem]{ulem}
+
+% Custom BiBTeX style
+\bibliographystyle{bibStyle}
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{helvet}
+
+% To define more useful LaTeX commands
+\usepackage{xparse}
+\usepackage{graphicx}
+
+% Equation referencing
+\DeclareDocumentCommand \eref{oooo} {\IfNoValueTF{#2}{Eq. R~(\ref{#1})}{\IfNoValueTF{#3}{Eqs.~(\ref{#1}) and (\ref{#2})}{\IfNoValueTF{#4}{Eqs.~(\ref{#1})-(\ref{#3})}{Eqs.~(\ref{#1})-(\ref{#4})}}}}
+
+% Figure referencing
+\DeclareDocumentCommand \fref{ooo} {\IfNoValueTF{#2}{Fig.R~\ref{#1}}{\IfNoValueTF{#3}{Figs.~\ref{#1} and \ref{#2}}{Figs.~\ref{#1}-\ref{#3}}}}
+\renewcommand{\thefigure}{R\arabic{figure}} 
+\renewcommand{\theequation}{\sffamily R\arabic{equation}} 
+\renewcommand{\thetable}{\sffamily R\arabic{table}} 
+
+%% setup the response environment
+\mdfdefinestyle{revstyle}{
+outerlinewidth=2pt,
+bottomline=true,
+leftline=true,rightline=true,
+topline=true,
+font=\small,
+skipabove=\baselineskip,
+skipbelow=\baselineskip,
+roundcorner=10pt,
+innertopmargin=0.5em,
+innerbottommargin=1em,
+splittopskip=1em,
+splitbottomskip=1em
+}
+
+\mdfdefinestyle{respstyle}{
+outerlinewidth=2pt,
+bottomline=false,
+leftline=false,rightline=false,
+topline=false,
+font=\small,
+backgroundcolor=gray!20,
+skipabove=\baselineskip,
+skipbelow=\baselineskip,
+roundcorner=10pt,
+innertopmargin=0.5em,
+innerbottommargin=1em,
+splittopskip=1em,
+splitbottomskip=1em
+}
+
+\newmdenv[style=revstyle,frametitle=\sffamily \itshape Reviewer Comment]{review}
+\newmdenv[style=respstyle,frametitle=\sffamily \itshape Author Response]{response}
+\newmdenv[style=respstyle,frametitle=\sffamily \itshape Author Response: Executive Summary]{responseSummary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% END MACROS SECTION%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\section*{Second Response to Reviewer for PONE-D-19-32846 ``Theoretical Investigation of a Genetic Switch for Metabolic Adaptation''}
+Kathrin S. Laxhuber\textsuperscript{1},
+Muir J. Morrison\textsuperscript{2},
+Griffin Chure\textsuperscript{3},
+Nathan M. Belliveau\textsuperscript{4},
+Charlotte Strand-kvist\textsuperscript{5},
+Kyle L. Naughton\textsuperscript{6},
+Rob Phillips\textsuperscript{2,3$\dagger$}
+\vspace{10pt}
+
+\noindent\tiny{
+$^1$ Department of Chemistry and Applied Biosciences, ETH Zurich, 8093 Zurich, Switzerland,
+$^2$ Department of Physics, California Institute of Technology, Pasadena, CA, USA,
+$^3$ Division of Biology and Biological Engineering, California Institute of Technology, Pasadena, CA, USA,
+$^4$ Howard Hughes Medical Institute, University of Washington, Seattle, WA, USA,
+$^5$ Department of Systems Biology, Harvard Medical School, Boston, MA, USA,
+$^6$ Department of Physics and Astronomy, University of Southern California, Los Angeles, CA, USA, $^\dagger$ E-mail: \texttt{phillips@pboc.caltech.edu}}
+
+\begin{responseSummary}
+We would like to thank the editor and reviewer for the thorough and very constructive review process. 
+We are happy about the positive overall feedback and hope that we have now resolved any remaining ambiguities.
+\end{responseSummary}
+
+\subsection*{Reviewer \#1}
+\begin{review}
+	In general the authors have done an admirable job addressing my comments.
+\end{review}
+
+\begin{response}
+	We thank the reviewer and are glad that we could clarify all previous issues.
+\end{response}
+
+\begin{review}
+	At this point, I find myself confused on one issue, which I hope the authors will address (unless I'm just being truly dense). In the right side of Figure 9, a series of phase portraits are displayed. I assume that these must have been from the deterministic system, since the authors make no reference to performing a suitable scan of conditions to obtain such diagrams for the stochastic system; I assume that these in fact arise from the deterministic system. However, the figure legend does not address this point at all, and the reader is left with the impression that those phase portraits arise from the stochastic system. The issue is not helped by the fact that the coloring and axis scaling for the right side of Figure 9 does not follow the same conventions used in earlier diagrams; for example, the right panel of Fig 9A looks a lot like Fig. 5B, but the colors and axis scales are different.
+\end{review}
+
+\begin{response}
+	This is a very good point that we had missed, and we thank the reviewer for reading our manuscript so carefully. The phase portraits are indeed from the deterministic system. We now addressed this in the figure legends and have changed the coloring in Fig 9.
+\end{response}
+
+\begin{review}
+	I would also like to caution the authors (and editorial staff) that while the ``Revised Manuscript with Track Changes'' document was fully readable, the figure numbering of the main text figures seemed to be off in the submission system.
+\end{review}
+
+\begin{response}
+	The reason behind this apparent problem is that in the PDF, the figure numbering starts at one, while it starts at zero in the figure filenames. Thus, there is a shift of one between the figure filenames and the numbering in the PDF. However, the names and numbering in the original tex file code correspond to the figure filenames, such that we believe it should be clear to the editorial staff whenever they include the figures in the tex file.
+\end{response}
+
+\begin{review}
+	As a final note, I would like to urge the authors to make the source code for their simulations publicly accessible, which would greatly help the community in adapting similar models for other systems.
+\end{review}
+
+\begin{response}
+	We fully agree with the reviewer and therefore have made all source code publicly available in the same repository as the raw data: \url{https://github.com/RPGroup-PBoC/xap_wt_paper}.
+\end{response}
+
+%\bibliography{library}
+
+\end{document}
